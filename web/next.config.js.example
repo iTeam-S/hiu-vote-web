@@ -3,11 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['i.pravatar.cc', 'iteam-s.mg'],
+    domains: [],
   },
   env: {
-    API_IMG: 'https://pocket.iteam-s.mg/api/files/',
-    API_URL: 'https://pocket.iteam-s.mg/api/collections/',
+    API_IMG: '',
+    API_URL: '',
   },
 };
 
