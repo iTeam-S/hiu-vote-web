@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getParticipantsVotes } from '../query/participants-votes.query';
+import { ParticipantsVotes } from '../type';
 import ParticipantCard from './card';
 
 const participants = [
@@ -61,13 +62,14 @@ const participants = [
 ];
 
 export default function Participant() {
-  const [participantsListeVotes, setData] = useState<any[]>([]);
-  console.log('participantsListeVotes : ', participantsListeVotes);
-
+  const [participantsListeVotes, setData] = useState<
+    ParticipantsVotes[] | null
+  >(null);
+  console.log(participantsListeVotes);
   useEffect(() => {
     async function fetchData() {
       const participantsVotes = await getParticipantsVotes();
-      setData(participantsVotes.items);
+      setData(participantsVotes);
     }
 
     fetchData();
@@ -81,6 +83,7 @@ export default function Participant() {
         justifyContent: 'space-around',
         alignItems: 'center',
         marginTop: 25,
+        marginBottom: 50,
       }}
     >
       {participantsListeVotes &&
@@ -88,21 +91,25 @@ export default function Participant() {
           <ParticipantCard
             key={index}
             name={card.univ_name}
-            logoSrc={card.logo}
+            logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
             votes={
-              card.expand && card?.expand['votes(participant)'] != undefined
+              card.expand && card.expand['votes(participant)']
                 ? card.expand['votes(participant)'].length
-                : null
+                : 0
             }
             against={
-              card.expand &&
-              card.expand['contre_votes(participant)'] != undefined
-                ? card.expand['votes(participant)'].length
-                : null
+              card.expand && card.expand['contre_votes(participant)']
+                ? card.expand['contre_votes(participant)'].length
+                : 0
             }
             voters={
-              card.expand && card.expand['votes(participant)'] != undefined
-                ? card?.expand['votes(participant)']
+              card.expand && card.expand['votes(participant)']
+                ? card.expand['votes(participant)']
+                : null
+            }
+            againstVoters={
+              card.expand && card.expand['contre_votes(participant)']
+                ? card.expand['contre_votes(participant)']
                 : null
             }
           />

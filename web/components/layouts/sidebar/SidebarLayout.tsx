@@ -1,5 +1,5 @@
-import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
-import { AppBar, IconButton, Stack, Toolbar, Typography } from '@mui/material';
+import { AppBar, Stack, Toolbar, Typography } from '@mui/material';
+import Image from 'next/Image';
 import Link from 'next/link';
 import React from 'react';
 import styles from './SidebarLayout.module.css';
@@ -10,9 +10,13 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
   return (
     <AppBar position="fixed" color="secondary" className={styles.navbar}>
       <Toolbar>
-        <IconButton size="large" color="inherit" edge="start" aria-label="logo">
-          <CatchingPokemonIcon />
-        </IconButton>
+        <Image
+          src="https://iteam-s.mg/assets/img/LOGO.png"
+          alt="logo"
+          width={50}
+          height={50}
+          style={{ marginRight: '10px', width: '100', height: '100' }}
+        />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Web Ranking
         </Typography>

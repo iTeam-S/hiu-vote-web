@@ -1,14 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { ParticipantsVotes } from '../type';
 
-interface MyData {
-  // Interface pour définir le type de données que nous attendons
-  name: string;
-  age: number;
-  email: string;
-}
-
-export const getParticipantsVotes = async (): Promise<any> => {
-  console.log('process.env : ', process.env.API_URL);
+export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
   const config: AxiosRequestConfig = {
     method: 'get',
     url:
@@ -21,9 +14,8 @@ export const getParticipantsVotes = async (): Promise<any> => {
 
   try {
     const response: AxiosResponse<any> = await axios(config);
-    return response.data;
+    return response.data.items;
   } catch (error) {
-    console.error(error);
     throw new Error('Erreur lors de la récupération des données');
   }
 };

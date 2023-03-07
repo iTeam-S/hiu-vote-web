@@ -23,6 +23,7 @@
     "@mui/styles": "^5.11.12",
     "@types/file-saver": "^2.0.5",
     "axios": "^1.3.4",
+    "dotenv": "^16.0.3",
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",
     "next": "13.0.5",
