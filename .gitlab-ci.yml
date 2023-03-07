@@ -3,8 +3,11 @@ image: node:lts
 # Functions that should be executed before the build script is run
 before_script:
   - yarn install
-  - echo -n $NEXT_CONFIG_FILE | base64 --decode > next.config.js
+  - echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
 pages:
+  environments:
+    name: staging
+    url: https://gaetan1903..gitlab.io/web-ranking/
   script:
     - yarn build
     - mv out/* public
