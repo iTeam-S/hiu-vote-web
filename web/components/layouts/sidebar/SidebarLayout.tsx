@@ -1,5 +1,5 @@
 import { AppBar, Stack, Toolbar, Typography } from '@mui/material';
-import Image from 'next/Image';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styles from './SidebarLayout.module.css';

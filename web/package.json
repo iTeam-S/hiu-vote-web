@@ -27,6 +27,7 @@
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",
     "next": "13.0.5",
+    "pocketbase": "^0.12.0",
     "ra-data-json-server": "^4.6.0",
     "react": "18.2.0",
     "react-admin": "^4.6.0",

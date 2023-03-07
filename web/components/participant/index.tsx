@@ -1,14 +1,19 @@
+import { CircularProgress } from '@mui/material';
+import PocketBase from 'pocketbase';
 import { useEffect, useState } from 'react';
 import { getParticipantsVotes } from '../query/participants-votes.query';
 import { getVoters } from '../query/voters.query';
 import { ParticipantsVotes } from '../type';
 import ParticipantCard from './card';
 
+const pb = new PocketBase(process.env.API_REALTIME);
+
 export default function Participant() {
   const [participantsListeVotes, setData] = useState<
     ParticipantsVotes[] | null
   >(null);
   const [nbrVoters, setNbrVoters] = useState<number>(0);
+
   useEffect(() => {
     async function fetchData() {
       const votersList = await getVoters();
@@ -20,6 +25,13 @@ export default function Participant() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    pb.collection('votes').subscribe('*', async function () {
+      const participantsVotes = await getParticipantsVotes();
+      setData(participantsVotes);
+    });
+  });
+
   return (
     <div
       style={{
@@ -27,11 +39,10 @@ export default function Participant() {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         alignItems: 'center',
-        marginTop: 25,
         marginBottom: 50,
       }}
     >
-      {participantsListeVotes &&
+      {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
           <ParticipantCard
             key={index}
@@ -55,7 +66,10 @@ export default function Participant() {
                 : null
             }
           />
-        ))}
+        ))
+      ) : (
+        <CircularProgress style={{ marginTop: 100 }} color="success" />
+      )}
     </div>
   );
 }
