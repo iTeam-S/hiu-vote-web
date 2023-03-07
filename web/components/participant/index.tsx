@@ -1,73 +1,18 @@
 import { useEffect, useState } from 'react';
 import { getParticipantsVotes } from '../query/participants-votes.query';
+import { getVoters } from '../query/voters.query';
 import { ParticipantsVotes } from '../type';
 import ParticipantCard from './card';
-
-const participants = [
-  {
-    name: 'ESTI',
-    logoSrc:
-      'https://pocket.iteam-s.mg/api/files/vlacm5bqbqxzdxo/500kdv43p2emagh/inclusiv_academy_LDAtBZm9di.png',
-    votes: 75,
-    against: 25,
-    voters: [
-      'https://randomuser.me/api/portraits/men/79.jpg',
-      'https://randomuser.me/api/portraits/men/51.jpg',
-    ],
-  },
-  {
-    name: 'ESTI',
-    logoSrc:
-      'https://pocket.iteam-s.mg/api/files/vlacm5bqbqxzdxo/500kdv43p2emagh/inclusiv_academy_LDAtBZm9di.png',
-    votes: 75,
-    against: 25,
-    voters: [
-      'https://randomuser.me/api/portraits/men/79.jpg',
-      'https://randomuser.me/api/portraits/men/51.jpg',
-    ],
-  },
-  {
-    name: 'ESTI',
-    logoSrc:
-      'https://pocket.iteam-s.mg/api/files/vlacm5bqbqxzdxo/500kdv43p2emagh/inclusiv_academy_LDAtBZm9di.png',
-    votes: 75,
-    against: 25,
-    voters: [
-      'https://randomuser.me/api/portraits/men/79.jpg',
-      'https://randomuser.me/api/portraits/men/51.jpg',
-    ],
-  },
-  {
-    name: 'ESTI',
-    logoSrc:
-      'https://pocket.iteam-s.mg/api/files/vlacm5bqbqxzdxo/500kdv43p2emagh/inclusiv_academy_LDAtBZm9di.png',
-    votes: 75,
-    against: 25,
-    voters: [
-      'https://randomuser.me/api/portraits/men/79.jpg',
-      'https://randomuser.me/api/portraits/men/51.jpg',
-    ],
-  },
-  {
-    name: 'ESTI',
-    logoSrc:
-      'https://pocket.iteam-s.mg/api/files/vlacm5bqbqxzdxo/500kdv43p2emagh/inclusiv_academy_LDAtBZm9di.png',
-    votes: 75,
-    against: 25,
-    voters: [
-      'https://randomuser.me/api/portraits/men/79.jpg',
-      'https://randomuser.me/api/portraits/men/51.jpg',
-    ],
-  },
-];
 
 export default function Participant() {
   const [participantsListeVotes, setData] = useState<
     ParticipantsVotes[] | null
   >(null);
-  console.log(participantsListeVotes);
+  const [nbrVoters, setNbrVoters] = useState<number>(0);
   useEffect(() => {
     async function fetchData() {
+      const votersList = await getVoters();
+      setNbrVoters(votersList.totalItems);
       const participantsVotes = await getParticipantsVotes();
       setData(participantsVotes);
     }
@@ -94,13 +39,10 @@ export default function Participant() {
             logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
             votes={
               card.expand && card.expand['votes(participant)']
-                ? card.expand['votes(participant)'].length
-                : 0
-            }
-            against={
-              card.expand && card.expand['contre_votes(participant)']
-                ? card.expand['contre_votes(participant)'].length
-                : 0
+                ? ((card.expand['votes(participant)'].length / nbrVoters) * 100)
+                    .toFixed(2)
+                    .toString()
+                : '0'
             }
             voters={
               card.expand && card.expand['votes(participant)']

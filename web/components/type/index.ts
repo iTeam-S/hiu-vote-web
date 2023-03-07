@@ -43,3 +43,22 @@ export interface Voter {
   profil_pic: string;
   updated: Date;
 }
+
+export interface VotersList {
+  page: number;
+  perPage: number;
+  totalItems: number;
+  totalPages: number;
+  items: ItemVoter[];
+}
+
+export interface ItemVoter {
+  collectionId: string;
+  collectionName: string;
+  created: Date;
+  fb_id: string;
+  id: string;
+  name: string;
+  profil_pic: string;
+  updated: Date;
+}

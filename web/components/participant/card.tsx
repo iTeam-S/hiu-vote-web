@@ -13,44 +13,10 @@ import {
 import { makeStyles } from '@mui/styles';
 import { VotesParticipant } from '../type';
 
-const useStyles = makeStyles(() => ({
-  logo: {
-    marginRight: 11,
-    maxWidth: 100,
-    maxHeight: 100,
-  },
-  avatar: {
-    width: 3,
-    height: 3,
-    marginRight: 5,
-  },
-  badge: {
-    top: '50%',
-    right: -10,
-    transform: 'translateY(-50%)',
-  },
-  paper: {
-    marginTop: 45,
-  },
-  votes: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  card: {
-    width: '280px',
-    height: '320px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-  },
-}));
-
 type params = {
   name: string;
   logoSrc: string;
-  votes: number;
-  against: number;
+  votes: string;
   voters: VotesParticipant[] | null;
   againstVoters: VotesParticipant[] | null;
 };
@@ -59,7 +25,6 @@ export default function ParticipantCard({
   name,
   logoSrc,
   votes,
-  against,
   voters,
   againstVoters,
 }: params) {
@@ -72,27 +37,23 @@ export default function ParticipantCard({
           component="img"
           height="100px"
           image={process.env.API_IMG + logoSrc}
-          style={{ objectFit: 'scale-down', width: '300' }}
+          className={classes.cardMedia}
         />
         <CardContent>
           <Typography
             gutterBottom
             variant="h5"
             color="text.secondary"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            className={classes.name}
           >
             {name}
           </Typography>
 
           <div className={classes.votes}>
             <Typography variant="body1" color="text.secondary">
-              {votes} alainay
+              {votes}% alainay
             </Typography>
-            <AvatarGroup max={3}>
+            <AvatarGroup max={4}>
               {voters &&
                 voters.map((element, index) => (
                   <Avatar
@@ -106,9 +67,9 @@ export default function ParticipantCard({
 
           <div className={classes.votes}>
             <Typography variant="body2" color="error">
-              {against} zakanay
+              Zakanay
             </Typography>
-            <AvatarGroup max={3}>
+            <AvatarGroup max={4}>
               {againstVoters &&
                 againstVoters.map((element, index) => (
                   <Avatar
@@ -133,3 +94,30 @@ export default function ParticipantCard({
     </Paper>
   );
 }
+
+const useStyles = makeStyles(() => ({
+  paper: {
+    marginTop: 45,
+  },
+  votes: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  card: {
+    width: '280px',
+    height: '320px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  cardMedia: {
+    objectFit: 'scale-down',
+    width: '300',
+  },
+  name: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
