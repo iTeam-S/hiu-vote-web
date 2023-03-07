@@ -4,9 +4,11 @@ image: node:lts
 before_script:
   - yarn install
   - echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
+  
 pages:
   script:
     - yarn build
+    - rm -rf public/*
     - mv out/* public
   artifacts:
     paths:
