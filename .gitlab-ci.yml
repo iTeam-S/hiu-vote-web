@@ -1,13 +1,16 @@
 # The Docker image that will be used to build your app
 image: node:lts
-# Functions that should be executed before the build script is run
+
+environments:
+  name: staging
+  url: https://gaetan1903..gitlab.io/web-ranking/
+
+
 before_script:
   - yarn install
   - echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
 pages:
-  environments:
-    name: staging
-    url: https://gaetan1903..gitlab.io/web-ranking/
+  environment: staging
   script:
     - yarn build
     - mv out/* public
