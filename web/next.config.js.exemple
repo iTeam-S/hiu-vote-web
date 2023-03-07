@@ -1,0 +1,15 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: [],
+  },
+  env: {
+    API_IMG: '',
+    API_URL: '',
+    API_REALTIME: '',
+  },
+};
+
+module.exports = nextConfig;
