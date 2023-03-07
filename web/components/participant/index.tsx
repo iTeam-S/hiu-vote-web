@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import PocketBase from 'pocketbase';
 import { useEffect, useState } from 'react';
 import { getParticipantsVotes } from '../query/participants-votes.query';
@@ -38,11 +39,10 @@ export default function Participant() {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         alignItems: 'center',
-        marginTop: 25,
         marginBottom: 50,
       }}
     >
-      {participantsListeVotes &&
+      {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
           <ParticipantCard
             key={index}
@@ -66,7 +66,10 @@ export default function Participant() {
                 : null
             }
           />
-        ))}
+        ))
+      ) : (
+        <CircularProgress style={{ marginTop: 100 }} color="success" />
+      )}
     </div>
   );
 }
