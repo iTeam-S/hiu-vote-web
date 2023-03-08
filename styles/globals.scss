@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 // @import 'sass-eo-bootstrap-grid';
-// @import 'sass-eo-lib-magic';
 @import 'sass-eo-basics';
 @include normalize();
 
@@ -27,12 +26,58 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
     background-color: #eaeaea;
+  }
+}
+
+path {
+  transform-origin: 50% 0%;
+}
+
+.background--custom {
+  background-color: #FFFFFF;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 150%;
+  width: 100%;
+}
+
+@keyframes path0 {
+  0% {
+    transform: rotate(-60deg);
+  }
+  100% {
+    transform: rotate(60deg);
+  }
+}
+
+@keyframes path1 {
+  0% {
+    transform: rotate(40deg);
+  }
+  100% {
+    transform: rotate(-40deg);
+  }
+}
+
+@keyframes path2 {
+  0% {
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(-50deg);
   }
 }
