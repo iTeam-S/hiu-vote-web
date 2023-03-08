@@ -29,3 +29,22 @@
     filter: invert(1);
   }
 }
+
+.styledtext {
+  text-align: center;
+
+  .text {
+    font-family: Satisfy, cursive;
+    font-size: 2em;
+    margin: 1em 0;
+    color: teal;
+    text-shadow: 0.02em 0.02em 0 rgb(48, 111, 148), 0 0 0.5em rgb(247, 247, 247);
+  }
+
+  .text span {
+    color: #ffffff;
+    display: block;
+    padding-top: 0.6em;
+    padding-left: 0.5em;
+  }
+}
