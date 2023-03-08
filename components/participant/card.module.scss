@@ -16,7 +16,7 @@
   border-radius: 25px;
   height: auto;
   @include effect-box-shadow($opacity: smooth);
-  transition: all 0.2s;
+  transition: all 0.1s;
 
   @include breakpoint(min, large) {
     min-width: __convertToRem($value: 400px);
@@ -27,7 +27,7 @@
   }
 
   img {
-    transition: all 0.5s;
+    transition: all 0.2s;
   }
 
   &:hover {
