@@ -1,6 +1,36 @@
+@charset "UTF-8";
+
+// @import 'sass-eo-bootstrap-grid';
+// @import 'sass-eo-lib-magic';
+@import 'sass-eo-basics';
+
+@include normalize();
+@include loadify(init);
+
+@font-face {
+	font-family: 'Outfit';
+	src: url('../assets/Outfit-VariableFont_wght.ttf') format('truetype');
+}
+
+* {
+	@include antialias();
+	box-sizing: border-box;
+	font-family: Outfit !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	letter-spacing: 0.3rem;
+}
+
 body {
   margin: 0;
   background-color: #eaeaea;
+  font-size: __convertToRem($value: 18px);
 }
 
 @media (prefers-color-scheme: dark) {
