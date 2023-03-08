@@ -6,7 +6,7 @@ export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
     method: 'get',
     url:
       process.env.API_URL +
-      'participants/records?expand=votes(participant).voter,contre_votes(participant).voter',
+      'collections/participants/records?expand=votes(participant).voter,contre_votes(participant).voter',
     headers: {
       'Content-Type': 'application/json',
     },

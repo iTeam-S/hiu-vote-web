@@ -4,7 +4,7 @@ import { VotersList } from '../type';
 export const getVoters = async (): Promise<VotersList> => {
   const config: AxiosRequestConfig = {
     method: 'get',
-    url: process.env.API_URL + 'voters/records',
+    url: process.env.API_URL + 'collections/voters/records',
     headers: {
       'Content-Type': 'application/json',
     },
