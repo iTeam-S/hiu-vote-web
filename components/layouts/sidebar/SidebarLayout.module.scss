@@ -10,7 +10,7 @@
   
 .logo {
   @include magic-spaceInLeft($duration: 1s);
-  border: solid 2px #eee;
+  border: solid 4px #eee;
   border-radius: 25%;
   padding: 0.1rem;
   margin-left: 2rem;
