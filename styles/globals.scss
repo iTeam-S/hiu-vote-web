@@ -46,48 +46,21 @@ body {
   }
 }
 
-path {
-  transform-origin: 50% 0%;
-}
-
 .background--custom {
-  background-color: #ffffff;
+  background: linear-gradient(90deg, #7b8992, #85a1a3, #2e6e6e);
+  background-size: 300% 300%;
+  animation: gradient 8s alternate infinite;
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 250%;
   width: 100%;
-  opacity: 60%;
 }
-
-@keyframes path0 {
+@keyframes gradient {
   0% {
-    transform: rotate(-60deg);
+    background-position: 0%;
   }
   100% {
-    transform: rotate(60deg);
-  }
-}
-
-@keyframes path1 {
-  0% {
-    transform: rotate(40deg);
-  }
-  100% {
-    transform: rotate(-40deg);
-  }
-}
-
-@keyframes path2 {
-  0% {
-    transform: rotate(50deg);
-  }
-  100% {
-    transform: rotate(-50deg);
+    background-position: 100%;
   }
 }
 

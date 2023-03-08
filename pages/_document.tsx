@@ -25,33 +25,10 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
-          <svg
-            className="background--custom"
-            id="demo"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="#32645d"
-              fillOpacity="0.2"
-              d="M-100 -100L200 -100L200 70L-100 70Z"
-              style={path0style}
-            />
-            <path
-              fill="#0C3236"
-              fillOpacity="0.3"
-              d="M-100 -100L200 -100L200 30L-100 30Z"
-              style={path1style}
-            />
-            <path
-              fill="#4cb5a1"
-              fillOpacity="0.7"
-              d="M-100 -100L200 -100L200 90L-100 90Z"
-              style={path2style}
-            />
-          </svg>
-          <Main />
-          <NextScript />
+          <div className="background--custom">
+            <Main />
+            <NextScript />
+          </div>
         </body>
       </Html>
     )
