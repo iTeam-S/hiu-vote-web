@@ -32,6 +32,7 @@
 
 .styledtext {
   text-align: center;
+  @include animation-bounce();
 
   .text {
     font-family: Satisfy, cursive;

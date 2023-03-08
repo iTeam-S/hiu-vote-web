@@ -33,7 +33,6 @@
   &:hover {
     background-color: rgb(233, 233, 233);
     border-bottom: solid rgb(141, 141, 141) 10px;
-    @include animation-scale($scaleValue: 1.006);
 
     img {
       @include animation-scale($scaleValue: 1.08);
