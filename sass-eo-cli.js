@@ -6,7 +6,8 @@ module.exports = function (grunt) {
 
 	// sass files path (destination: source)
 	const sassPath = {
-					'./styles/globals.min.css': './styles/globals.scss',
+					'./styles/globals.css': './styles/globals.scss',
+					'./styles/Home.module.css': './styles/Home.module.scss',
 	}
 
 	grunt.initConfig({

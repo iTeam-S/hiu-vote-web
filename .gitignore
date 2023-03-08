@@ -38,7 +38,7 @@ next-env.d.ts
 next.config.js
 
 # sseo 
-**/*.min.css
-**/*.min.css.map
-**/**/*.min.css
-**/**/*.min.css.map
+**/*.css
+**/*.css.map
+**/**/*.css
+**/**/*.css.map
