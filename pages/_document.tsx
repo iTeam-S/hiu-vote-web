@@ -33,19 +33,19 @@ class MyDocument extends Document {
           >
             <path
               fill="#32645d"
-              fill-opacity="0.2"
+              fillOpacity="0.2"
               d="M-100 -100L200 -100L200 70L-100 70Z"
               style={path0style}
             />
             <path
               fill="#0C3236"
-              fill-opacity="0.3"
+              fillOpacity="0.3"
               d="M-100 -100L200 -100L200 30L-100 30Z"
               style={path1style}
             />
             <path
               fill="#4cb5a1"
-              fill-opacity="0.7"
+              fillOpacity="0.7"
               d="M-100 -100L200 -100L200 90L-100 90Z"
               style={path2style}
             />
