@@ -90,3 +90,29 @@ path {
     transform: rotate(-50deg);
   }
 }
+
+$card-show-delay: 0.2s;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.card-show {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in-out forwards;
+
+  &:nth-of-type(n) {
+    animation-delay: $card-show-delay;
+  }
+
+  @for $i from 2 through 50 {
+    &:nth-of-type(#{$i}n) {
+      animation-delay: $card-show-delay * $i;
+    }
+  }
+}

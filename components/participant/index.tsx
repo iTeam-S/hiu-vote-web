@@ -44,28 +44,33 @@ export default function Participant() {
     >
       {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
-          <ParticipantCard
-            key={index}
-            name={card.univ_name}
-            logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
-            votes={
-              card.expand && card.expand['votes(participant)']
-                ? ((card.expand['votes(participant)'].length / nbrVoters) * 100)
-                    .toFixed(2)
-                    .toString()
-                : '0'
-            }
-            voters={
-              card.expand && card.expand['votes(participant)']
-                ? card.expand['votes(participant)']
-                : null
-            }
-            againstVoters={
-              card.expand && card.expand['contre_votes(participant)']
-                ? card.expand['contre_votes(participant)']
-                : null
-            }
-          />
+          <div className='card-show'>
+            <ParticipantCard
+              key={index}
+              name={card.univ_name}
+              logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
+              votes={
+                card.expand && card.expand['votes(participant)']
+                  ? (
+                      (card.expand['votes(participant)'].length / nbrVoters) *
+                      100
+                    )
+                      .toFixed(2)
+                      .toString()
+                  : '0'
+              }
+              voters={
+                card.expand && card.expand['votes(participant)']
+                  ? card.expand['votes(participant)']
+                  : null
+              }
+              againstVoters={
+                card.expand && card.expand['contre_votes(participant)']
+                  ? card.expand['contre_votes(participant)']
+                  : null
+              }
+            />
+          </div>
         ))
       ) : (
         <CircularProgress style={{ marginTop: 100 }} color="success" />
