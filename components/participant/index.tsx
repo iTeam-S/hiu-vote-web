@@ -39,7 +39,7 @@ export default function Participant() {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         alignItems: 'center',
-        marginBottom: 50,
+        gap: 20,
       }}
     >
       {participantsListeVotes ? (

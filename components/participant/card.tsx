@@ -35,19 +35,15 @@ export default function ParticipantCard({
       <Card className={classes.card}>
         <CardMedia
           component="img"
-          height="100px"
+          height="120px"
           image={process.env.API_IMG + logoSrc}
           className={classes.cardMedia}
         />
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            color="text.secondary"
-            className={classes.name}
-          >
+
+          <h3>
             {name}
-          </Typography>
+          </h3>
 
           <div className={classes.votes}>
             <Typography variant="body1" color="text.secondary">
