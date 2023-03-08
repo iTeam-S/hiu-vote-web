@@ -12,9 +12,9 @@
   padding: 0.3rem;
   padding-top: 2rem;
   margin-top: 1rem;
-  max-width: __convertToRem($value: 500px);
-  border-radius: 25px;
-  height: auto;
+  width: __convertToRem($value: 400px);
+  height: __convertToRem($value: 800px);
+  border-radius: 12px;
   @include effect-box-shadow($opacity: smooth);
   transition: all 0.1s;
 

@@ -2,7 +2,8 @@ import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
 import { VotesParticipant } from '../type'
 import styles from './card.module.css'
 import { AiFillHeart } from 'react-icons/ai'
-import { FaHandMiddleFinger, FaRegEye } from 'react-icons/fa'
+import { FaRegEye } from 'react-icons/fa'
+import { GiStrong } from 'react-icons/gi'
 import { useState } from 'react'
 
 type params = {
@@ -88,7 +89,7 @@ export default function ParticipantCard({
           <div>
             <h2>0 %</h2>
             <span>
-              <FaHandMiddleFinger size={25} /> &nbsp; Zakanay
+              <GiStrong size={25} /> &nbsp; Zakanay
             </span>
           </div>
         </div>
