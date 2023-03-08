@@ -1,36 +1,36 @@
-import { CircularProgress } from '@mui/material';
-import PocketBase from 'pocketbase';
-import { useEffect, useState } from 'react';
-import { getParticipantsVotes } from '../query/participants-votes.query';
-import { getVoters } from '../query/voters.query';
-import { ParticipantsVotes } from '../type';
-import ParticipantCard from './card';
+import { CircularProgress } from '@mui/material'
+import PocketBase from 'pocketbase'
+import { useEffect, useState } from 'react'
+import { getParticipantsVotes } from '../query/participants-votes.query'
+import { getVoters } from '../query/voters.query'
+import { ParticipantsVotes } from '../type'
+import ParticipantCard from './card'
 
-const pb = new PocketBase(process.env.API_REALTIME);
+const pb = new PocketBase(process.env.API_REALTIME)
 
 export default function Participant() {
   const [participantsListeVotes, setData] = useState<
     ParticipantsVotes[] | null
-  >(null);
-  const [nbrVoters, setNbrVoters] = useState<number>(0);
+  >(null)
+  const [nbrVoters, setNbrVoters] = useState<number>(0)
 
   useEffect(() => {
     async function fetchData() {
-      const votersList = await getVoters();
-      setNbrVoters(votersList.totalItems);
-      const participantsVotes = await getParticipantsVotes();
-      setData(participantsVotes);
+      const votersList = await getVoters()
+      setNbrVoters(votersList.totalItems)
+      const participantsVotes = await getParticipantsVotes()
+      setData(participantsVotes)
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      const participantsVotes = await getParticipantsVotes();
-      setData(participantsVotes);
-    });
-  });
+      const participantsVotes = await getParticipantsVotes()
+      setData(participantsVotes)
+    })
+  })
 
   return (
     <div
@@ -71,5 +71,5 @@ export default function Participant() {
         <CircularProgress style={{ marginTop: 100 }} color="success" />
       )}
     </div>
-  );
+  )
 }

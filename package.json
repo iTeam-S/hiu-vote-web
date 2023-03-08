@@ -21,7 +21,9 @@
     "sseo-watch": "grunt --gruntfile sass-eo-cli.js watch-sass",
     "sseo-docs": "grunt --gruntfile sass-eo-cli.js sseo-docs",
     "sseo-magic": "grunt --gruntfile sass-eo-cli.js magic-docs",
-    "sseo-buttons": "grunt --gruntfile sass-eo-cli.js buttons-maker"
+    "sseo-buttons": "grunt --gruntfile sass-eo-cli.js buttons-maker",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@mui/styles": "^5.11.12",

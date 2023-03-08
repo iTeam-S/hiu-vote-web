@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import styles from './PrimaryLayout.module.css';
+import Head from 'next/head'
+import styles from './PrimaryLayout.module.css'
 
 export interface IPrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {
-  justify?: 'items-center' | 'items-start';
+  justify?: 'items-center' | 'items-start'
 }
 
 const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
@@ -13,7 +13,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
       </Head>
       <main className={styles.main}>{children}</main>
     </>
-  );
-};
+  )
+}
 
-export default PrimaryLayout;
+export default PrimaryLayout

@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .primary_btn {
-
   align-items: center;
   background-color: #fee6e3;
   border: 2px solid #333;
@@ -10,7 +9,7 @@
   color: #333;
   cursor: pointer;
   display: flex;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   height: 48px;
   justify-content: center;
@@ -28,7 +27,7 @@
 .primary_btn:after {
   background-color: #333;
   border-radius: 8px;
-  content: "";
+  content: '';
   display: block;
   height: 48px;
   left: 0;
@@ -36,7 +35,7 @@
   position: absolute;
   top: -2px;
   transform: translate(8px, 8px);
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
   z-index: -1;
 }
 

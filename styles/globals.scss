@@ -5,9 +5,9 @@
 @include normalize();
 
 * {
-	@include antialias();
-	box-sizing: border-box;
-	font-family: Outfit !important;
+  @include antialias();
+  box-sizing: border-box;
+  font-family: Outfit !important;
 }
 
 h1,
@@ -16,7 +16,16 @@ h3,
 h4,
 h5,
 h6 {
-	letter-spacing: 0.3rem;
+  letter-spacing: 0.3rem;
+  color: #555;
+}
+
+p {
+  color: #555;
+}
+
+hr {
+  border-radius: 100%;
 }
 
 body {
@@ -26,7 +35,6 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-
   html {
     color-scheme: dark;
   }
@@ -43,7 +51,7 @@ path {
 }
 
 .background--custom {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: absolute;
   z-index: -1;
   top: 0;
@@ -51,7 +59,7 @@ path {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 150%;
+  height: 250%;
   width: 100%;
   opacity: 60%;
 }
