@@ -87,7 +87,7 @@ export default function ParticipantCard({
               ))}
           </AvatarGroup>
           <div>
-            <h2>0 %</h2>
+            <h2>0</h2>
             <span>
               <GiStrong size={25} /> &nbsp; Zakanay
             </span>
