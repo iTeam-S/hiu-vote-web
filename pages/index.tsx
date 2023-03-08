@@ -13,6 +13,7 @@ const Home: NextPageWithLayout = () => {
 
   return (
     <section className={styles.main}>
+      <h1 style={{textAlign: 'center', color: '#555', marginTop: 70}}>Zakanao ngah ?</h1>
       <Participant />
     </section>
   );
