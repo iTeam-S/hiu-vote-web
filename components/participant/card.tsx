@@ -1,6 +1,9 @@
 import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
 import { VotesParticipant } from '../type'
 import styles from './card.module.css'
+import { AiFillHeart } from 'react-icons/ai'
+import { FaHandMiddleFinger, FaRegEye } from 'react-icons/fa'
+import { useState } from 'react'
 
 type params = {
   name: string
@@ -8,6 +11,25 @@ type params = {
   votes: string
   voters: VotesParticipant[] | null
   againstVoters: VotesParticipant[] | null
+}
+
+const DetailsButton = () => {
+  const [onHover, setOnHover] = useState(false)
+
+  const changerEtatSurvole = () => {
+    setOnHover(!onHover)
+  }
+
+  return (
+    <button
+      className={styles.secondary_btn}
+      role="button"
+      onMouseEnter={changerEtatSurvole}
+      onMouseLeave={changerEtatSurvole}
+    >
+      {onHover ? 'Details' : <FaRegEye/>}
+    </button>
+  )
 }
 
 export default function ParticipantCard({
@@ -35,7 +57,9 @@ export default function ParticipantCard({
         <div className={styles.alainay}>
           <div>
             <h2>{votes}%</h2>
-            <span>Alainay</span>
+            <span>
+              <AiFillHeart size={25} /> &nbsp; Alainay
+            </span>
           </div>
           <div>
             <AvatarGroup max={4}>
@@ -63,14 +87,13 @@ export default function ParticipantCard({
           </AvatarGroup>
           <div>
             <h2>0 %</h2>
-            <span>Zakanay</span>
+            <span>
+              <FaHandMiddleFinger size={25} /> &nbsp; Zakanay
+            </span>
           </div>
         </div>
       </CardContent>
-
-      <button className={styles.secondary_btn} role="button">
-        Details
-      </button>
+      <DetailsButton />
     </div>
   )
 }
