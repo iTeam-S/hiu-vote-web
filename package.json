@@ -17,7 +17,9 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "sseo-watch": "grunt --gruntfile sass-eo-cli.js watch-sass",
+    "sseo-docs": "grunt --gruntfile sass-eo-cli.js sseo-docs"
   },
   "dependencies": {
     "@mui/styles": "^5.11.12",
@@ -38,6 +40,7 @@
     "@babel/core": "^7.20.5",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
+    "@raja_rakoto/sass-eo": "^1.7.3",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
@@ -54,8 +57,14 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "eslint-plugin-storybook": "^0.6.7",
+    "grunt": "^1.6.1",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-shell": "^4.0.0",
     "husky": "^8.0.2",
+    "load-grunt-tasks": "^5.1.0",
     "prettier": "^2.8.0",
+    "sassdoc": "^2.7.4",
     "typescript": "4.9.3"
   },
   "resolutions": {
