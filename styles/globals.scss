@@ -3,14 +3,7 @@
 // @import 'sass-eo-bootstrap-grid';
 // @import 'sass-eo-lib-magic';
 @import 'sass-eo-basics';
-
 @include normalize();
-@include loadify(init);
-
-@font-face {
-	font-family: 'Outfit';
-	src: url('../assets/Outfit-VariableFont_wght.ttf') format('truetype');
-}
 
 * {
 	@include antialias();
