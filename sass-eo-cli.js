@@ -2,12 +2,13 @@ module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
 
 	// node-glob syntax
-	const includeAllSassFiles = ['./styles/*.scss', './components/**/*.scss', './stories/*.scss'];
+	const includeAllSassFiles = ['./styles/*.scss', './components/**/*.scss'];
 
 	// sass files path (destination: source)
 	const sassPath = {
 					'./styles/globals.css': './styles/globals.scss',
 					'./styles/Home.module.css': './styles/Home.module.scss',
+					'./components/layouts/sidebar/SidebarLayout.module.css': './components/layouts/sidebar/SidebarLayout.module.scss',
 	}
 
 	grunt.initConfig({
