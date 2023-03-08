@@ -27,7 +27,7 @@ const DetailsButton = () => {
       onMouseEnter={changerEtatSurvole}
       onMouseLeave={changerEtatSurvole}
     >
-      {onHover ? 'Details' : <FaRegEye/>}
+      {onHover ? 'Details' : <FaRegEye />}
     </button>
   )
 }

@@ -76,7 +76,12 @@
   border: 0px;
   font-weight: 700;
   box-shadow: 0px 0px 14px -7px #e9c257;
-  background-image: linear-gradient(45deg, #f1a94a 0%, #e9c257  51%, #f1a94a  100%);
+  background-image: linear-gradient(
+    45deg,
+    #f1a94a 0%,
+    #e9c257 51%,
+    #f1a94a 100%
+  );
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;

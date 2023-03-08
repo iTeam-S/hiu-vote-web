@@ -44,7 +44,7 @@ export default function Participant() {
     >
       {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
-          <div className='card-show'>
+          <div className="card-show">
             <ParticipantCard
               key={index}
               name={card.univ_name}

@@ -14,7 +14,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <section className={styles.main}>
       <div className={styles.styledtext}>
-        <h1  className={styles.text}>
+        <h1 className={styles.text}>
           Alainao <span style={{ color: '#555' }}>sa</span>
           <span>Zakanao ?</span>
         </h1>
