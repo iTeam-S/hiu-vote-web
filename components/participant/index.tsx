@@ -34,9 +34,9 @@ export default function Participant({ nbrVoters }: Props) {
       style={{
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
         alignItems: 'center',
-        gap: 20,
+        justifyContent: 'center',
+        gap: 15,
       }}
     >
       {participantsListeVotes ? (
