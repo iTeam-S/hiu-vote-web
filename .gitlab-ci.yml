@@ -2,10 +2,9 @@
 image: node:lts
 
 before_script:
-    - apt-get update -y -qq
-    - apt-get install -y -qq sshpass
-    - export SSHPASS=$PASSWORD_SERVER
-
+  - apt-get update -y -qq
+  - apt-get install -y -qq sshpass
+  - export SSHPASS=$PASSWORD_SERVER
 
 pages:
   script:
@@ -20,4 +19,3 @@ pages:
       EOF
   only:
     - main
-
