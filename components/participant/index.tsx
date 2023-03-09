@@ -9,7 +9,6 @@ interface Props {
   nbrVoters: number
 }
 
-<<<<<<< HEAD
 export default function Participant({ nbrVoters }: Props) {
   const [participantsListeVotes, setParticipantsListeVotes] = useState<
     ParticipantsVotes[] | null
@@ -52,47 +51,6 @@ export default function Participant({ nbrVoters }: Props) {
       fetchParticipantsVotes()
     })
   })
-=======
-export default function Participant({nbrVoters}: Props) {
-  const [participantsListeVotes, setParticipantsListeVotes] = useState<
-    ParticipantsVotes[] | null>(null);
-  const [participantsDetails, setParticipantsDetails] = useState<
-    ParticipantsVotes | null>(null);
-
-  const [openDialog, setOpenDialog] = useState(false);
-
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-  };
-
-  async function fetchParticipantsVotes() {
-    const participantsVotes = await getParticipantsVotes();
-    setParticipantsListeVotes(participantsVotes);
-  }
-  const handleClickDetails = (idParticipant: string) => {
-    const participantsDetails = participantsListeVotes?.find((element) => element.id === idParticipant);
-    if (participantsDetails) {
-      setParticipantsDetails(participantsDetails);
-      handleOpenDialog();
-    }
-  }
-  useEffect(() => {
-    fetchParticipantsVotes();
-  }, []);
-
-  useEffect(() => {
-    pb.collection('votes').subscribe('*', async function () {
-      fetchParticipantsVotes();
-    });
-    pb.collection('contre_votes').subscribe('*', function (e) {
-      fetchParticipantsVotes();
-    });
-  });
->>>>>>> origin/main
 
   return (
     <div
@@ -104,7 +62,6 @@ export default function Participant({nbrVoters}: Props) {
         gap: 15,
       }}
     >
-<<<<<<< HEAD
       {participantsDetails && (
         <DialogDetails
           handleCloseDialog={handleCloseDialog}
@@ -114,12 +71,6 @@ export default function Participant({nbrVoters}: Props) {
         />
       )}
 
-=======
-      {
-        participantsDetails && <DialogDetails handleCloseDialog={handleCloseDialog} open={openDialog} participantsDetails={participantsDetails} nbrVoters={nbrVoters}/>
-      }
-      
->>>>>>> origin/main
       {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
           <div className="card-show">
