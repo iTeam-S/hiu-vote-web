@@ -7,14 +7,21 @@ import { GiStrong } from 'react-icons/gi'
 import { useState } from 'react'
 
 type params = {
+  id: string,
   name: string
   logoSrc: string
   votes: string
   voters: VotesParticipant[] | null
-  againstVoters: VotesParticipant[] | null
+  againstVoters: VotesParticipant[] | null,
+  handleClickDetails: (id: string) => void;
 }
 
-const DetailsButton = () => {
+type paramsButton = {
+  id: string,
+  handleClickDetails: (id: string) => void;
+}
+
+const DetailsButton = ({id, handleClickDetails}: paramsButton) => {
   const [onHover, setOnHover] = useState(false)
 
   const changerEtatSurvole = () => {
@@ -27,6 +34,7 @@ const DetailsButton = () => {
       role="button"
       onMouseEnter={changerEtatSurvole}
       onMouseLeave={changerEtatSurvole}
+      onClick={() => handleClickDetails(id)}
     >
       {onHover ? 'Details' : <FaRegEye />}
     </button>
@@ -34,11 +42,13 @@ const DetailsButton = () => {
 }
 
 export default function ParticipantCard({
+  id,
   name,
   logoSrc,
   votes,
   voters,
   againstVoters,
+  handleClickDetails
 }: params) {
   // const classes = useStyles();
 
@@ -47,7 +57,7 @@ export default function ParticipantCard({
       <CardMedia
         component="img"
         height="120px"
-        image={process.env.API_IMG + logoSrc}
+        image={process.env.API_URL + 'files/'+logoSrc}
         className={styles.cardMedia}
       />
 
@@ -76,7 +86,7 @@ export default function ParticipantCard({
           </div>
         </div>
         <div className={styles.zakanay}>
-          <AvatarGroup max={4}>
+          <AvatarGroup max={3}>
             {againstVoters &&
               againstVoters.map((element, index) => (
                 <Avatar
@@ -86,15 +96,13 @@ export default function ParticipantCard({
                 />
               ))}
           </AvatarGroup>
-          <div>
-            <h2>0</h2>
+
             <span>
               <GiStrong size={25} /> &nbsp; Zakanay
             </span>
-          </div>
         </div>
       </CardContent>
-      <DetailsButton />
+      <DetailsButton handleClickDetails={handleClickDetails} id={id}/>
     </div>
   )
 }
