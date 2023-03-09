@@ -1,36 +1,53 @@
 import { CircularProgress } from '@mui/material'
-import PocketBase from 'pocketbase'
 import { useEffect, useState } from 'react'
+import DialogDetails from '../detailsParticipant'
 import { getParticipantsVotes } from '../query/participants-votes.query'
-import { getVoters } from '../query/voters.query'
-import { ParticipantsVotes } from '../type'
+import { ParticipantsVotes, pb } from '../type'
 import ParticipantCard from './card'
 
-const pb = new PocketBase(process.env.API_REALTIME)
+interface Props {
+  nbrVoters: number
+}
 
-export default function Participant() {
-  const [participantsListeVotes, setData] = useState<
-    ParticipantsVotes[] | null
-  >(null)
-  const [nbrVoters, setNbrVoters] = useState<number>(0)
+export default function Participant({nbrVoters}: Props) {
+  const [participantsListeVotes, setParticipantsListeVotes] = useState<
+    ParticipantsVotes[] | null>(null);
+  const [participantsDetails, setParticipantsDetails] = useState<
+    ParticipantsVotes | null>(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      const votersList = await getVoters()
-      setNbrVoters(votersList.totalItems)
-      const participantsVotes = await getParticipantsVotes()
-      setData(participantsVotes)
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  async function fetchParticipantsVotes() {
+    const participantsVotes = await getParticipantsVotes();
+    setParticipantsListeVotes(participantsVotes);
+  }
+  const handleClickDetails = (idParticipant: string) => {
+    const participantsDetails = participantsListeVotes?.find((element) => element.id === idParticipant);
+    if (participantsDetails) {
+      setParticipantsDetails(participantsDetails);
+      handleOpenDialog();
     }
-
-    fetchData()
-  }, [])
+  }
+  useEffect(() => {
+    fetchParticipantsVotes();
+  }, []);
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      const participantsVotes = await getParticipantsVotes()
-      setData(participantsVotes)
-    })
-  })
+      fetchParticipantsVotes();
+    });
+    pb.collection('contre_votes').subscribe('*', function (e) {
+      fetchParticipantsVotes();
+    });
+  });
 
   return (
     <div
@@ -42,10 +59,15 @@ export default function Participant() {
         gap: 20,
       }}
     >
+      {
+        participantsDetails && <DialogDetails handleCloseDialog={handleCloseDialog} open={openDialog} participantsDetails={participantsDetails} nbrVoters={nbrVoters}/>
+      }
+      
       {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
           <div className="card-show">
             <ParticipantCard
+              id={card.id}
               key={index}
               name={card.univ_name}
               logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
@@ -69,6 +91,7 @@ export default function Participant() {
                   ? card.expand['contre_votes(participant)']
                   : null
               }
+              handleClickDetails={handleClickDetails}
             />
           </div>
         ))
