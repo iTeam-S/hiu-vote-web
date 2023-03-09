@@ -39,3 +39,6 @@ next.config.js
 
 
 out/
+# sseo map
+**/*.css.map
+**/**/*.css.map

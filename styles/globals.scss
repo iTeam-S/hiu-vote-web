@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+// @import 'sass-eo-bootstrap-grid';
+@import 'sass-eo-basics';
+@include normalize();
+
+* {
+  @include antialias();
+  box-sizing: border-box;
+  font-family: Outfit !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.3rem;
+  color: #555;
+}
+
+p {
+  color: #555;
+}
+
+hr {
+  border-radius: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #eaeaea;
+  font-size: __convertToRem($value: 18px);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    color: white;
+    background: black;
+    background-color: #eaeaea;
+  }
+}
+
+.background--custom {
+  background: linear-gradient(90deg, #7b8992, #85a1a3, #2e6e6e);
+  background-size: 300% 300%;
+  animation: gradient 8s alternate infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+$card-show-delay: 0.2s;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.card-show {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in-out forwards;
+
+  &:nth-of-type(n) {
+    animation-delay: $card-show-delay;
+  }
+
+  @for $i from 2 through 50 {
+    &:nth-of-type(#{$i}n) {
+      animation-delay: $card-show-delay * $i;
+    }
+  }
+}
