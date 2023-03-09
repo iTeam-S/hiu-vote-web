@@ -1,5 +1,6 @@
 import { CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
+import DialogDetails from '../detailsParticipant'
 import { getParticipantsVotes } from '../query/participants-votes.query'
 import { ParticipantsVotes, pb } from '../type'
 import ParticipantCard from './card'
@@ -8,13 +9,32 @@ interface Props {
   nbrVoters: number
 }
 
-export default function Participant({ nbrVoters }: Props) {
-  const [participantsListeVotes, setData] = useState<
-    ParticipantsVotes[] | null
-  >(null)
+export default function Participant({nbrVoters}: Props) {
+  const [participantsListeVotes, setParticipantsListeVotes] = useState<
+    ParticipantsVotes[] | null>(null);
+  const [participantsDetails, setParticipantsDetails] = useState<
+    ParticipantsVotes | null>(null);
+
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   async function fetchParticipantsVotes() {
-    const participantsVotes = await getParticipantsVotes()
-    setData(participantsVotes)
+    const participantsVotes = await getParticipantsVotes();
+    setParticipantsListeVotes(participantsVotes);
+  }
+  const handleClickDetails = (idParticipant: string) => {
+    const participantsDetails = participantsListeVotes?.find((element) => element.id === idParticipant);
+    if (participantsDetails) {
+      setParticipantsDetails(participantsDetails);
+      handleOpenDialog();
+    }
   }
   useEffect(() => {
     fetchParticipantsVotes()
@@ -39,10 +59,15 @@ export default function Participant({ nbrVoters }: Props) {
         gap: 15,
       }}
     >
+      {
+        participantsDetails && <DialogDetails handleCloseDialog={handleCloseDialog} open={openDialog} participantsDetails={participantsDetails} nbrVoters={nbrVoters}/>
+      }
+      
       {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
           <div className="card-show">
             <ParticipantCard
+              id={card.id}
               key={index}
               name={card.univ_name}
               logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
@@ -66,6 +91,7 @@ export default function Participant({ nbrVoters }: Props) {
                   ? card.expand['contre_votes(participant)']
                   : null
               }
+              handleClickDetails={handleClickDetails}
             />
           </div>
         ))

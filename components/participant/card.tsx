@@ -7,14 +7,21 @@ import { GiStrong } from 'react-icons/gi'
 import { useState } from 'react'
 
 type params = {
+  id: string
   name: string
   logoSrc: string
   votes: string
   voters: VotesParticipant[] | null
   againstVoters: VotesParticipant[] | null
+  handleClickDetails: (id: string) => void
 }
 
-const DetailsButton = () => {
+type paramsButton = {
+  id: string
+  handleClickDetails: (id: string) => void
+}
+
+const DetailsButton = ({ id, handleClickDetails }: paramsButton) => {
   const [onHover, setOnHover] = useState(false)
 
   const changerEtatSurvole = () => {
@@ -27,6 +34,7 @@ const DetailsButton = () => {
       role="button"
       onMouseEnter={changerEtatSurvole}
       onMouseLeave={changerEtatSurvole}
+      onClick={() => handleClickDetails(id)}
     >
       {onHover ? 'Details' : <FaRegEye />}
     </button>
@@ -34,11 +42,13 @@ const DetailsButton = () => {
 }
 
 export default function ParticipantCard({
+  id,
   name,
   logoSrc,
   votes,
   voters,
   againstVoters,
+  handleClickDetails,
 }: params) {
   return (
     <div className={styles.card}>
@@ -85,7 +95,7 @@ export default function ParticipantCard({
           </div>
           <div>
             <div style={{ width: 75 }}>
-              <AvatarGroup max={4}>
+              <AvatarGroup max={3}>
                 {againstVoters &&
                   againstVoters.map((element, index) => (
                     <Avatar
@@ -100,7 +110,7 @@ export default function ParticipantCard({
         </div>
       </div>
       <div className={styles.footer}>
-        <DetailsButton />
+        <DetailsButton handleClickDetails={handleClickDetails} id={id} />
       </div>
     </div>
   )
