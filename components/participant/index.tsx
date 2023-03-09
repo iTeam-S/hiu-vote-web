@@ -8,26 +8,26 @@ interface Props {
   nbrVoters: number
 }
 
-export default function Participant({nbrVoters}: Props) {
+export default function Participant({ nbrVoters }: Props) {
   const [participantsListeVotes, setData] = useState<
     ParticipantsVotes[] | null
-  >(null);
+  >(null)
   async function fetchParticipantsVotes() {
-    const participantsVotes = await getParticipantsVotes();
-    setData(participantsVotes);
+    const participantsVotes = await getParticipantsVotes()
+    setData(participantsVotes)
   }
   useEffect(() => {
-    fetchParticipantsVotes();
-  }, []);
+    fetchParticipantsVotes()
+  }, [])
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      fetchParticipantsVotes();
-    });
+      fetchParticipantsVotes()
+    })
     pb.collection('contre_votes').subscribe('*', function (e) {
-      fetchParticipantsVotes();
-    });
-  });
+      fetchParticipantsVotes()
+    })
+  })
 
   return (
     <div

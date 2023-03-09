@@ -1,24 +1,24 @@
-import { styled } from '@mui/material/styles';
-import Avatar from '@mui/material/Avatar';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles'
+import Avatar from '@mui/material/Avatar'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
 
 interface Voter {
-  name: string;
-  avatar: string;
+  name: string
+  avatar: string
 }
 
 interface VotePageProps {
-  username: string;
-  fullName: string;
-  logo: string;
-  city: string;
-  description: string;
-  upvotes: Voter[];
-  downvotes: Voter[];
+  username: string
+  fullName: string
+  logo: string
+  city: string
+  description: string
+  upvotes: Voter[]
+  downvotes: Voter[]
 }
 
 const StyledCard = styled(Card)({
@@ -26,7 +26,7 @@ const StyledCard = styled(Card)({
   flexDirection: 'column',
   justifyContent: 'space-between',
   height: '100%',
-});
+})
 
 const VotePage: React.FC<VotePageProps> = ({
   username,
@@ -84,7 +84,7 @@ const VotePage: React.FC<VotePageProps> = ({
         </Grid>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default VotePage;
+export default VotePage
