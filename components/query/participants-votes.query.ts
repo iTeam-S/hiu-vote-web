@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { ParticipantsVotes } from '../type';
+import axios, { AxiosRequestConfig } from 'axios'
+import { ParticipantsVotes } from '../type'
 
 export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
   const config: AxiosRequestConfig = {
@@ -10,12 +10,12 @@ export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
     headers: {
       'Content-Type': 'application/json',
     },
-  };
+  }
 
   try {
-    const response = await axios(config);
-    return response.data.items;
+    const response = await axios(config)
+    return response.data.items
   } catch (error) {
-    throw new Error('Erreur lors de la récupération des ParticipantsVotes');
+    throw new Error('Erreur lors de la récupération des ParticipantsVotes')
   }
-};
+}
