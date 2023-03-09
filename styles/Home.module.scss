@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  margin-top: 1%;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .card,
+  .footer {
+    border-color: #222;
+  }
+  .code {
+    background: #111;
+  }
+  .logo img {
+    filter: invert(1);
+  }
+}
+
+.styledtext {
+  text-align: center;
+  @include animation-bounce();
+
+  .text {
+    font-family: Satisfy, cursive;
+    font-size: 3em;
+    margin: 1em 0;
+    color: teal;
+    text-shadow: 0.02em 0.02em 0 rgb(48, 111, 148), 0 0 0.5em rgb(247, 247, 247);
+  }
+
+  .text span {
+    color: #ffffff;
+    display: block;
+    padding-top: 0.6em;
+    padding-left: 0.5em;
+  }
+}

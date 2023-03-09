@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+@import '../sass/buttons';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background-color: rgba(223, 223, 223, 0.521);
+  padding: 0.3rem;
+  padding-top: 2rem;
+  margin-top: 1rem;
+  width: __convertToRem($value: 400px);
+  height: __convertToRem($value: 800px);
+  border-radius: 12px;
+  @include effect-box-shadow($opacity: smooth);
+  transition: all 0.1s;
+
+  @include breakpoint(min, large) {
+    min-width: __convertToRem($value: 400px);
+  }
+
+  @include breakpoint(max, small) {
+    min-width: __convertToRem($value: 300px);
+  }
+
+  img {
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: rgb(233, 233, 233);
+    border-bottom: solid rgb(141, 141, 141) 10px;
+
+    img {
+      @include animation-scale($scaleValue: 1.08);
+    }
+  }
+}
+
+.cardMedia {
+  margin: auto;
+  border-radius: 13%;
+  width: 45%;
+  height: auto;
+}
+
+.title {
+  margin: auto;
+  font-size: larger;
+  text-align: center;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+@mixin vote_status($bg_color: rgba(255, 255, 255, 0.774)) {
+  background-color: $bg_color;
+  margin: 1rem;
+  padding: 0.8rem;
+  margin-top: 2.3rem;
+  border-radius: 5px;
+  flex-direction: row;
+  display: flex;
+}
+
+.alainay {
+  @include vote_status(rgba(0, 128, 128, 0.226));
+
+  div {
+    width: 100%;
+
+    h2 {
+      margin-top: -0.3px;
+      color: #eee;
+    }
+
+    span {
+      opacity: 35%;
+      font-weight: 600;
+    }
+
+    @include only(last) {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+}
+
+.zakanay {
+  @include vote_status();
+
+  span {
+    opacity: 35%;
+    font-weight: 600;
+  }
+}
