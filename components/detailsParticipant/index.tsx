@@ -1,90 +1,81 @@
-import { styled } from '@mui/material/styles';
-import Avatar from '@mui/material/Avatar';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import React, { useState } from 'react';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { ParticipantsVotes } from '../type';
+import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
+import styles from '../participant/card.module.css'
+import { AiFillHeart } from 'react-icons/ai';
+import { GiStrong } from 'react-icons/gi';
 
-interface Voter {
-  name: string;
-  avatar: string;
+type Props = {
+  handleCloseDialog: () => void;
+  open: boolean;
+  participantsDetails: ParticipantsVotes;
+  nbrVoters: number
 }
 
-interface VotePageProps {
-  username: string;
-  fullName: string;
-  logo: string;
-  city: string;
-  description: string;
-  upvotes: Voter[];
-  downvotes: Voter[];
-}
-
-const StyledCard = styled(Card)({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  height: '100%',
-});
-
-const VotePage: React.FC<VotePageProps> = ({
-  username,
-  fullName,
-  logo,
-  city,
-  description,
-  upvotes,
-  downvotes,
-}) => {
+const DialogDetails = ({handleCloseDialog, open, participantsDetails, nbrVoters}: Props) => {
+  const logoSrc = participantsDetails.collectionId + '/' + participantsDetails.id + '/' + participantsDetails.logo;
+  const votesAlainay = participantsDetails.expand && participantsDetails.expand['votes(participant)']
+    ? ((participantsDetails.expand['votes(participant)'].length / nbrVoters) * 100).toFixed(2).toString(): '0'
+  const voters = participantsDetails.expand && participantsDetails.expand['votes(participant)']
+    ? participantsDetails.expand['votes(participant)']: null;
+  const votersZakanay= participantsDetails.expand && participantsDetails.expand['contre_votes(participant)']
+    ? participantsDetails.expand['contre_votes(participant)'] : null
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12} md={8}>
-        <StyledCard>
-          <CardContent>
-            <Typography variant="h5" component="h1">
-              {username}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              {fullName}
-            </Typography>
-            <Typography variant="subtitle2" color="text.secondary">
-              {city}
-            </Typography>
-            <Typography variant="body1">{description}</Typography>
-          </CardContent>
-          <CardMedia component="img" image={logo} alt={fullName} />
-        </StyledCard>
-      </Grid>
-      <Grid item xs={12} md={4}>
-        <Typography variant="h6" component="h2">
-          Votes
-        </Typography>
-        <Typography variant="subtitle1" color="text.secondary">
-          Pour :
-        </Typography>
-        <Grid container spacing={2}>
-          {upvotes.map((voter, index) => (
-            <Grid item key={`upvote-${index}`}>
-              <Avatar alt={voter.name} src={voter.avatar} />
-              <Typography variant="caption">{voter.name}</Typography>
-            </Grid>
-          ))}
-        </Grid>
-        <Typography variant="subtitle1" color="text.secondary">
-          Contre :
-        </Typography>
-        <Grid container spacing={2}>
-          {downvotes.map((voter, index) => (
-            <Grid item key={`downvote-${index}`}>
-              <Avatar alt={voter.name} src={voter.avatar} />
-              <Typography variant="caption">{voter.name}</Typography>
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-    </Grid>
+    <Dialog open={open} onClose={handleCloseDialog} fullWidth>
+      <CardMedia
+        component="img"
+        height="120px"
+        image={process.env.API_URL + 'files/'+logoSrc}
+        style={{
+          margin: 'auto',
+          borderRadius: '13%',
+          width: '45%',
+          height: 'auto',}}
+      />
+      <DialogTitle>{participantsDetails.univ_name}</DialogTitle>
+      <p>{participantsDetails.full_univ_name}</p>
+      <p>{participantsDetails.city}</p>
+      <p>{participantsDetails.description}</p>
+      <div className={styles.alainay}>
+          <div>
+            <h2>{votesAlainay}%</h2>
+            <span>
+              <AiFillHeart size={25} /> &nbsp; Alainay
+            </span>
+          </div>
+          <div>
+            <AvatarGroup>
+              {voters &&
+                voters.map((element, index) => (
+                  <Avatar
+                    key={index}
+                    src={element.expand.voter.profil_pic}
+                    alt={element.expand.voter.name}
+                  />
+                ))}
+            </AvatarGroup>
+          </div>
+        </div>
+        <div className={styles.zakanay}>
+          <AvatarGroup>
+            {votersZakanay &&
+              votersZakanay.map((element, index) => (
+                <Avatar
+                  key={index}
+                  src={element.expand.voter.profil_pic}
+                  alt={element.expand.voter.name}
+                />
+              ))}
+          </AvatarGroup>
+
+            <span>
+              <GiStrong size={25} /> &nbsp; Zakanay
+            </span>
+        </div>
+      <DialogActions><Button onClick={handleCloseDialog}>Fermer</Button></DialogActions>
+    </Dialog>
   );
 };
 
-export default VotePage;
+export default DialogDetails;
