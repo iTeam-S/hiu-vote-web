@@ -9,60 +9,68 @@ interface Props {
   nbrVoters: number
 }
 
-export default function Participant({nbrVoters}: Props) {
+export default function Participant({ nbrVoters }: Props) {
   const [participantsListeVotes, setParticipantsListeVotes] = useState<
-    ParticipantsVotes[] | null>(null);
-  const [participantsDetails, setParticipantsDetails] = useState<
-    ParticipantsVotes | null>(null);
+    ParticipantsVotes[] | null
+  >(null)
+  const [participantsDetails, setParticipantsDetails] =
+    useState<ParticipantsVotes | null>(null)
 
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false)
 
   const handleOpenDialog = () => {
-    setOpenDialog(true);
-  };
+    setOpenDialog(true)
+  }
 
   const handleCloseDialog = () => {
-    setOpenDialog(false);
-  };
+    setOpenDialog(false)
+  }
 
   async function fetchParticipantsVotes() {
-    const participantsVotes = await getParticipantsVotes();
-    setParticipantsListeVotes(participantsVotes);
+    const participantsVotes = await getParticipantsVotes()
+    setParticipantsListeVotes(participantsVotes)
   }
   const handleClickDetails = (idParticipant: string) => {
-    const participantsDetails = participantsListeVotes?.find((element) => element.id === idParticipant);
+    const participantsDetails = participantsListeVotes?.find(
+      (element) => element.id === idParticipant,
+    )
     if (participantsDetails) {
-      setParticipantsDetails(participantsDetails);
-      handleOpenDialog();
+      setParticipantsDetails(participantsDetails)
+      handleOpenDialog()
     }
   }
   useEffect(() => {
-    fetchParticipantsVotes();
-  }, []);
+    fetchParticipantsVotes()
+  }, [])
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      fetchParticipantsVotes();
-    });
+      fetchParticipantsVotes()
+    })
     pb.collection('contre_votes').subscribe('*', function (e) {
-      fetchParticipantsVotes();
-    });
-  });
+      fetchParticipantsVotes()
+    })
+  })
 
   return (
     <div
       style={{
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
         alignItems: 'center',
-        gap: 20,
+        justifyContent: 'center',
+        gap: 15,
       }}
     >
-      {
-        participantsDetails && <DialogDetails handleCloseDialog={handleCloseDialog} open={openDialog} participantsDetails={participantsDetails} nbrVoters={nbrVoters}/>
-      }
-      
+      {participantsDetails && (
+        <DialogDetails
+          handleCloseDialog={handleCloseDialog}
+          open={openDialog}
+          participantsDetails={participantsDetails}
+          nbrVoters={nbrVoters}
+        />
+      )}
+
       {participantsListeVotes ? (
         participantsListeVotes.map((card, index) => (
           <div className="card-show">

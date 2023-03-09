@@ -1,4 +1,4 @@
-import PocketBase from 'pocketbase';
+import PocketBase from 'pocketbase'
 export interface ParticipantsVotes {
   city: string
   collectionId: string
@@ -64,4 +64,4 @@ export interface ItemVoter {
   updated: Date
 }
 
-export const pb = new PocketBase(process.env.API_REALTIME);
+export const pb = new PocketBase(process.env.API_REALTIME)
