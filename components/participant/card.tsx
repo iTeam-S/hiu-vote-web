@@ -47,7 +47,7 @@ export default function ParticipantCard({
       <CardMedia
         component="img"
         height="120px"
-        image={process.env.API_IMG + logoSrc}
+        image={process.env.API_URL + 'files/'+logoSrc}
         className={styles.cardMedia}
       />
 

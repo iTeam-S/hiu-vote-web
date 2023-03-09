@@ -1,36 +1,33 @@
 import { CircularProgress } from '@mui/material'
-import PocketBase from 'pocketbase'
 import { useEffect, useState } from 'react'
 import { getParticipantsVotes } from '../query/participants-votes.query'
-import { getVoters } from '../query/voters.query'
-import { ParticipantsVotes } from '../type'
+import { ParticipantsVotes, pb } from '../type'
 import ParticipantCard from './card'
 
-const pb = new PocketBase(process.env.API_REALTIME)
+interface Props {
+  nbrVoters: number
+}
 
-export default function Participant() {
+export default function Participant({nbrVoters}: Props) {
   const [participantsListeVotes, setData] = useState<
     ParticipantsVotes[] | null
-  >(null)
-  const [nbrVoters, setNbrVoters] = useState<number>(0)
-
+  >(null);
+  async function fetchParticipantsVotes() {
+    const participantsVotes = await getParticipantsVotes();
+    setData(participantsVotes);
+  }
   useEffect(() => {
-    async function fetchData() {
-      const votersList = await getVoters()
-      setNbrVoters(votersList.totalItems)
-      const participantsVotes = await getParticipantsVotes()
-      setData(participantsVotes)
-    }
-
-    fetchData()
-  }, [])
+    fetchParticipantsVotes();
+  }, []);
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      const participantsVotes = await getParticipantsVotes()
-      setData(participantsVotes)
-    })
-  })
+      fetchParticipantsVotes();
+    });
+    pb.collection('contre_votes').subscribe('*', function (e) {
+      fetchParticipantsVotes();
+    });
+  });
 
   return (
     <div
