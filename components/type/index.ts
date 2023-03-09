@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import PocketBase from 'pocketbase'
+=======
+import PocketBase from 'pocketbase';
+>>>>>>> origin/main
 export interface ParticipantsVotes {
   city: string
   collectionId: string
@@ -64,4 +68,8 @@ export interface ItemVoter {
   updated: Date
 }
 
+<<<<<<< HEAD
 export const pb = new PocketBase(process.env.API_REALTIME)
+=======
+export const pb = new PocketBase(process.env.API_REALTIME);
+>>>>>>> origin/main
