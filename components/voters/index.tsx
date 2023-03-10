@@ -2,6 +2,7 @@ import { Grid, Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { ItemVoter } from '../type'
 import { useRef } from 'react'
+import styles from '../../styles/Home.module.css'
 
 const UserCard = styled(Box)({
   display: 'flex',
@@ -49,19 +50,13 @@ export default function Voters({ items }: Props) {
   return (
     <div
       style={{
-        marginTop: 200,
+        marginTop: 120,
       }}
     >
       <Box sx={{ mt: 4 }} ref={listRef}>
-        <Typography
-          variant="h3"
-          align="center"
-          color="text.secondary"
-          gutterBottom
-        >
-          Voters
-        </Typography>
+        <div className={styles.voterstext}>Voters</div>
         <div
+          id="voters-link"
           style={{
             backgroundColor: '#f5f5f571',
             padding: 20,
