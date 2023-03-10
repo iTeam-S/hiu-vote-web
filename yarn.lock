@@ -1995,10 +1995,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
-"@raja_rakoto/sass-eo@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@raja_rakoto/sass-eo/-/sass-eo-1.7.3.tgz#5b36c21955a13922ef0737f7a4387f32c9d9a404"
-  integrity sha512-JKVAYxlEdzL7j7btwokBNuhSyumMhq704spbJhn9C2K6U8QeAejSZfPt6FxpwUIZ/n9dhISF5TFkUK2Lr8aB7Q==
+"@raja_rakoto/sass-eo@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@raja_rakoto/sass-eo/-/sass-eo-1.8.2.tgz#1ae586874c00e1964c0cb83086f8d4b2e412a95a"
+  integrity sha512-rr283KRGW4pJTrKK99DAuey6FxIUvTF3FJrCFdwAdpAl+POqlbCiZrPgA4hhtkN9ejilLrFMS0VnkiBNXfRnsQ==
   dependencies:
     grunt-contrib-sass "^2.0.0"
     grunt-contrib-watch "^1.1.0"
