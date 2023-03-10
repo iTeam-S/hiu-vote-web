@@ -4,6 +4,14 @@
 @import 'sass-eo-basics';
 @include normalize();
 
+html {
+  @include bar-scrolling(
+    $bar-color: teal,
+    $bar-color-hover: rgb(19, 110, 110),
+    $bg-color: #eeeeee31
+  );
+}
+
 * {
   @include antialias();
   box-sizing: border-box;
