@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { useCallback } from 'react'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import { Container, Engine } from 'tsparticles-engine'
+=======
+import { useCallback } from "react";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import { Engine } from 'tsparticles-engine'
+>>>>>>> origin/particles
 
 export default function Particle() {
   const particlesInit = async (main: Engine) => {
@@ -16,6 +23,7 @@ export default function Particle() {
       id="tsparticles"
       init={particlesInit}
       options={{
+<<<<<<< HEAD
         fpsLimit: 120,
         interactivity: {
           events: {
@@ -28,6 +36,30 @@ export default function Particle() {
               mode: 'repulse',
             },
             resize: true,
+=======
+          fpsLimit: 60,
+          interactivity: {
+              events: {
+                  onClick: {
+                      enable: true,
+                      mode: "push",
+                  },
+                  onHover: {
+                      enable: true,
+                      mode: "repulse",
+                  },
+                  resize: true,
+              },
+              modes: {
+                  push: {
+                      quantity: 2,
+                  },
+                  repulse: {
+                      distance: 200,
+                      duration: 0.6,
+                  },
+              },
+>>>>>>> origin/particles
           },
           modes: {
             push: {
