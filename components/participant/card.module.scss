@@ -8,7 +8,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 0.3rem;
-  background-color: rgba(223, 223, 223, 0.521);
+  background-color: rgba(223, 223, 223, 0.74);
+  backdrop-filter: blur(5px);
   padding: __convertToRem($value: 3px);
   width: __convertToRem($value: 400px);
   height: __convertToRem($value: 630px);
