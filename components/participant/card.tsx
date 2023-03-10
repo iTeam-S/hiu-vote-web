@@ -60,20 +60,17 @@ export default function ParticipantCard({
         <h3 className={styles.title}>{name}</h3>
         <hr />
         <div className={styles.alainay}>
-          <div>
-            <h2>{votes}%</h2>
-            <span>
-              <AiFillHeart size={25} /> &nbsp; Alainay
-            </span>
-          </div>
-          <div>
-            <div style={{ width: 75 }}>
-              <AvatarGroup
-                max={4}
-                sx={{
-                  '& .MuiAvatar-root': { width: 24, height: 24, fontSize: 15 },
-                }}
-              >
+          <div className="row">
+            <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-center">
+              <div>
+                <h2>{votes}%</h2>
+                <span>
+                  <AiFillHeart size={25} /> &nbsp; Alainay
+                </span>
+              </div>
+            </div>
+            <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
+              <AvatarGroup max={3}>
                 {voters &&
                   voters.map((element, index) => (
                     <Avatar
@@ -87,14 +84,15 @@ export default function ParticipantCard({
           </div>
         </div>
         <div className={styles.zakanay}>
-          <div>
-            <h2>0</h2>
-            <span>
-              <GiStrong size={25} /> &nbsp; Zakanay
-            </span>
-          </div>
-          <div>
-            <div style={{ width: 75 }}>
+          <div className="row">
+            <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-center">
+              <div>
+                <span>
+                  <GiStrong size={25} /> &nbsp; Zakanay
+                </span>
+              </div>
+            </div>
+            <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
               <AvatarGroup max={3}>
                 {againstVoters &&
                   againstVoters.map((element, index) => (
