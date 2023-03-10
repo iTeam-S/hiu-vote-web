@@ -40,4 +40,7 @@ next.config.js
 # sseo map
 **/*.css.map
 **/**/*.css.map
-.sass-cache
+.sass-cache/
+
+# file temp
+tmp

@@ -47,7 +47,7 @@
     "@babel/core": "^7.20.5",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
-    "@raja_rakoto/sass-eo": "^1.7.3",
+    "@raja_rakoto/sass-eo": "^1.8.2",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",

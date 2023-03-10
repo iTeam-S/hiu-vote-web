@@ -112,6 +112,7 @@
     button {
       margin-top: __convertToRem($value: 5px);
       width: 33%;
+      @include effect-box-shadow($opacity: small);
     }
   }
 }
