@@ -74,7 +74,7 @@ const DialogDetails = ({
         <h1 className={styles.name}>{participantsDetails.univ_name}</h1>
         <hr />
         <h2 className={styles.fullname}>
-          ({participantsDetails.full_univ_name})
+          {participantsDetails.full_univ_name}
         </h2>
         <p className={styles.city}>{participantsDetails.city}</p>
         <p className={styles.description}>{participantsDetails.description}</p>
