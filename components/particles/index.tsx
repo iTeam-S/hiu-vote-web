@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import { useCallback } from 'react'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import { Container, Engine } from 'tsparticles-engine'
-=======
-import { useCallback } from "react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import { Engine } from 'tsparticles-engine'
->>>>>>> origin/particles
 
 export default function Particle() {
   const particlesInit = async (main: Engine) => {
@@ -23,8 +16,7 @@ export default function Particle() {
       id="tsparticles"
       init={particlesInit}
       options={{
-<<<<<<< HEAD
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
@@ -36,30 +28,6 @@ export default function Particle() {
               mode: 'repulse',
             },
             resize: true,
-=======
-          fpsLimit: 60,
-          interactivity: {
-              events: {
-                  onClick: {
-                      enable: true,
-                      mode: "push",
-                  },
-                  onHover: {
-                      enable: true,
-                      mode: "repulse",
-                  },
-                  resize: true,
-              },
-              modes: {
-                  push: {
-                      quantity: 2,
-                  },
-                  repulse: {
-                      distance: 200,
-                      duration: 0.6,
-                  },
-              },
->>>>>>> origin/particles
           },
           modes: {
             push: {
@@ -67,7 +35,7 @@ export default function Particle() {
             },
             repulse: {
               distance: 200,
-              duration: 0.4,
+              duration: 0.6,
             },
           },
         },
@@ -77,9 +45,9 @@ export default function Particle() {
           },
           links: {
             color: '#ffffff',
-            distance: 150,
+            distance: 200,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.2,
             width: 1,
           },
           collisions: {
@@ -98,7 +66,7 @@ export default function Particle() {
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: 1000,
             },
             value: 80,
           },
