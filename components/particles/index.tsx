@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import { Container, Engine } from 'tsparticles-engine'
+import { Engine } from 'tsparticles-engine'
 
 export default function Particle() {
   const particlesInit = async (main: Engine) => {
@@ -31,7 +31,7 @@ export default function Particle() {
               },
               modes: {
                   push: {
-                      quantity: 4,
+                      quantity: 2,
                   },
                   repulse: {
                       distance: 200,
