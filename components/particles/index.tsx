@@ -16,7 +16,7 @@ export default function Particle() {
       id="tsparticles"
       init={particlesInit}
       options={{
-          fpsLimit: 120,
+          fpsLimit: 60,
           interactivity: {
               events: {
                   onClick: {
@@ -35,7 +35,7 @@ export default function Particle() {
                   },
                   repulse: {
                       distance: 200,
-                      duration: 0.4,
+                      duration: 0.6,
                   },
               },
           },
