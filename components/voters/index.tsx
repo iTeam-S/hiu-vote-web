@@ -47,16 +47,31 @@ export default function Voters({ items }: Props) {
   const listRef = useRef<HTMLDivElement>(null)
 
   return (
-    <Box sx={{ mt: 4 }} ref={listRef}>
-      <Typography
-        variant="h5"
-        align="center"
-        color="text.secondary"
-        gutterBottom
-      >
-        Voters
-      </Typography>
-      <VotersList items={items} />
-    </Box>
+    <div
+      style={{
+        marginTop: 200,
+      }}
+    >
+      <Box sx={{ mt: 4 }} ref={listRef}>
+        <Typography
+          variant="h3"
+          align="center"
+          color="text.secondary"
+          gutterBottom
+        >
+          Voters
+        </Typography>
+        <div
+          style={{
+            backgroundColor: '#f5f5f571',
+            padding: 20,
+            margin: 50,
+            borderRadius: '20px',
+          }}
+        >
+          <VotersList items={items} />
+        </div>
+      </Box>
+    </div>
   )
 }
