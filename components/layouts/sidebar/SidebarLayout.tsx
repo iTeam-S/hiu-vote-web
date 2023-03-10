@@ -28,7 +28,7 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
         </Typography>
         <Stack spacing={2} direction="row">
           <nav className={styles.nav}>
-            <Link href="/contact" legacyBehavior>
+            <Link href="#voters-link" legacyBehavior>
               <button className={styles.primary_btn} role="button">
                 <a>Voters</a>
               </button>
