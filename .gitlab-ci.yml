@@ -7,6 +7,8 @@ before_script:
   - export SSHPASS=$PASSWORD_SERVER
 
 deploy:
+  environment:
+    name: production
   script:
     - |
       sshpass -e ssh -t -oStrictHostKeyChecking=no "$USER_SERVER@$HOST_SERVER" <<EOF
