@@ -35,3 +35,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 https://dev.to/alexeagleson/how-to-build-scalable-architecture-for-your-nextjs-project-2pb7
 https://github.com/alexeagleson/nextjs-fullstack-app-template
+
+grunt --gruntfile sass-eo-cli.js watch-sass
