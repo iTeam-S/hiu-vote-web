@@ -8,9 +8,9 @@ import {
 } from '@mui/material'
 import { ParticipantsVotes } from '../type'
 import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
-import styles from '../participant/card.module.css'
 import { AiFillHeart } from 'react-icons/ai'
 import { GiStrong } from 'react-icons/gi'
+import styles from './detailsParticipant.module.css'
 
 type Props = {
   handleCloseDialog: () => void
@@ -54,60 +54,74 @@ const DialogDetails = ({
       : null
   return (
     <Dialog open={open} onClose={handleCloseDialog} fullWidth>
-      <CardMedia
-        component="img"
-        height="120px"
-        image={process.env.API_URL + 'files/' + logoSrc}
-        style={{
-          margin: 'auto',
-          borderRadius: '13%',
-          width: '45%',
-          height: 'auto',
-        }}
-      />
-      <DialogTitle>{participantsDetails.univ_name}</DialogTitle>
-      <p>{participantsDetails.full_univ_name}</p>
-      <p>{participantsDetails.city}</p>
-      <p>{participantsDetails.description}</p>
-      <div className={styles.alainay}>
-        <div>
-          <h2>{votesAlainay}%</h2>
+      <div className={styles.modal}>
+        <div className={styles.logo}>
+          <CardMedia
+            component="img"
+            height="100px"
+            image={process.env.API_URL + 'files/' + logoSrc}
+            style={{
+              margin: 'auto',
+              marginTop: 20,
+              marginBottom: 20,
+              borderRadius: '20px',
+              width: '45%',
+              height: 'auto',
+            }}
+          />
+        </div>
+        <hr />
+        <h1 className={styles.name}>{participantsDetails.univ_name}</h1>
+        <hr />
+        <h2 className={styles.fullname}>
+          ({participantsDetails.full_univ_name})
+        </h2>
+        <p className={styles.city}>{participantsDetails.city}</p>
+        <p className={styles.description}>{participantsDetails.description}</p>
+        <div className={styles.alainay}>
           <span>
-            <AiFillHeart size={25} /> &nbsp; Alainay
+            <AiFillHeart size={50} /> &nbsp; Alainay
           </span>
+          <h2>{votesAlainay}%</h2>
+          <hr />
+          <div className={styles.avatar}>
+            <AvatarGroup>
+              {voters &&
+                voters.map((element, index) => (
+                  <Avatar
+                    key={index}
+                    src={element.expand.voter.profil_pic}
+                    alt={element.expand.voter.name}
+                  />
+                ))}
+            </AvatarGroup>
+          </div>
         </div>
-        <div>
-          <AvatarGroup>
-            {voters &&
-              voters.map((element, index) => (
-                <Avatar
-                  key={index}
-                  src={element.expand.voter.profil_pic}
-                  alt={element.expand.voter.name}
-                />
-              ))}
-          </AvatarGroup>
+        <hr />
+        <div className={styles.zakanay}>
+          <span>
+            <GiStrong size={50} /> &nbsp; Zakanay
+          </span>
+          <hr style={{ marginTop: 10 }} />
+          <div className={styles.avatar}>
+            <AvatarGroup>
+              {votersZakanay &&
+                votersZakanay.map((element, index) => (
+                  <Avatar
+                    key={index}
+                    src={element.expand.voter.profil_pic}
+                    alt={element.expand.voter.name}
+                  />
+                ))}
+            </AvatarGroup>
+          </div>
         </div>
+        <DialogActions>
+          <Button style={{ color: 'teal' }} onClick={handleCloseDialog}>
+            Fermer
+          </Button>
+        </DialogActions>
       </div>
-      <div className={styles.zakanay}>
-        <AvatarGroup>
-          {votersZakanay &&
-            votersZakanay.map((element, index) => (
-              <Avatar
-                key={index}
-                src={element.expand.voter.profil_pic}
-                alt={element.expand.voter.name}
-              />
-            ))}
-        </AvatarGroup>
-
-        <span>
-          <GiStrong size={25} /> &nbsp; Zakanay
-        </span>
-      </div>
-      <DialogActions>
-        <Button onClick={handleCloseDialog}>Fermer</Button>
-      </DialogActions>
     </Dialog>
   )
 }
