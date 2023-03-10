@@ -40,6 +40,7 @@ export default function Particle() {
           },
         },
         particles: {
+          reduceDuplicates: false,
           color: {
             value: '#ffffff',
           },
