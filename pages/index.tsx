@@ -9,7 +9,6 @@ import Voters from '../components/voters'
 import styles from '../styles/Home.module.css'
 import { NextPageWithLayout } from './page'
 
-
 const Home: NextPageWithLayout = () => {
   if (typeof window !== 'undefined') {
     console.log('You are on the browser')
@@ -43,7 +42,7 @@ const Home: NextPageWithLayout = () => {
       </div>
       <Participant nbrVoters={nbrVoters} />
       {voters?.items && <Voters items={voters.items} />}
-      <Particle/>
+      <Particle />
     </section>
   )
 }
