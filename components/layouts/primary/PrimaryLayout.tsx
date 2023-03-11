@@ -9,7 +9,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Web Ranking</title>
+        <title>HIU 2023 Cote</title>
       </Head>
       <main className={styles.main}>{children}</main>
     </>
