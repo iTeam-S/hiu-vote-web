@@ -37,7 +37,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <section className={styles.main}>
       <div className={styles.styledtext}>
-        <div>
+        <div className="messenger">
           <MessengerComponent
             pageId="113804974982080"
             appId="1015807782342852"
@@ -54,12 +54,9 @@ const Home: NextPageWithLayout = () => {
       </div>
       <Participant nbrVoters={nbrVoters} />
       {voters?.items && <Voters items={voters.items} />}
-      <ScrollUpButton
-        style={{
-          backdround: '##00808053',
-          borderRadius: 5,
-        }}
-      />
+      <div>
+        <ScrollUpButton ContainerClassName="scrollup" />
+      </div>
       <Particle />
     </section>
   )

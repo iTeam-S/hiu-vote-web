@@ -102,3 +102,18 @@ $card-show-delay: 0.2s;
     }
   }
 }
+
+.messenger {
+  z-index: 2 !important;
+}
+
+.scrollup {
+  z-index: 0 !important;
+  margin-bottom: 4rem;
+  border-radius: 5px;
+  background-color: #1e464698 !important;
+
+  &:hover {
+    background-color: #1d4242d0 !important;
+  }
+}
