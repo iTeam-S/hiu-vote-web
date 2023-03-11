@@ -49,6 +49,20 @@ export default function ParticipantCard({
   againstVoters,
   handleClickDetails,
 }: params) {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [listComments, setListComments] = useState<VotesParticipant[] | null>(null);
+  useEffect(() => {
+    const comments = voters ? voters.filter((element) => element.comment.length > 2) : null;
+    setListComments(comments);
+    const intervalId = setInterval(() => {
+      if(listComments) {
+        const nextIndex = (currentIndex + 1) % listComments.length;
+        setCurrentIndex(nextIndex);
+      }
+    }, 4000);
+
+    return () => clearInterval(intervalId);
+  }, [currentIndex, voters]);
   return (
     <div className={styles.card}>
       <div className={styles.logo}>
@@ -82,6 +96,23 @@ export default function ParticipantCard({
                   ))}
               </AvatarGroup>
             </div>
+            {
+              listComments && listComments[currentIndex]  &&
+              <>
+                <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-center">
+                  <div>
+                    <Tooltip title={listComments[currentIndex].expand.voter.name} placement='top' arrow>
+                      <Avatar
+                        src={listComments[currentIndex].expand.voter.profil_pic}
+                        alt={listComments[currentIndex].expand.voter.name} />
+                    </Tooltip>
+                  </div>
+                </div>
+                <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
+                  {listComments[currentIndex].comment}
+                </div>
+              </>
+            }
           </div>
         </div>
         <div className={styles.zakanay}>
