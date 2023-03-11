@@ -37,11 +37,16 @@ const Home: NextPageWithLayout = () => {
     <section className={styles.main}>
       <div className={styles.styledtext}>
         <div>
-          <MessengerComponent
-            pageId="113804974982080"
-            appId="1015807782342852"
-            htmlRef="chat-messenger"
-          />
+          {typeof window !== 'undefiend' && (
+            <MessengerComponent
+              pageId="113804974982080"
+              appId="1015807782342852"
+              htmlRef="window.location.pathname"
+              themeColor="#008080"
+              loggedInGreeting="Pejy Facebook: HIU Cote 2023"
+              language="fr_FR"
+            />
+          )}
         </div>
         <h1 className={styles.text}>
           Alainao <span style={{ color: '#555' }}>sa</span>
