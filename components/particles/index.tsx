@@ -5,9 +5,6 @@ import { Container, Engine } from 'tsparticles-engine'
 
 export default function Particle() {
   const particlesInit = async (main: Engine) => {
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main)
   }
 
@@ -46,7 +43,7 @@ export default function Particle() {
           },
           links: {
             color: '#ffffff',
-            distance: 200,
+            distance: 120,
             enable: true,
             opacity: 0.2,
             width: 1,
@@ -61,15 +58,15 @@ export default function Particle() {
               default: 'bounce',
             },
             random: false,
-            speed: 1,
+            speed: 1.7,
             straight: false,
           },
           number: {
             density: {
               enable: true,
-              area: 1000,
+              area: 900,
             },
-            value: 80,
+            value: 60,
           },
           opacity: {
             value: 0.5,
@@ -78,7 +75,7 @@ export default function Particle() {
             type: 'circle',
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 7 },
           },
         },
         detectRetina: true,
