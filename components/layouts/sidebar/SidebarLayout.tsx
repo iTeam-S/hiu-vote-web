@@ -16,7 +16,7 @@ function scrollToComponent() {
   }
 }
 
-export interface ISidebarLayout {}
+export interface ISidebarLayout { }
 
 const SidebarLayout: React.FC<ISidebarLayout> = () => {
   return (
@@ -36,7 +36,7 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
           component="div"
           sx={{ flexGrow: 1 }}
         >
-          Web Ranking
+          Statistique HIU Cote 2023
         </Typography>
         <Stack spacing={2} direction="row">
           <nav className={styles.nav}>

@@ -1,15 +1,26 @@
 # The Docker image that will be used to build your app
 image: node:lts
 
-before_script:
-  - apt-get update -y -qq
-  - apt-get install -y -qq sshpass
-  - export SSHPASS=$PASSWORD_SERVER
+stages:
+  - build
+  - deploy
 
-deploy:
+build-job:
+  stage: build
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+  script:
+    - yarn install
+    - yarn build || exit 1
+
+deploy-job:
+  stage: deploy
   environment:
     name: production
   script:
+    - apt-get update -y -qq
+    - apt-get install -y -qq sshpass
+    - export SSHPASS=$PASSWORD_SERVER
     - |
       sshpass -e ssh -t -oStrictHostKeyChecking=no "$USER_SERVER@$HOST_SERVER" <<EOF
         cd web-ranking
