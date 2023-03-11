@@ -14,6 +14,7 @@
   height: __convertToRem($value: 630px);
   border-radius: 12px;
   transition: all 0.1s;
+  z-index: 2;
   @include animation-scale($scaleValue: 0.9);
   @include effect-box-shadow($opacity: smooth);
 
@@ -121,6 +122,10 @@
       margin-top: __convertToRem($value: 5px);
       width: 33%;
       @include effect-box-shadow($opacity: small);
+
+      &:hover {
+        @include animation-scale($scaleValue: 1.1);
+      }
     }
   }
 }
