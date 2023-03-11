@@ -40,7 +40,10 @@ const Home: NextPageWithLayout = () => {
           <MessengerComponent
             pageId="113804974982080"
             appId="1015807782342852"
-            htmlRef="chat-messenger"
+            htmlRef="window.location.pathname"
+            themeColor="#008080"
+            loggedInGreeting="Pejy Facebook: HIU Cote 2023"
+            language="fr_FR"
           />
         </div>
         <h1 className={styles.text}>
