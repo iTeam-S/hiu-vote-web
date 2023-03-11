@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import {
   Button,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
+  Tooltip
 } from '@mui/material'
 import { ParticipantsVotes } from '../type'
 import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
@@ -88,11 +87,13 @@ const DialogDetails = ({
             <AvatarGroup>
               {voters &&
                 voters.map((element, index) => (
-                  <Avatar
-                    key={index}
-                    src={element.expand.voter.profil_pic}
-                    alt={element.expand.voter.name}
-                  />
+                  <Tooltip title={element.expand.voter.name} placement='top' arrow>
+                    <Avatar
+                      key={index}
+                      src={element.expand.voter.profil_pic}
+                      alt={element.expand.voter.name}
+                    />
+                  </Tooltip>
                 ))}
             </AvatarGroup>
           </div>
@@ -107,11 +108,13 @@ const DialogDetails = ({
             <AvatarGroup>
               {votersZakanay &&
                 votersZakanay.map((element, index) => (
-                  <Avatar
-                    key={index}
-                    src={element.expand.voter.profil_pic}
-                    alt={element.expand.voter.name}
-                  />
+                  <Tooltip title={element.expand.voter.name} placement='top' arrow>
+                    <Avatar
+                      key={index}
+                      src={element.expand.voter.profil_pic}
+                      alt={element.expand.voter.name}
+                    />
+                  </Tooltip>
                 ))}
             </AvatarGroup>
           </div>

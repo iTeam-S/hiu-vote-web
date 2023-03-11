@@ -27,11 +27,17 @@ export default function Participant({ nbrVoters }: Props) {
   }
 
   async function fetchParticipantsVotes() {
-    const participantsVotes = await getParticipantsVotes();
+    const participantsVotes = await getParticipantsVotes()
     participantsVotes.sort((a, b) => {
-      const aLength = a.expand && a.expand['votes(participant)'] ? a.expand['votes(participant)'].length : 0;
-      const bLength = b.expand && b.expand['votes(participant)'] ? b.expand['votes(participant)'].length : 0;
-      return bLength - aLength;
+      const aLength =
+        a.expand && a.expand['votes(participant)']
+          ? a.expand['votes(participant)'].length
+          : 0
+      const bLength =
+        b.expand && b.expand['votes(participant)']
+          ? b.expand['votes(participant)'].length
+          : 0
+      return bLength - aLength
     })
     setParticipantsListeVotes(participantsVotes)
   }
