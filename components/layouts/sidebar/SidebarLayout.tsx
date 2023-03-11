@@ -1,8 +1,20 @@
 import { AppBar, Stack, Toolbar, Typography } from '@mui/material'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import styles from './SidebarLayout.module.css'
+import { animateScroll as scroll } from 'react-scroll'
+
+function scrollToComponent() {
+  const element = document.querySelector('#voters-link') as HTMLElement
+  if (element !== null) {
+    scroll.scrollTo(element.offsetTop, {
+      duration: 1000,
+      delay: 100,
+      smooth: true,
+      offset: -70,
+    })
+  }
+}
 
 export interface ISidebarLayout {}
 
@@ -28,11 +40,9 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
         </Typography>
         <Stack spacing={2} direction="row">
           <nav className={styles.nav}>
-            <Link href="#voters-link" legacyBehavior>
-              <button className={styles.primary_btn} role="button">
-                <a>Voters</a>
-              </button>
-            </Link>
+            <button className={styles.primary_btn} onClick={scrollToComponent}>
+              Voters
+            </button>
           </nav>
         </Stack>
       </Toolbar>

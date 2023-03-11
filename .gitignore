@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+out/
 
 # production
 /build
@@ -37,8 +38,6 @@ yarn-error.log*
 next-env.d.ts
 next.config.js
 
-
-out/
 # sseo map
 **/*.css.map
 **/**/*.css.map
