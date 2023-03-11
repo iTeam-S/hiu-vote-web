@@ -1,10 +1,10 @@
-import { Avatar, AvatarGroup, CardContent } from '@mui/material'
+import { Avatar, AvatarGroup, CardContent, Tooltip } from '@mui/material'
 import { VotesParticipant } from '../type'
 import styles from './card.module.css'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaRegEye } from 'react-icons/fa'
 import { GiStrong } from 'react-icons/gi'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type params = {
   id: string
@@ -23,7 +23,6 @@ type paramsButton = {
 
 const DetailsButton = ({ id, handleClickDetails }: paramsButton) => {
   const [onHover, setOnHover] = useState(false)
-
   const changerEtatSurvole = () => {
     setOnHover(!onHover)
   }
@@ -73,11 +72,13 @@ export default function ParticipantCard({
               <AvatarGroup max={3}>
                 {voters &&
                   voters.map((element, index) => (
-                    <Avatar
-                      key={index}
-                      src={element.expand.voter.profil_pic}
-                      alt={element.expand.voter.name}
-                    />
+                    <Tooltip title={element.expand.voter.name} placement='top' arrow>
+                      <Avatar
+                        key={index}
+                        src={element.expand.voter.profil_pic}
+                        alt={element.expand.voter.name}
+                      />
+                    </Tooltip>
                   ))}
               </AvatarGroup>
             </div>
@@ -96,11 +97,13 @@ export default function ParticipantCard({
               <AvatarGroup max={3}>
                 {againstVoters &&
                   againstVoters.map((element, index) => (
-                    <Avatar
-                      key={index}
-                      src={element.expand.voter.profil_pic}
-                      alt={element.expand.voter.name}
-                    />
+                    <Tooltip title={element.expand.voter.name} placement='top' arrow>
+                      <Avatar
+                        key={index}
+                        src={element.expand.voter.profil_pic}
+                        alt={element.expand.voter.name}
+                      />
+                    </Tooltip>
                   ))}
               </AvatarGroup>
             </div>
