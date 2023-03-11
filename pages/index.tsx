@@ -9,6 +9,7 @@ import Voters from '../components/voters'
 import styles from '../styles/Home.module.css'
 import { NextPageWithLayout } from './page'
 import MessengerComponent from 'react-messenger-customer-chat';
+import TemporaryDrawer from './drawer'
 
 const Home: NextPageWithLayout = () => {
   if (typeof window !== 'undefined') {
@@ -45,6 +46,9 @@ const Home: NextPageWithLayout = () => {
             loggedInGreeting="Pejy Facebook: HIU Cote 2023"
             language="fr_FR"
           />
+        </div>
+        <div>
+
         </div>
         <h1 className={styles.text}>
           Alainao <span style={{ color: '#555' }}>sa</span>
