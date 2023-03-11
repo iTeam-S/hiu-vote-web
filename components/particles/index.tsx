@@ -58,7 +58,7 @@ export default function Particle() {
               default: 'bounce',
             },
             random: false,
-            speed: 1.7,
+            speed: 1.6,
             straight: false,
           },
           number: {
@@ -75,7 +75,7 @@ export default function Particle() {
             type: 'circle',
           },
           size: {
-            value: { min: 1, max: 7 },
+            value: { min: 1, max: 5 },
           },
         },
         detectRetina: true,
