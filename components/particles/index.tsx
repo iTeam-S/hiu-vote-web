@@ -1,7 +1,6 @@
-import { useCallback } from 'react'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
-import { Container, Engine } from 'tsparticles-engine'
+import { Engine } from 'tsparticles-engine'
 
 export default function Particle() {
   const particlesInit = async (main: Engine) => {
@@ -57,7 +56,7 @@ export default function Particle() {
             outModes: {
               default: 'bounce',
             },
-            random: false,
+            random: true,
             speed: 1.4,
             straight: false,
           },
@@ -66,7 +65,7 @@ export default function Particle() {
               enable: true,
               area: 1000,
             },
-            value: 80,
+            value: 150,
           },
           opacity: {
             value: 0.5,
