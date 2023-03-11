@@ -90,6 +90,7 @@ $card-show-delay: 0.2s;
 
 .card-show {
   opacity: 0;
+  z-index: 3 !important;
   animation: fade-in 0.5s ease-in-out forwards;
 
   &:nth-of-type(n) {
@@ -115,4 +116,8 @@ $card-show-delay: 0.2s;
   &:hover {
     background-color: #1d4242d0 !important;
   }
+}
+
+#tsparticles {
+  z-index: 0;
 }
