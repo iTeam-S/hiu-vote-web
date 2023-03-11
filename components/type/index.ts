@@ -1,3 +1,4 @@
+import PocketBase from 'pocketbase'
 export interface ParticipantsVotes {
   city: string
   collectionId: string
@@ -62,3 +63,5 @@ export interface ItemVoter {
   profil_pic: string
   updated: Date
 }
+
+export const pb = new PocketBase(process.env.API_REALTIME)

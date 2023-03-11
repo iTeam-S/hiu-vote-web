@@ -2,19 +2,22 @@
 image: node:lts
 
 before_script:
-  - yarn install
-  - echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
+  - apt-get update -y -qq
+  - apt-get install -y -qq sshpass
+  - export SSHPASS=$PASSWORD_SERVER
 
-pages:
+deploy:
+  environment:
+    name: production
   script:
-    - yarn build
-    - rm -rf public/*
-    - mv out/* public
-  artifacts:
-    paths:
-      # The folder that contains the files to be exposed at the Page URL
-      - public
-  rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - |
+      sshpass -e ssh -t -oStrictHostKeyChecking=no "$USER_SERVER@$HOST_SERVER" <<EOF
+        cd web-ranking
+        git pull
+        echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
+        yarn install
+        yarn build
+        pm2 restart web-ranking --update-env
+      EOF
+  only:
+    - main

@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+@import 'sass-eo-lib-magic';
+
+.modal {
+  background-color: rgba(21, 105, 105, 0.678) !important;
+  padding: 2rem;
+  overflow-x: hidden;
+  max-width: __convertToRem($value: 800px);
+
+  .logo {
+    @include animation-zoom($in-out: in);
+  }
+
+  h1,
+  h2,
+  p {
+    color: white;
+  }
+
+  .name {
+    @include magic-spaceInLeft($duration: 1.5s);
+  }
+
+  .fullname {
+    @include magic-spaceInRight($duration: 2.5s);
+  }
+
+  .city {
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #3333338c;
+    width: max-content;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+
+  .description {
+    margin: 1rem;
+    padding: 1.8rem;
+    line-height: 1.5;
+    font-size: 16px;
+    border-radius: 5px;
+    max-height: __convertToRem($value: 150px);
+    overflow-y: auto;
+    background-color: #646464;
+    @include effect-box-shadow-inset($opacity: medium);
+    @include animation-zoom($in-out: in);
+  }
+
+  .name,
+  .fullname,
+  .city {
+    text-align: center;
+  }
+
+  .alainay,
+  .zakanay {
+    margin-top: 1.5rem;
+    background-color: #d3d2d2b9;
+    padding: 0.005rem;
+    border: dashed 2px #6b6b6b;
+    border-radius: 40px;
+    @include animation-scale($scaleValue: 0.8);
+    @include effect-box-shadow($opacity: solid);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      border-radius: 25px;
+      border: dashed 5px #6b6b6b;
+      @include animation-scale($scaleValue: 0.89);
+      @include effect-box-shadow($opacity: medium);
+
+      span,
+      h2 {
+        @include animation-bounce();
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 0;
+    }
+
+    span {
+      font-size: 20px;
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #444;
+      margin-top: 0.8rem;
+    }
+
+    hr {
+      margin-top: -1rem;
+      max-width: 50%;
+    }
+
+    .avatar {
+      @include position-flex-center();
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      overflow: auto;
+    }
+  }
+
+  button {
+    margin: auto;
+    margin-top: 1rem;
+    background-color: #eee;
+
+    &:hover {
+      color: #eee !important;
+      border: solid 1px #eee;
+      background-color: teal;
+    }
+  }
+}

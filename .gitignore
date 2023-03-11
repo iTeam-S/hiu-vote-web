@@ -42,3 +42,7 @@ out/
 # sseo map
 **/*.css.map
 **/**/*.css.map
+.sass-cache/
+
+# file temp
+tmp

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
@@ -39,13 +39,16 @@
     "react-admin": "^4.6.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
+    "react-tsparticles": "^2.9.3",
+    "styled-components": "^5.3.8",
+    "tsparticles": "^2.9.3",
     "util": "^0.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
-    "@raja_rakoto/sass-eo": "^1.7.3",
+    "@raja_rakoto/sass-eo": "^1.8.2",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",

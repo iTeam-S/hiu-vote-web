@@ -1,8 +1,18 @@
 @charset "UTF-8";
 
-// @import 'sass-eo-bootstrap-grid';
+@import 'sass-eo-bootstrap-grid';
 @import 'sass-eo-basics';
 @include normalize();
+
+html {
+  @include bar-scrolling(
+    $bar-color: teal,
+    $bar-color-hover: rgb(19, 110, 110),
+    $bg-color: #eeeeee31
+  );
+
+  scroll-behavior: smooth;
+}
 
 * {
   @include antialias();
@@ -20,6 +30,10 @@ h6 {
   color: #555;
 }
 
+h2 {
+  font-size: 16px;
+}
+
 p {
   color: #555;
 }
@@ -31,7 +45,8 @@ hr {
 body {
   margin: 0;
   background-color: #eaeaea;
-  font-size: __convertToRem($value: 18px);
+  font-size: 14px;
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {

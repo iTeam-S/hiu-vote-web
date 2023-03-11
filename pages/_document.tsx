@@ -1,17 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
-const path0style = {
-  animation: 'path0 20s linear infinite alternate',
-}
-
-const path1style = {
-  animation: 'path1 25s linear infinite alternate',
-}
-
-const path2style = {
-  animation: 'path2 17.241379310344826s linear infinite alternate',
-}
-
 class MyDocument extends Document {
   render() {
     return (
