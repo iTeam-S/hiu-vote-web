@@ -12,7 +12,6 @@ import { NextPageWithLayout } from './page'
 import MessengerComponent from 'react-messenger-customer-chat'
 import { VerticleButton as ScrollUpButton } from 'react-scroll-up-button'
 
-
 const Home: NextPageWithLayout = () => {
   if (typeof window !== 'undefined') {
     console.log('You are on the browser')
@@ -48,9 +47,6 @@ const Home: NextPageWithLayout = () => {
             loggedInGreeting="Pejy Facebook: HIU Cote 2023"
             language="fr_FR"
           />
-        </div>
-        <div>
-
         </div>
         <h1 className={styles.text}>
           Alainao <span style={{ color: '#555' }}>sa</span>
