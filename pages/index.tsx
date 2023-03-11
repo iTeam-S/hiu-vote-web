@@ -12,6 +12,9 @@ import { NextPageWithLayout } from './page'
 import MessengerComponent from 'react-messenger-customer-chat'
 import { VerticleButton as ScrollUpButton } from 'react-scroll-up-button'
 
+import Analytics from 'analytics'
+import googleAnalytics from '@analytics/google-analytics'
+
 
 const Home: NextPageWithLayout = () => {
   if (typeof window !== 'undefined') {
@@ -77,3 +80,15 @@ Home.getLayout = (page) => {
     </PrimaryLayout>
   )
 }
+
+const analytics = Analytics({
+  app: 'hiu-cote',
+  plugins: [
+    googleAnalytics({
+      measurementIds: ['G-WWTMYD4K10']
+    })
+  ]
+})
+
+/* Track a page view */
+analytics.page()
