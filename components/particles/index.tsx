@@ -17,7 +17,7 @@ export default function Particle() {
         interactivity: {
           events: {
             onClick: {
-              enable: true,
+              enable: false,
               mode: 'push',
             },
             onHover: {
@@ -39,7 +39,7 @@ export default function Particle() {
         particles: {
           reduceDuplicates: false,
           color: {
-            value: '#ffffff',
+            value: '#dadada',
           },
           links: {
             color: '#ffffff',
@@ -64,9 +64,9 @@ export default function Particle() {
           number: {
             density: {
               enable: true,
-              area: 900,
+              area: 1000,
             },
-            value: 60,
+            value: 80,
           },
           opacity: {
             value: 0.5,
