@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+out/
 
 # production
 /build
@@ -36,3 +37,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 next.config.js
+
+# sseo map
+**/*.css.map
+**/**/*.css.map
+.sass-cache/
+
+# file temp
+tmp
