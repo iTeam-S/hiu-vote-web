@@ -65,3 +65,22 @@ export interface ItemVoter {
 }
 
 export const pb = new PocketBase(process.env.API_REALTIME)
+
+export interface Participants {
+  city: string
+  collectionId: string
+  collectionName: string
+  created: Date
+  description: string
+  expand: ExpandParticipants
+  full_univ_name: string
+  id: string
+  logo: string
+  univ_name: string
+  updated: Date
+}
+
+export interface ExpandParticipants {
+  voters_count: number
+  voters_pourcent: string
+}

@@ -1,8 +1,9 @@
 import { CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
 import DialogDetails from '../detailsParticipant'
+import { getParticipants } from '../query/participants'
 import { getParticipantsVotes } from '../query/participants-votes.query'
-import { ParticipantsVotes, pb } from '../type'
+import { Participants, ParticipantsVotes, pb } from '../type'
 import ParticipantCard from './card'
 
 interface Props {
@@ -13,6 +14,10 @@ export default function Participant({ nbrVoters }: Props) {
   const [participantsListeVotes, setParticipantsListeVotes] = useState<
     ParticipantsVotes[] | null
   >(null)
+  const [participantsList, setParticipantsList] = useState<
+    Participants[] | null
+  >(null)
+  
   const [participantsDetails, setParticipantsDetails] =
     useState<ParticipantsVotes | null>(null)
 
@@ -24,6 +29,11 @@ export default function Participant({ nbrVoters }: Props) {
 
   const handleCloseDialog = () => {
     setOpenDialog(false)
+  }
+
+  async function getListParticipants() {
+    const participants = await getParticipants();
+    setParticipantsList(participants)
   }
 
   async function fetchParticipantsVotes() {
@@ -51,6 +61,7 @@ export default function Participant({ nbrVoters }: Props) {
     }
   }
   useEffect(() => {
+    getListParticipants();
     fetchParticipantsVotes()
   }, [])
 
@@ -86,34 +97,17 @@ export default function Participant({ nbrVoters }: Props) {
         />
       )}
 
-      {participantsListeVotes ? (
-        participantsListeVotes.map((card, index) => (
+      {participantsList ? (
+        participantsList.map((card, index) => (
           <div className="card-show">
             <ParticipantCard
               id={card.id}
               key={index}
               name={card.univ_name}
               logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
-              votes={
-                card.expand && card.expand['votes(participant)']
-                  ? (
-                      (card.expand['votes(participant)'].length / nbrVoters) *
-                      100
-                    )
-                      .toFixed(2)
-                      .toString()
-                  : '0'
-              }
-              voters={
-                card.expand && card.expand['votes(participant)']
-                  ? card.expand['votes(participant)']
-                  : null
-              }
-              againstVoters={
-                card.expand && card.expand['contre_votes(participant)']
-                  ? card.expand['contre_votes(participant)']
-                  : null
-              }
+              votesPourcentage={card.expand.voters_pourcent.replace(/ %/g, "")}
+              votesCount={card.expand.voters_count}
+              contreVotesCount={card.expand.voters_count}
               handleClickDetails={handleClickDetails}
             />
           </div>
