@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
@@ -6,6 +6,6 @@ const theme = createTheme({
       main: '#008080', // Remplacez "teal" par la couleur de votre choix
     },
   },
-});
+})
 
-export default theme;
+export default theme
