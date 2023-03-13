@@ -58,7 +58,7 @@ export default function Participant({ nbrVoters }: Props) {
     pb.collection('votes').subscribe('*', async function () {
       fetchParticipantsVotes()
     })
-    pb.collection('contre_votes').subscribe('*', function (e) {
+    pb.collection('contre_votes').subscribe('*', function () {
       fetchParticipantsVotes()
     })
     return () => {
