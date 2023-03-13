@@ -16,7 +16,7 @@ function scrollToComponent() {
   }
 }
 
-export interface ISidebarLayout { }
+export interface ISidebarLayout {}
 
 const SidebarLayout: React.FC<ISidebarLayout> = () => {
   return (

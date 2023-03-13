@@ -1,10 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  Tooltip
-} from '@mui/material'
+import { Button, Dialog, DialogActions, Tooltip } from '@mui/material'
 import { ParticipantsVotes } from '../type'
 import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
 import { AiFillHeart } from 'react-icons/ai'
@@ -87,7 +82,11 @@ const DialogDetails = ({
             <AvatarGroup>
               {voters &&
                 voters.map((element, index) => (
-                  <Tooltip title={element.expand.voter.name} placement='top' arrow>
+                  <Tooltip
+                    title={element.expand.voter.name}
+                    placement="top"
+                    arrow
+                  >
                     <Avatar
                       key={index}
                       src={element.expand.voter.profil_pic}
@@ -108,7 +107,11 @@ const DialogDetails = ({
             <AvatarGroup>
               {votersZakanay &&
                 votersZakanay.map((element, index) => (
-                  <Tooltip title={element.expand.voter.name} placement='top' arrow>
+                  <Tooltip
+                    title={element.expand.voter.name}
+                    placement="top"
+                    arrow
+                  >
                     <Avatar
                       key={index}
                       src={element.expand.voter.profil_pic}

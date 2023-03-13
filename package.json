@@ -23,7 +23,8 @@
     "sseo-magic": "grunt --gruntfile sass-eo-cli.js magic-docs",
     "sseo-buttons": "grunt --gruntfile sass-eo-cli.js buttons-maker",
     "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "eslint": "eslint ."
   },
   "dependencies": {
     "@analytics/google-analytics": "^1.0.5",
@@ -65,10 +66,14 @@
     "@types/node": "18.11.10",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
     "babel-loader": "^8.3.0",
     "cross-env": "^7.0.3",
-    "eslint": "8.28.0",
+    "eslint": "^8.36.0",
     "eslint-config-next": "13.0.5",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-storybook": "^0.6.7",
     "grunt": "^1.6.1",
     "grunt-contrib-sass": "^2.0.0",

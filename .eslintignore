@@ -1,0 +1,8 @@
+node_modules
+dist
+out
+.eslintrc.js
+.prettierrc.js
+commitlint.config.js
+sass-eo-cli.js
+next.config.js
