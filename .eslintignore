@@ -5,4 +5,4 @@ out
 .prettierrc.js
 commitlint.config.js
 sass-eo-cli.js
-nest.config.js
+next.config.js
