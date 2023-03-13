@@ -6,12 +6,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  gap: 0.3rem;
+  justify-content: center;
   background-color: rgba(223, 223, 223, 0.74);
-  padding: __convertToRem($value: 3px);
+  padding: 0.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
   width: __convertToRem($value: 400px);
-  height: __convertToRem($value: 630px);
+  height: __convertToRem($value: 690px);
   border-radius: 12px;
   transition: all 0.1s;
   z-index: 2;
@@ -19,7 +20,7 @@
   @include effect-box-shadow($opacity: smooth);
 
   @include breakpoint(max, 576px) {
-    height: __convertToRem($value: 690px);
+    height: auto;
   }
 
   img {
@@ -40,15 +41,15 @@
     }
 
     .content {
-      @include effect-box-shadow-inset($opacity: small);
+      @include effect-box-shadow($opacity: small);
     }
   }
 
   .logo {
     @include position-flex-center();
-    padding-top: 2rem;
+    width: 100%;
     height: __convertToRem($value: 180px);
-    padding-bottom: 1.3rem;
+    padding-bottom: 1rem;
 
     img {
       border-radius: 10px;
@@ -58,10 +59,12 @@
   }
 
   .content {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     padding: 1rem;
     background-color: #dadada;
     border-radius: 6px;
-    margin: 0.3rem;
+    @include effect-box-shadow($opacity: smooth);
 
     .title {
       margin: auto;
@@ -108,15 +111,45 @@
     }
 
     .zakanay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       @include vote_style(#f8f8f8fa, #0c0c0c, #333);
       @include breakpoint(max, 576px) {
         @include avatar_adjust();
+      }
+
+      > * {
+        width: 107%;
+      }
+    }
+
+    .comments {
+      @include position-flex-center();
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: #3333332d;
+      border-radius: 3px;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      margin-left: 0.46rem;
+      overflow: auto;
+
+      .core {
+        margin-top: 0.2rem;
+        color: #eee;
+        text-align: center;
+        max-height: __convertToRem($value: 50px);
       }
     }
   }
 
   .footer {
-    @include position-flex-center();
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     button {
       margin-top: __convertToRem($value: 5px);
