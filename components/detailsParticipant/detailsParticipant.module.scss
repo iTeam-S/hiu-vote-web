@@ -66,6 +66,8 @@
     @include animation-scale($scaleValue: 0.8);
     @include effect-box-shadow($opacity: solid);
     transition: all 0.3s ease-in-out;
+    max-height: 200px;
+    overflow-y: auto;
 
     &:hover {
       border-radius: 25px;

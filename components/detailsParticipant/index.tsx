@@ -6,6 +6,8 @@ import { AiFillHeart } from 'react-icons/ai'
 import { GiStrong } from 'react-icons/gi'
 import styles from './detailsParticipant.module.css'
 import { getParticipantVotesCommentsList } from '../query/participantVotesComments'
+import { StyledEngineProvider } from '@mui/material/styles'
+import SwipeableEdgeDrawer from '../drawer/drawer'
 
 type Props = {
   handleCloseDialog: () => void
@@ -132,6 +134,11 @@ const DialogDetails = ({
             Fermer
           </Button>
         </DialogActions>
+        <div>
+          <StyledEngineProvider injectFirst>
+            <SwipeableEdgeDrawer />
+          </StyledEngineProvider>
+        </div>
       </div>
     </Dialog>
   )
