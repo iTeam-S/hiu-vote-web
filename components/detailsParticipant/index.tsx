@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Dialog,
   DialogActions,
   Tooltip
 } from '@mui/material'
-import { ParticipantsVotes } from '../type'
+import { ParticipantType, ParticipantVotesCommentsList } from '../type'
 import { Avatar, AvatarGroup, CardContent, CardMedia } from '@mui/material'
 import { AiFillHeart } from 'react-icons/ai'
 import { GiStrong } from 'react-icons/gi'
 import styles from './detailsParticipant.module.css'
+import { getParticipantVotesCommentsList } from '../query/participantVotesComments'
 
 type Props = {
-  handleCloseDialog: () => void
-  open: boolean
-  participantsDetails: ParticipantsVotes
-  nbrVoters: number
+  handleCloseDialog: () => void,
+  open: boolean,
+  participantsDetails: ParticipantType,
+  nbrVoters: number,
 }
 
 const DialogDetails = ({
@@ -24,33 +25,29 @@ const DialogDetails = ({
   participantsDetails,
   nbrVoters,
 }: Props) => {
+  const [participantVotesComments, setParticipantVotesComments] = useState<
+    ParticipantVotesCommentsList | null>(null);
+  const [participantContreVotesComments, setParticipantContreVotesComments] = useState<
+    ParticipantVotesCommentsList | null>(null);
+  const fetchVotesComments = async() => {
+    const participantVotesComments = await getParticipantVotesCommentsList(
+      {page:1, perPage: 5, idParticipant: participantsDetails.id, collection: 'votes'});
+    setParticipantVotesComments(participantVotesComments);
+    const participantContreVotesComments = await getParticipantVotesCommentsList(
+      {page:1, perPage: 5, idParticipant: participantsDetails.id, collection: 'contre_votes'});
+    setParticipantContreVotesComments(participantContreVotesComments);
+  }
+  useEffect(() => {
+    fetchVotesComments();
+  }, [participantsDetails])
+  
   const logoSrc =
     participantsDetails.collectionId +
     '/' +
     participantsDetails.id +
     '/' +
     participantsDetails.logo
-  const votesAlainay =
-    participantsDetails.expand &&
-    participantsDetails.expand['votes(participant)']
-      ? (
-          (participantsDetails.expand['votes(participant)'].length /
-            nbrVoters) *
-          100
-        )
-          .toFixed(2)
-          .toString()
-      : '0'
-  const voters =
-    participantsDetails.expand &&
-    participantsDetails.expand['votes(participant)']
-      ? participantsDetails.expand['votes(participant)']
-      : null
-  const votersZakanay =
-    participantsDetails.expand &&
-    participantsDetails.expand['contre_votes(participant)']
-      ? participantsDetails.expand['contre_votes(participant)']
-      : null
+  const votesAlainay = participantsDetails.expand.participant_pourcent;
   return (
     <Dialog open={open} onClose={handleCloseDialog} fullWidth>
       <div className={styles.modal}>
@@ -84,9 +81,9 @@ const DialogDetails = ({
           <h2>{votesAlainay}%</h2>
           <hr />
           <div className={styles.avatar}>
-            <AvatarGroup>
-              {voters &&
-                voters.map((element, index) => (
+            <AvatarGroup max={99}>
+              {participantVotesComments &&
+                participantVotesComments.items.map((element, index) => (
                   <Tooltip title={element.expand.voter.name} placement='top' arrow>
                     <Avatar
                       key={index}
@@ -106,8 +103,8 @@ const DialogDetails = ({
           <hr style={{ marginTop: 10 }} />
           <div className={styles.avatar}>
             <AvatarGroup>
-              {votersZakanay &&
-                votersZakanay.map((element, index) => (
+              {participantContreVotesComments &&
+                participantContreVotesComments.items.map((element, index) => (
                   <Tooltip title={element.expand.voter.name} placement='top' arrow>
                     <Avatar
                       key={index}

@@ -54,6 +54,7 @@ export default function ParticipantCard({
   handleClickDetails,
 }: params) {
   const voteCountCalculate = votesCount > 3 ? `+${votesCount-3}` : votesCount;
+  const contreVoteCountCalculate = contreVotesCount > 3 ? `+${contreVotesCount-3}` : contreVotesCount;
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [listComments, setListComments] = useState<VotesParticipant[] | null>(
     null,
@@ -94,7 +95,7 @@ export default function ParticipantCard({
               </div>
               <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
                 { voters ?
-                  <Badge badgeContent={votesCount} color="success">
+                  <Badge badgeContent={voteCountCalculate} color="success">
                     <AvatarGroup max={3}>
                     { voters &&
                       voters.map((element, index) => (
@@ -154,7 +155,7 @@ export default function ParticipantCard({
               <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
                 {
                   againstVoters ?
-                  <Badge badgeContent={contreVotesCount} color="secondary">
+                  <Badge badgeContent={contreVoteCountCalculate} color="secondary">
                     <AvatarGroup max={3}>
                       {againstVoters.map((element, index) => (
                         <Tooltip

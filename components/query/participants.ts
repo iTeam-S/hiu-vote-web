@@ -1,10 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { Participants } from '../type'
+import { ParticipantType } from '../type'
 
-export const getParticipants = async (): Promise<Participants[]> => {
+export const getParticipants = async (): Promise<ParticipantType[]> => {
   const config: AxiosRequestConfig = {
     method: 'get',
-    url: process.env.API_URL + 'custom/participants',
+    url:
+      process.env.API_URL +
+      'custom/participants?expand=votes(participant).voter,contre_votes(participant).voter',
     headers: {
       'Content-Type': 'application/json',
     },
