@@ -1,0 +1,36 @@
+import axios, { AxiosRequestConfig } from 'axios'
+import { ParticipantVotesCommentsList } from '../type'
+
+interface Params {
+  page: number
+  perPage: number
+  idParticipant: string
+  collection: string
+}
+
+export const getParticipantVotesCommentsList = async ({
+  page,
+  perPage,
+  idParticipant,
+  collection,
+}: Params): Promise<ParticipantVotesCommentsList> => {
+  console.log('idParticipant :', idParticipant)
+  const config: AxiosRequestConfig = {
+    method: 'get',
+    url:
+      process.env.API_URL +
+      `collections/${collection}/records?filter=(participant='${idParticipant}')&expand=voter&page=${page}&perPage=${perPage}`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  try {
+    const response = await axios(config)
+    return response.data
+  } catch (error) {
+    throw new Error(
+      'Erreur lors de la récupération des ParticipantVotesCommentsList',
+    )
+  }
+}

@@ -1,8 +1,8 @@
 import { CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
 import DialogDetails from '../detailsParticipant'
-import { getParticipantsVotes } from '../query/participants-votes.query'
-import { ParticipantsVotes, pb } from '../type'
+import { getParticipants } from '../query/participants'
+import { ParticipantType, pb } from '../type'
 import ParticipantCard from './card'
 
 interface Props {
@@ -10,12 +10,10 @@ interface Props {
 }
 
 export default function Participant({ nbrVoters }: Props) {
-  const [participantsListeVotes, setParticipantsListeVotes] = useState<
-    ParticipantsVotes[] | null
+  const [participantsList, setParticipantsList] = useState<
+    ParticipantType[] | null
   >(null)
-  const [participantsDetails, setParticipantsDetails] =
-    useState<ParticipantsVotes | null>(null)
-
+  const [participant, setParticipant] = useState<ParticipantType | null>(null)
   const [openDialog, setOpenDialog] = useState(false)
 
   const handleOpenDialog = () => {
@@ -26,40 +24,30 @@ export default function Participant({ nbrVoters }: Props) {
     setOpenDialog(false)
   }
 
-  async function fetchParticipantsVotes() {
-    const participantsVotes = await getParticipantsVotes()
-    participantsVotes.sort((a, b) => {
-      const aLength =
-        a.expand && a.expand['votes(participant)']
-          ? a.expand['votes(participant)'].length
-          : 0
-      const bLength =
-        b.expand && b.expand['votes(participant)']
-          ? b.expand['votes(participant)'].length
-          : 0
-      return bLength - aLength
-    })
-    setParticipantsListeVotes(participantsVotes)
+  async function getListParticipants() {
+    const participants = await getParticipants()
+    setParticipantsList(participants)
   }
-  const handleClickDetails = (idParticipant: string) => {
-    const participantsDetails = participantsListeVotes?.find(
+
+  const handleClickDetails = async (idParticipant: string) => {
+    const participantsDetails = participantsList?.find(
       (element) => element.id === idParticipant,
     )
     if (participantsDetails) {
-      setParticipantsDetails(participantsDetails)
+      setParticipant(participantsDetails)
       handleOpenDialog()
     }
   }
   useEffect(() => {
-    fetchParticipantsVotes()
+    getListParticipants()
   }, [])
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      fetchParticipantsVotes()
+      getListParticipants()
     })
     pb.collection('contre_votes').subscribe('*', function () {
-      fetchParticipantsVotes()
+      getListParticipants()
     })
     return () => {
       pb.collection('votes').unsubscribe()
@@ -77,43 +65,31 @@ export default function Participant({ nbrVoters }: Props) {
         gap: 15,
       }}
     >
-      {participantsDetails && (
+      {participant && (
         <DialogDetails
           handleCloseDialog={handleCloseDialog}
           open={openDialog}
-          participantsDetails={participantsDetails}
+          participantsDetails={participant}
           nbrVoters={nbrVoters}
         />
       )}
 
-      {participantsListeVotes ? (
-        participantsListeVotes.map((card, index) => (
+      {participantsList ? (
+        participantsList.map((card, index) => (
           <div className="card-show">
             <ParticipantCard
               id={card.id}
               key={index}
               name={card.univ_name}
               logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
-              votes={
-                card.expand && card.expand['votes(participant)']
-                  ? (
-                      (card.expand['votes(participant)'].length / nbrVoters) *
-                      100
-                    )
-                      .toFixed(2)
-                      .toString()
-                  : '0'
-              }
-              voters={
-                card.expand && card.expand['votes(participant)']
-                  ? card.expand['votes(participant)']
-                  : null
-              }
-              againstVoters={
-                card.expand && card.expand['contre_votes(participant)']
-                  ? card.expand['contre_votes(participant)']
-                  : null
-              }
+              votesPourcentage={card.expand.participant_pourcent.replace(
+                / %/g,
+                '',
+              )}
+              votesCount={card.expand.voters_count}
+              voters={card.expand.votes_preview}
+              againstVoters={card.expand.contre_votes_preview}
+              contreVotesCount={card.expand.contre_votes_count}
               handleClickDetails={handleClickDetails}
             />
           </div>
