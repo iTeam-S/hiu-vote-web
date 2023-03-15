@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dialog, DialogActions, Tooltip } from '@mui/material'
-import { ParticipantType, ParticipantVotesCommentsList } from '../type'
+import { Button, Dialog, DialogActions, Tooltip, Box, Typography } from '@mui/material'
+import { ParticipantType, ParticipantVotesComments, ParticipantVotesCommentsList } from '../type'
 import { Avatar, AvatarGroup, CardMedia } from '@mui/material'
 import { AiFillHeart } from 'react-icons/ai'
 import { GiStrong } from 'react-icons/gi'
@@ -16,6 +16,12 @@ type Props = {
   nbrVoters: number
 }
 
+type PropsComment = {
+  avatarSrc: string, 
+  nom: string,
+  commentaire: string,
+}
+
 const DialogDetails = ({
   handleCloseDialog,
   open,
@@ -23,6 +29,21 @@ const DialogDetails = ({
 }: Props) => {
   const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false)
   const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false)
+  const [pageAlainay, setPageAlainay] = useState<number>(1);
+  const [pageZakanay, setPageZakanay] = useState<number>(1);
+
+  const [participantVotesComments, setParticipantVotesComments] =
+    useState<ParticipantVotesComments[] | null>(null)
+  const [participantContreVotesComments, setParticipantContreVotesComments] =
+    useState<ParticipantVotesComments[] | null>(null)
+  
+  const logoSrc =
+    participantsDetails.collectionId +
+    '/' +
+    participantsDetails.id +
+    '/' +
+    participantsDetails.logo;
+  const votesAlainay = participantsDetails.expand.participant_pourcent;
 
   const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
     setOpenDrawerAlainay(newOpenDrawer)
@@ -31,38 +52,66 @@ const DialogDetails = ({
     setOpenDrawerZakanay(newOpenDrawer)
   }
 
-  const [participantVotesComments, setParticipantVotesComments] =
-    useState<ParticipantVotesCommentsList | null>(null)
-  const [participantContreVotesComments, setParticipantContreVotesComments] =
-    useState<ParticipantVotesCommentsList | null>(null)
   const fetchVotesComments = async () => {
-    const participantVotesComments = await getParticipantVotesCommentsList({
-      page: 1,
+    const newtVotesComments = await getParticipantVotesCommentsList({
+      page: pageAlainay,
       perPage: 5,
       idParticipant: participantsDetails.id,
       collection: 'votes',
     })
-    setParticipantVotesComments(participantVotesComments)
-    const participantContreVotesComments =
+    console.log("fetchVotesComments", pageAlainay, newtVotesComments)
+    if(participantVotesComments) {
+      setParticipantVotesComments([...participantVotesComments, ...newtVotesComments.items])
+    } else {
+      setParticipantVotesComments(newtVotesComments.items)
+    }
+    setPageAlainay(pageAlainay + 1);
+  }
+
+  const fetchContreVotesComments = async () => {
+    const newContreVotesComments =
       await getParticipantVotesCommentsList({
-        page: 1,
+        page: pageZakanay,
         perPage: 5,
         idParticipant: participantsDetails.id,
         collection: 'contre_votes',
       })
-    setParticipantContreVotesComments(participantContreVotesComments)
+    if(participantContreVotesComments ) {
+      setParticipantContreVotesComments([...participantContreVotesComments, ...newContreVotesComments.items])
+    } else {
+      setParticipantContreVotesComments(newContreVotesComments.items)
+    }
+    setPageZakanay(prevPage => prevPage + 1);
   }
+  const initilise = () => {
+    console.log('initilise');
+    setParticipantVotesComments(null);
+    setParticipantContreVotesComments(null);
+    setPageAlainay(1);
+    setPageZakanay(1);
+    console.log("setPageAlainay", pageAlainay)
+  }
+
   useEffect(() => {
-    fetchVotesComments()
+    initilise();
+    fetchVotesComments();
+    fetchContreVotesComments();
   }, [participantsDetails])
 
-  const logoSrc =
-    participantsDetails.collectionId +
-    '/' +
-    participantsDetails.id +
-    '/' +
-    participantsDetails.logo
-  const votesAlainay = participantsDetails.expand.participant_pourcent
+  const handleScrollAlainay = async() => {
+    const listEl = document.getElementById('my-list-alainay');
+    console.log('listEl : ', listEl)
+    if (listEl && listEl.scrollTop + listEl.clientHeight === listEl.scrollHeight) {
+      fetchVotesComments();
+    }
+  };
+  const handleScrollZakanay = async() => {
+    const listEl = document.getElementById('my-list-zakanay');
+    console.log('listEl : ', listEl)
+    if (listEl && listEl.scrollTop + listEl.clientHeight === listEl.scrollHeight) {
+      fetchContreVotesComments();
+    }
+  };
   return (
     <Dialog open={open} onClose={handleCloseDialog} fullWidth>
       <div className={styles.modal}>
@@ -96,22 +145,6 @@ const DialogDetails = ({
           <h2>{votesAlainay}</h2>
           <hr />
           <div className={styles.avatar}>
-            {/* <AvatarGroup max={99}>
-              {participantVotesComments &&
-                participantVotesComments.items.map((element, index) => (
-                  <Tooltip
-                    title={element.expand.voter.name}
-                    placement="top"
-                    arrow
-                  >
-                    <Avatar
-                      key={index}
-                      src={element.expand.voter.profil_pic}
-                      alt={element.expand.voter.name}
-                    />
-                  </Tooltip>
-                ))}
-            </AvatarGroup> */}
             <div>
               <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
                 Voir plus (Alainay) ...
@@ -127,22 +160,6 @@ const DialogDetails = ({
           <hr style={{ marginTop: 10 }} />
 
           <div className={styles.avatar}>
-            {/* <AvatarGroup>
-                {participantContreVotesComments &&
-                  participantContreVotesComments.items.map((element, index) => (
-                    <Tooltip
-                      title={element.expand.voter.name}
-                      placement="top"
-                      arrow
-                    >
-                      <Avatar
-                        key={index}
-                        src={element.expand.voter.profil_pic}
-                        alt={element.expand.voter.name}
-                      />
-                    </Tooltip>
-                  ))}
-              </AvatarGroup> */}
             <div>
               <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
                 Voir plus (Zakanay) ...
@@ -156,19 +173,23 @@ const DialogDetails = ({
           </Button>
         </DialogActions>
         <StyledEngineProvider injectFirst>
-          <div>
+          <div onScroll={() => console.log("TESTTTTTTT my-list-alainay")}>
             <SwipeableEdgeDrawer
               title="Alainay"
               openDrawer={openDrawerAlainay}
               toggleDrawer={toggleDrawerAlainay}
             >
-              <p>
-                Alainay: Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Exercitationem error alias perspiciatis in corrupti
-                consequatur deserunt maxime, dolor doloremque similique amet
-                voluptas vero cumque? Consectetur fugit doloremque earum officia
-                suscipit!
-              </p>
+              <div id="my-list-alainay" onScroll={() => console.log("TESTTTTTTT my-list-alainay")}>
+                {participantVotesComments &&
+                participantVotesComments.map((voteComment, index) => (
+                  <Comment
+                    key={index}
+                    avatarSrc={voteComment.expand.voter.profil_pic}
+                    nom={voteComment.expand.voter.name}
+                    commentaire={voteComment.comment}
+                  />
+                ))}
+              </div>
             </SwipeableEdgeDrawer>
           </div>
           <div>
@@ -177,13 +198,17 @@ const DialogDetails = ({
               openDrawer={openDrawerZakanay}
               toggleDrawer={toggleDrawerZakanay}
             >
-              <p>
-                Zakanay: Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Exercitationem error alias perspiciatis in corrupti
-                consequatur deserunt maxime, dolor doloremque similique amet
-                voluptas vero cumque? Consectetur fugit doloremque earum officia
-                suscipit!
-              </p>
+              <div id="my-list-zakanay" onScroll={handleScrollZakanay}>
+                {participantContreVotesComments &&
+                participantContreVotesComments.map((voteComment, index) => (
+                  <Comment
+                    key={index}
+                    avatarSrc={voteComment.expand.voter.profil_pic}
+                    nom={voteComment.expand.voter.name}
+                    commentaire={voteComment.comment}
+                  />
+                ))}
+              </div>
             </SwipeableEdgeDrawer>
           </div>
         </StyledEngineProvider>
@@ -191,5 +216,17 @@ const DialogDetails = ({
     </Dialog>
   )
 }
+
+const Comment = ({ avatarSrc, nom, commentaire }: PropsComment) => {
+  return (
+    <Box display="flex" alignItems="center">
+      <Avatar src={avatarSrc} />
+      <Box ml={2}>
+        <Typography variant="subtitle1">{nom}</Typography>
+        <Typography variant="body1">{commentaire}</Typography>
+      </Box>
+    </Box>
+  );
+};
 
 export default DialogDetails
