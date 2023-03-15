@@ -1,9 +1,8 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import { Global } from '@emotion/react'
 import { styled } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { grey } from '@mui/material/colors'
-import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import SwipeableDrawer from '@mui/material/SwipeableDrawer'
@@ -19,7 +18,7 @@ const Root = styled('div')(({ theme }) => ({
 }))
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'light' ? '#ffffffe6' : grey[800],
+  backgroundColor: theme.palette.mode === 'light' ? '#747777' : grey[800],
 }))
 
 const Puller = styled(Box)(({ theme }) => ({
@@ -32,13 +31,19 @@ const Puller = styled(Box)(({ theme }) => ({
   left: 'calc(50% - 15px)',
 }))
 
-export default function SwipeableEdgeDrawer() {
-  const [open, setOpen] = React.useState(false)
+type DrawerProps = {
+  children: ReactNode
+  title: string
+  openDrawer: boolean
+  toggleDrawer: (newOpenDrawer: boolean) => () => void
+}
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen)
-  }
-
+export default function SwipeableEdgeDrawer({
+  children,
+  title,
+  openDrawer,
+  toggleDrawer,
+}: DrawerProps) {
   const containerRef = React.useRef(null)
   const container = containerRef.current
 
@@ -48,9 +53,9 @@ export default function SwipeableEdgeDrawer() {
       <Global
         styles={{
           '.MuiDrawer-root > .MuiPaper-root': {
-            height: `calc(50% - ${drawerBleeding}px)`,
+            height: '92%',
             overflow: 'visible',
-            width: '31.1%',
+            maxWidth: 600,
             margin: 'auto',
           },
         }}
@@ -62,13 +67,11 @@ export default function SwipeableEdgeDrawer() {
           textAlign: 'center',
           background: '#eeeeee0',
         }}
-      >
-        <Button onClick={toggleDrawer(true)}>Open</Button>
-      </Box>
+      ></Box>
       <SwipeableDrawer
         container={container}
         anchor="bottom"
-        open={open}
+        open={openDrawer}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
         swipeAreaWidth={drawerBleeding}
@@ -91,7 +94,7 @@ export default function SwipeableEdgeDrawer() {
         >
           <Puller />
           <Typography sx={{ p: 2, color: 'text.secondary' }}>
-            0 result(s)
+            {title}
           </Typography>
         </StyledBox>
         <StyledBox
@@ -102,64 +105,7 @@ export default function SwipeableEdgeDrawer() {
             overflow: 'auto',
           }}
         >
-          <Typography sx={{ p: 2, color: 'text.secondary' }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            adipisci rem quo distinctio similique suscipit expedita est quam
-            culpa voluptatibus voluptatum aliquam dicta id molestiae, vero
-            aperiam veritatis maiores ad. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nam ipsum quo atque, libero nisi
-            commodi et quam adipisci reprehenderit necessitatibus ut itaque
-            voluptatem amet inventore assumenda expedita mollitia iure quos?
-          </Typography>
+          <div>{children}</div>
         </StyledBox>
       </SwipeableDrawer>
     </Root>

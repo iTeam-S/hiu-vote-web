@@ -21,6 +21,14 @@ const DialogDetails = ({
   open,
   participantsDetails,
 }: Props) => {
+  const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false)
+  const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false)
+  const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
+    setOpenDrawerAlainay(newOpenDrawer)
+  }
+  const toggleDrawerZakanay = (newOpenDrawer: boolean) => () => {
+    setOpenDrawerZakanay(newOpenDrawer)
+  }
   const [participantVotesComments, setParticipantVotesComments] =
     useState<ParticipantVotesCommentsList | null>(null)
   const [participantContreVotesComments, setParticipantContreVotesComments] =
@@ -83,7 +91,7 @@ const DialogDetails = ({
           <span>
             <AiFillHeart size={50} /> &nbsp; Alainay
           </span>
-          <h2>{votesAlainay}%</h2>
+          <h2>{votesAlainay}</h2>
           <hr />
           <div className={styles.avatar}>
             <AvatarGroup max={99}>
@@ -135,8 +143,41 @@ const DialogDetails = ({
           </Button>
         </DialogActions>
         <div>
+          <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
+            Voir plus (Alainay) ...
+          </button>
+          <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
+            Voir plus (Zakanay) ...
+          </button>
+        </div>
+        <div>
           <StyledEngineProvider injectFirst>
-            <SwipeableEdgeDrawer />
+            <SwipeableEdgeDrawer
+              title="Alainay"
+              openDrawer={openDrawerAlainay}
+              toggleDrawer={toggleDrawerAlainay}
+            >
+              <p>
+                Alainay: Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Exercitationem error alias perspiciatis in corrupti
+                consequatur deserunt maxime, dolor doloremque similique amet
+                voluptas vero cumque? Consectetur fugit doloremque earum officia
+                suscipit!
+              </p>
+            </SwipeableEdgeDrawer>
+            <SwipeableEdgeDrawer
+              title="Zakanay"
+              openDrawer={openDrawerZakanay}
+              toggleDrawer={toggleDrawerZakanay}
+            >
+              <p>
+                Zakanay: Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Exercitationem error alias perspiciatis in corrupti
+                consequatur deserunt maxime, dolor doloremque similique amet
+                voluptas vero cumque? Consectetur fugit doloremque earum officia
+                suscipit!
+              </p>
+            </SwipeableEdgeDrawer>
           </StyledEngineProvider>
         </div>
       </div>
