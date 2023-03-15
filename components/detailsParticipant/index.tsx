@@ -23,12 +23,14 @@ const DialogDetails = ({
 }: Props) => {
   const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false)
   const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false)
+
   const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
     setOpenDrawerAlainay(newOpenDrawer)
   }
   const toggleDrawerZakanay = (newOpenDrawer: boolean) => () => {
     setOpenDrawerZakanay(newOpenDrawer)
   }
+
   const [participantVotesComments, setParticipantVotesComments] =
     useState<ParticipantVotesCommentsList | null>(null)
   const [participantContreVotesComments, setParticipantContreVotesComments] =
@@ -94,7 +96,7 @@ const DialogDetails = ({
           <h2>{votesAlainay}</h2>
           <hr />
           <div className={styles.avatar}>
-            <AvatarGroup max={99}>
+            {/* <AvatarGroup max={99}>
               {participantVotesComments &&
                 participantVotesComments.items.map((element, index) => (
                   <Tooltip
@@ -109,7 +111,12 @@ const DialogDetails = ({
                     />
                   </Tooltip>
                 ))}
-            </AvatarGroup>
+            </AvatarGroup> */}
+            <div>
+              <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
+                Voir plus (Alainay) ...
+              </button>
+            </div>
           </div>
         </div>
         <hr />
@@ -118,23 +125,29 @@ const DialogDetails = ({
             <GiStrong size={50} /> &nbsp; Zakanay
           </span>
           <hr style={{ marginTop: 10 }} />
+
           <div className={styles.avatar}>
-            <AvatarGroup>
-              {participantContreVotesComments &&
-                participantContreVotesComments.items.map((element, index) => (
-                  <Tooltip
-                    title={element.expand.voter.name}
-                    placement="top"
-                    arrow
-                  >
-                    <Avatar
-                      key={index}
-                      src={element.expand.voter.profil_pic}
-                      alt={element.expand.voter.name}
-                    />
-                  </Tooltip>
-                ))}
-            </AvatarGroup>
+            {/* <AvatarGroup>
+                {participantContreVotesComments &&
+                  participantContreVotesComments.items.map((element, index) => (
+                    <Tooltip
+                      title={element.expand.voter.name}
+                      placement="top"
+                      arrow
+                    >
+                      <Avatar
+                        key={index}
+                        src={element.expand.voter.profil_pic}
+                        alt={element.expand.voter.name}
+                      />
+                    </Tooltip>
+                  ))}
+              </AvatarGroup> */}
+            <div>
+              <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
+                Voir plus (Zakanay) ...
+              </button>
+            </div>
           </div>
         </div>
         <DialogActions>
@@ -142,16 +155,8 @@ const DialogDetails = ({
             Fermer
           </Button>
         </DialogActions>
-        <div>
-          <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
-            Voir plus (Alainay) ...
-          </button>
-          <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
-            Voir plus (Zakanay) ...
-          </button>
-        </div>
-        <div>
-          <StyledEngineProvider injectFirst>
+        <StyledEngineProvider injectFirst>
+          <div>
             <SwipeableEdgeDrawer
               title="Alainay"
               openDrawer={openDrawerAlainay}
@@ -165,6 +170,8 @@ const DialogDetails = ({
                 suscipit!
               </p>
             </SwipeableEdgeDrawer>
+          </div>
+          <div>
             <SwipeableEdgeDrawer
               title="Zakanay"
               openDrawer={openDrawerZakanay}
@@ -178,8 +185,8 @@ const DialogDetails = ({
                 suscipit!
               </p>
             </SwipeableEdgeDrawer>
-          </StyledEngineProvider>
-        </div>
+          </div>
+        </StyledEngineProvider>
       </div>
     </Dialog>
   )
