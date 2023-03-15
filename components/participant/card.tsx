@@ -7,12 +7,12 @@ import { GiStrong } from 'react-icons/gi'
 import { useEffect, useState } from 'react'
 
 type params = {
-  id: string,
-  name: string,
-  logoSrc: string,
-  votesPourcentage: string,
-  votesCount: number,
-  contreVotesCount: number,
+  id: string
+  name: string
+  logoSrc: string
+  votesPourcentage: string
+  votesCount: number
+  contreVotesCount: number
   voters?: VotesParticipant[] | null
   againstVoters?: VotesParticipant[] | null
   handleClickDetails: (id: string) => void
@@ -53,12 +53,24 @@ export default function ParticipantCard({
   againstVoters,
   handleClickDetails,
 }: params) {
-  const voteCountCalculate = votesCount > 3 ? `+${votesCount-3}` : votesCount;
-  const contreVoteCountCalculate = contreVotesCount > 3 ? `+${contreVotesCount-3}` : contreVotesCount;
+  const voteCountCalculate = votesCount > 3 ? `+${votesCount - 3}` : votesCount
+  const contreVoteCountCalculate =
+    contreVotesCount > 3 ? `+${contreVotesCount - 3}` : contreVotesCount
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [listComments, setListComments] = useState<VotesParticipant[] | null>(
     null,
   )
+  const badgeStyle1 = {
+    '& .MuiBadge-badge': {
+      backgroundColor: '#fafafa',
+    },
+  }
+  const badgeStyle2 = {
+    '& .MuiBadge-badge': {
+      backgroundColor: '#37a59f',
+    },
+  }
+
   useEffect(() => {
     const comments = voters
       ? voters.filter((element) => element.comment.length > 2)
@@ -94,29 +106,30 @@ export default function ParticipantCard({
                 </div>
               </div>
               <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
-                { voters ?
-                  <Badge badgeContent={voteCountCalculate} color="success">
+                {voters ? (
+                  <Badge badgeContent={voteCountCalculate} sx={badgeStyle1}>
                     <AvatarGroup max={3}>
-                    { voters &&
-                      voters.map((element, index) => (
-                      <Tooltip
-                        title={element.expand.voter.name}
-                        placement="top"
-                        arrow
-                      >
-                        <Avatar
-                          key={index}
-                          src={element.expand.voter.profil_pic}
-                          alt={element.expand.voter.name}
-                        />
-                      </Tooltip>
-                    ))}
+                      {voters &&
+                        voters.map((element, index) => (
+                          <Tooltip
+                            title={element.expand.voter.name}
+                            placement="top"
+                            arrow
+                          >
+                            <Avatar
+                              key={index}
+                              src={element.expand.voter.profil_pic}
+                              alt={element.expand.voter.name}
+                            />
+                          </Tooltip>
+                        ))}
                     </AvatarGroup>
-                  </Badge> :
+                  </Badge>
+                ) : (
                   <Badge badgeContent={voteCountCalculate} color="primary">
                     <Avatar></Avatar>
                   </Badge>
-                }
+                )}
               </div>
               {listComments && listComments[currentIndex] && (
                 <div className={styles.comments}>
@@ -153,9 +166,11 @@ export default function ParticipantCard({
                 </div>
               </div>
               <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
-                {
-                  againstVoters ?
-                  <Badge badgeContent={contreVoteCountCalculate} color="secondary">
+                {againstVoters ? (
+                  <Badge
+                    badgeContent={contreVoteCountCalculate}
+                    sx={badgeStyle2}
+                  >
                     <AvatarGroup max={3}>
                       {againstVoters.map((element, index) => (
                         <Tooltip
@@ -172,11 +187,11 @@ export default function ParticipantCard({
                       ))}
                     </AvatarGroup>
                   </Badge>
-                  :
+                ) : (
                   <Badge badgeContent={contreVotesCount} color="primary">
                     <Avatar></Avatar>
                   </Badge>
-                }
+                )}
               </div>
             </div>
           </div>
