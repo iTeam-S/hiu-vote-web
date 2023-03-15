@@ -127,22 +127,6 @@ const DialogDetails = ({
           <hr style={{ marginTop: 10 }} />
 
           <div className={styles.avatar}>
-            {/* <AvatarGroup>
-                {participantContreVotesComments &&
-                  participantContreVotesComments.items.map((element, index) => (
-                    <Tooltip
-                      title={element.expand.voter.name}
-                      placement="top"
-                      arrow
-                    >
-                      <Avatar
-                        key={index}
-                        src={element.expand.voter.profil_pic}
-                        alt={element.expand.voter.name}
-                      />
-                    </Tooltip>
-                  ))}
-              </AvatarGroup> */}
             <div>
               <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
                 Voir plus (Zakanay) ...
@@ -177,13 +161,20 @@ const DialogDetails = ({
               openDrawer={openDrawerZakanay}
               toggleDrawer={toggleDrawerZakanay}
             >
-              <p>
-                Zakanay: Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Exercitationem error alias perspiciatis in corrupti
-                consequatur deserunt maxime, dolor doloremque similique amet
-                voluptas vero cumque? Consectetur fugit doloremque earum officia
-                suscipit!
-              </p>
+              <div>
+                {participantContreVotesComments &&
+                  participantContreVotesComments.items.map((element, index) => (
+                    <div className={styles.comments}>
+                      <Avatar
+                        key={index}
+                        src={element.expand.voter.profil_pic}
+                        alt={element.expand.voter.name}
+                        style={{ width: 60, height: 60 }}
+                      />
+                      <h5>{element.expand.voter.name}</h5>
+                    </div>
+                  ))}
+              </div>
             </SwipeableEdgeDrawer>
           </div>
         </StyledEngineProvider>
