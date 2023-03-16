@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dialog, DialogActions, Tooltip, Box, Typography } from '@mui/material'
+import { Button, Dialog, DialogActions, Tooltip, Box, Typography, List } from '@mui/material'
 import { ParticipantType, ParticipantVotesComments, ParticipantVotesCommentsList } from '../type'
 import { Avatar, AvatarGroup, CardMedia } from '@mui/material'
 import { AiFillHeart } from 'react-icons/ai'
@@ -29,6 +29,7 @@ const DialogDetails = ({
 }: Props) => {
   const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false)
   const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false)
+
   const [pageAlainay, setPageAlainay] = useState<number>(1);
   const [pageZakanay, setPageZakanay] = useState<number>(1);
 
@@ -59,7 +60,6 @@ const DialogDetails = ({
       idParticipant: participantsDetails.id,
       collection: 'votes',
     })
-    console.log("fetchVotesComments", pageAlainay, newtVotesComments)
     if(participantVotesComments) {
       setParticipantVotesComments([...participantVotesComments, ...newtVotesComments.items])
     } else {
@@ -83,35 +83,24 @@ const DialogDetails = ({
     }
     setPageZakanay(prevPage => prevPage + 1);
   }
-  const initilise = () => {
-    console.log('initilise');
-    setParticipantVotesComments(null);
-    setParticipantContreVotesComments(null);
-    setPageAlainay(1);
-    setPageZakanay(1);
-    console.log("setPageAlainay", pageAlainay)
-  }
 
-  useEffect(() => {
-    initilise();
-    fetchVotesComments();
-    fetchContreVotesComments();
-  }, [participantsDetails])
-
-  const handleScrollAlainay = async() => {
-    const listEl = document.getElementById('my-list-alainay');
-    console.log('listEl : ', listEl)
-    if (listEl && listEl.scrollTop + listEl.clientHeight === listEl.scrollHeight) {
+  const handleScrollAlainay = async(event :any) => {
+    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
+    if(bottom) {
       fetchVotesComments();
     }
   };
-  const handleScrollZakanay = async() => {
-    const listEl = document.getElementById('my-list-zakanay');
-    console.log('listEl : ', listEl)
-    if (listEl && listEl.scrollTop + listEl.clientHeight === listEl.scrollHeight) {
+  const handleScrollZakanay = async(event :any) => {
+    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
+    if(bottom) {
       fetchContreVotesComments();
     }
   };
+
+  useEffect(() => {
+    fetchVotesComments();
+    fetchContreVotesComments();
+  }, [participantsDetails])
   return (
     <Dialog open={open} onClose={handleCloseDialog} fullWidth>
       <div className={styles.modal}>
@@ -173,42 +162,39 @@ const DialogDetails = ({
           </Button>
         </DialogActions>
         <StyledEngineProvider injectFirst>
-          <div onScroll={() => console.log("TESTTTTTTT my-list-alainay")}>
             <SwipeableEdgeDrawer
               title="Alainay"
               openDrawer={openDrawerAlainay}
               toggleDrawer={toggleDrawerAlainay}
+              handleScroll={handleScrollAlainay}
             >
-              <div id="my-list-alainay" onScroll={() => console.log("TESTTTTTTT my-list-alainay")}>
-                {participantVotesComments &&
+              {participantVotesComments &&
                 participantVotesComments.map((voteComment, index) => (
-                  <Comment
-                    key={index}
-                    avatarSrc={voteComment.expand.voter.profil_pic}
-                    nom={voteComment.expand.voter.name}
-                    commentaire={voteComment.comment}
-                  />
+                    <Comment
+                      key={index}
+                      avatarSrc={voteComment.expand.voter.profil_pic}
+                      nom={voteComment.expand.voter.name}
+                      commentaire={voteComment.comment}
+                    />
                 ))}
-              </div>
             </SwipeableEdgeDrawer>
-          </div>
+            
           <div>
             <SwipeableEdgeDrawer
               title="Zakanay"
               openDrawer={openDrawerZakanay}
               toggleDrawer={toggleDrawerZakanay}
+              handleScroll={handleScrollZakanay}
             >
-              <div id="my-list-zakanay" onScroll={handleScrollZakanay}>
-                {participantContreVotesComments &&
-                participantContreVotesComments.map((voteComment, index) => (
-                  <Comment
-                    key={index}
-                    avatarSrc={voteComment.expand.voter.profil_pic}
-                    nom={voteComment.expand.voter.name}
-                    commentaire={voteComment.comment}
-                  />
-                ))}
-              </div>
+              {participantContreVotesComments &&
+              participantContreVotesComments.map((voteComment, index) => (
+                <Comment
+                  key={index}
+                  avatarSrc={voteComment.expand.voter.profil_pic}
+                  nom={voteComment.expand.voter.name}
+                  commentaire={voteComment.comment}
+                />
+              ))}
             </SwipeableEdgeDrawer>
           </div>
         </StyledEngineProvider>
