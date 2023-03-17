@@ -8,6 +8,7 @@ import styles from './detailsParticipant.module.css'
 import { getParticipantVotesCommentsList } from '../query/participantVotesComments'
 import { StyledEngineProvider } from '@mui/material/styles'
 import SwipeableEdgeDrawer from '../drawer/drawer'
+import { getParticipantDescription } from '../query/participant-description'
 
 type Props = {
   handleCloseDialog: () => void
@@ -39,6 +40,7 @@ const DialogDetails = ({
   const [totalPageZakanay, setTotalPageZakanay] = useState<number | null>(null);
   const [fetchLoading, setFetchLoading] = useState<boolean>(false);
   const [titleComment, setTitleComment] = useState<string>("Alainao sa Zakanao ?");
+  const [description, setDescription] = useState<string | null>(null);
 
   const [participantVotesComments, setParticipantVotesComments] =
     useState<ParticipantVotesComments[] | null>(null)
@@ -99,6 +101,11 @@ const DialogDetails = ({
     setFetchLoading(false);
   }
 
+  const fetchDescription = async() => {
+    const description = await getParticipantDescription(participantsDetails.id);
+    if(description) setDescription(description);
+  }
+
   const handleScrollAlainay = async(event :any) => {
     if(totalPageAlainay && totalPageAlainay >= pageAlainay) {
       const scrollLevel = event.target.scrollHeight - event.target.scrollTop;
@@ -128,6 +135,7 @@ const DialogDetails = ({
     setPageZakanay(1);
     setTotalPageAlainay(null);
     setTotalPageZakanay(null);
+    setDescription(null);
     initialiseParticipantDetails();
   }
 
@@ -135,6 +143,7 @@ const DialogDetails = ({
     setFetchLoading(true);  
     fetchVotesComments();
     fetchContreVotesComments();
+    fetchDescription();
   }, [participantsDetails])
 
   return (
@@ -162,7 +171,9 @@ const DialogDetails = ({
           {participantsDetails.full_univ_name}
         </h2>
         <p className={styles.city}>{participantsDetails.city}</p>
-        <p className={styles.description}>{participantsDetails.description}</p>
+        <p className={styles.description}>
+          {description ? description : <CircularProgress />}
+        </p>
         <div className={styles.alainay}>
           <span>
             <AiFillHeart size={50} /> &nbsp; Alainay
@@ -213,8 +224,7 @@ const DialogDetails = ({
                       commentaire={voteComment.comment}
                     />
                 ))}
-              { fetchLoading && <CircularProgress />
-              }
+              { fetchLoading && <CircularProgress /> }
             </SwipeableEdgeDrawer>
             
           <div>
@@ -233,6 +243,7 @@ const DialogDetails = ({
                   commentaire={voteComment.comment}
                 />
               ))}
+              { fetchLoading && <CircularProgress />}
             </SwipeableEdgeDrawer>
           </div>
         </StyledEngineProvider>
