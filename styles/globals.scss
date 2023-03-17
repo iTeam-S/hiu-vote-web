@@ -121,3 +121,14 @@ $card-show-delay: 0.2s;
 #tsparticles {
   z-index: 0;
 }
+
+// drawer container
+.MuiBox-root {
+  .title-alainay {
+    z-index: 3 !important;
+  }
+
+  .title-zakanay {
+    display: none;
+  }
+}

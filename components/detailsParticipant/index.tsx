@@ -239,6 +239,7 @@ const DialogDetails = ({
         <StyledEngineProvider injectFirst>
           <SwipeableEdgeDrawer
             title={titleComment}
+            titleClass="title-alinay"
             openDrawer={openDrawerAlainay}
             toggleDrawer={toggleDrawerAlainay}
             handleScroll={handleScrollAlainay}
@@ -266,6 +267,7 @@ const DialogDetails = ({
           <div>
             <SwipeableEdgeDrawer
               title={titleComment}
+              titleClass={openDrawerZakanay ? '' : 'title-zakanay'}
               openDrawer={openDrawerZakanay}
               toggleDrawer={toggleDrawerZakanay}
               handleScroll={handleScrollZakanay}

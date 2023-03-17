@@ -34,6 +34,7 @@ const Puller = styled(Box)(({ theme }) => ({
 type DrawerProps = {
   children: ReactNode
   title: string
+  titleClass: string
   openDrawer: boolean
   toggleDrawer: (newOpenDrawer: boolean) => () => void
   handleScroll: (event: React.UIEvent<HTMLDivElement>) => void
@@ -42,6 +43,7 @@ type DrawerProps = {
 export default function SwipeableEdgeDrawer({
   children,
   title,
+  titleClass,
   openDrawer,
   toggleDrawer,
   handleScroll,
@@ -69,6 +71,7 @@ export default function SwipeableEdgeDrawer({
           background: '#eeeeee0',
         }}
       ></Box>
+
       <SwipeableDrawer
         container={container}
         anchor="bottom"
@@ -93,10 +96,12 @@ export default function SwipeableEdgeDrawer({
             left: 0,
           }}
         >
-          <Puller />
-          <Typography sx={{ p: 2, color: 'text.secondary' }}>
-            {title}
-          </Typography>
+          <div className={titleClass}>
+            <Puller />
+            <Typography sx={{ p: 2, color: 'text.secondary' }}>
+              {title}
+            </Typography>
+          </div>
         </StyledBox>
         <StyledBox
           sx={{
