@@ -29,6 +29,10 @@ export default function Participant({ nbrVoters }: Props) {
     setParticipantsList(participants)
   }
 
+  const initialiseParticipantDetails = () => {
+    setParticipant(null);
+  }
+
   const handleClickDetails = async (idParticipant: string) => {
     const participantsDetails = participantsList?.find(
       (element) => element.id === idParticipant,
@@ -70,7 +74,7 @@ export default function Participant({ nbrVoters }: Props) {
           handleCloseDialog={handleCloseDialog}
           open={openDialog}
           participantsDetails={participant}
-          nbrVoters={nbrVoters}
+          initialiseParticipantDetails={initialiseParticipantDetails}
         />
       )}
 

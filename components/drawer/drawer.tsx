@@ -36,6 +36,7 @@ type DrawerProps = {
   title: string
   openDrawer: boolean
   toggleDrawer: (newOpenDrawer: boolean) => () => void
+  handleScroll: (event: any) => void
 }
 
 export default function SwipeableEdgeDrawer({
@@ -43,10 +44,10 @@ export default function SwipeableEdgeDrawer({
   title,
   openDrawer,
   toggleDrawer,
+  handleScroll,
 }: DrawerProps) {
   const containerRef = React.useRef(null)
   const container = containerRef.current
-
   return (
     <Root>
       <CssBaseline />
@@ -91,6 +92,7 @@ export default function SwipeableEdgeDrawer({
             right: 0,
             left: 0,
           }}
+          
         >
           <Puller />
           <Typography sx={{ p: 2, color: 'text.secondary' }}>
@@ -104,6 +106,7 @@ export default function SwipeableEdgeDrawer({
             height: '100%',
             overflow: 'auto',
           }}
+          onScroll={(event)=> handleScroll(event)}
         >
           <div>{children}</div>
         </StyledBox>

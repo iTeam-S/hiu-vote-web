@@ -14,7 +14,6 @@ export const getParticipantVotesCommentsList = async ({
   idParticipant,
   collection,
 }: Params): Promise<ParticipantVotesCommentsList> => {
-  console.log('idParticipant :', idParticipant)
   const config: AxiosRequestConfig = {
     method: 'get',
     url:
