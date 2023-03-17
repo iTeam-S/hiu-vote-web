@@ -60,14 +60,9 @@ export default function ParticipantCard({
   const [listComments, setListComments] = useState<VotesParticipant[] | null>(
     null,
   )
-  const badgeStyle1 = {
+  const badgeStyle = {
     '& .MuiBadge-badge': {
       backgroundColor: '#fafafa',
-    },
-  }
-  const badgeStyle2 = {
-    '& .MuiBadge-badge': {
-      backgroundColor: '#37a59f',
     },
   }
 
@@ -107,7 +102,7 @@ export default function ParticipantCard({
               </div>
               <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
                 {voters ? (
-                  <Badge badgeContent={voteCountCalculate} sx={badgeStyle1}>
+                  <Badge badgeContent={voteCountCalculate} sx={badgeStyle}>
                     <AvatarGroup max={3}>
                       {voters &&
                         voters.map((element, index) => (
@@ -169,7 +164,7 @@ export default function ParticipantCard({
                 {againstVoters ? (
                   <Badge
                     badgeContent={contreVoteCountCalculate}
-                    sx={badgeStyle2}
+                    sx={badgeStyle}
                   >
                     <AvatarGroup max={3}>
                       {againstVoters.map((element, index) => (
