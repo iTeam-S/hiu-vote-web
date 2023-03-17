@@ -191,7 +191,16 @@ const DialogDetails = ({
         </h2>
         <p className={styles.city}>{participantsDetails.city}</p>
         <p className={styles.description}>
-          {description ? description : <CircularProgress />}
+          {description ? (
+            description
+          ) : (
+            <CircularProgress
+              style={{
+                color: '#eee',
+                marginLeft: '45%',
+              }}
+            />
+          )}
         </p>
         <div className={styles.alainay}>
           <span>
@@ -271,7 +280,14 @@ const DialogDetails = ({
                     />
                   </div>
                 ))}
-              {fetchLoading && <CircularProgress />}
+              {fetchLoading && (
+                <CircularProgress
+                  style={{
+                    color: '#eee',
+                    marginLeft: '45%',
+                  }}
+                />
+              )}
             </SwipeableEdgeDrawer>
           </div>
         </StyledEngineProvider>
