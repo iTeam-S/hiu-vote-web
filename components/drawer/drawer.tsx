@@ -44,18 +44,17 @@ export default function SwipeableEdgeDrawer({
   title,
   openDrawer,
   toggleDrawer,
-  handleScroll
+  handleScroll,
 }: DrawerProps) {
   const containerRef = React.useRef(null)
   const container = containerRef.current
-
   return (
     <Root>
       <CssBaseline />
       <Global
         styles={{
           '.MuiDrawer-root > .MuiPaper-root': {
-            height: '25%',
+            height: '92%',
             overflow: 'visible',
             maxWidth: 600,
             margin: 'auto',

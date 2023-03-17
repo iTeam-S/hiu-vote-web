@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dialog, DialogActions, Tooltip, Box, Typography, List } from '@mui/material'
-import { ParticipantType, ParticipantVotesComments, ParticipantVotesCommentsList } from '../type'
-import { Avatar, AvatarGroup, CardMedia } from '@mui/material'
+import { Button, Dialog, DialogActions, Box, Typography, CircularProgress } from '@mui/material'
+import { ParticipantType, ParticipantVotesComments } from '../type'
+import { Avatar, CardMedia } from '@mui/material'
 import { AiFillHeart } from 'react-icons/ai'
 import { GiStrong } from 'react-icons/gi'
 import styles from './detailsParticipant.module.css'
@@ -13,7 +13,7 @@ type Props = {
   handleCloseDialog: () => void
   open: boolean
   participantsDetails: ParticipantType
-  nbrVoters: number
+  initialiseParticipantDetails: () => void
 }
 
 type PropsComment = {
@@ -22,16 +22,23 @@ type PropsComment = {
   commentaire: string,
 }
 
+const fetchPerPage = 15;
+
 const DialogDetails = ({
   handleCloseDialog,
   open,
   participantsDetails,
+  initialiseParticipantDetails
 }: Props) => {
-  const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false)
-  const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false)
+  const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false);
+  const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false);
 
   const [pageAlainay, setPageAlainay] = useState<number>(1);
   const [pageZakanay, setPageZakanay] = useState<number>(1);
+  const [totalPageAlainay, setTotalPageAlainay] = useState<number | null>(null);
+  const [totalPageZakanay, setTotalPageZakanay] = useState<number | null>(null);
+  const [fetchLoading, setFetchLoading] = useState<boolean>(false);
+  const [titleComment, setTitleComment] = useState<string>("Alainao sa Zakanao ?");
 
   const [participantVotesComments, setParticipantVotesComments] =
     useState<ParticipantVotesComments[] | null>(null)
@@ -47,62 +54,91 @@ const DialogDetails = ({
   const votesAlainay = participantsDetails.expand.participant_pourcent;
 
   const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
-    setOpenDrawerAlainay(newOpenDrawer)
+    setTitleComment("Alainay");
+    setOpenDrawerAlainay(newOpenDrawer);
+    if(!newOpenDrawer) setTitleComment("Alainao sa Zakanao ?")
   }
   const toggleDrawerZakanay = (newOpenDrawer: boolean) => () => {
-    setOpenDrawerZakanay(newOpenDrawer)
+    setTitleComment("Zakanay");
+    setOpenDrawerZakanay(newOpenDrawer);
+    if(!newOpenDrawer) setTitleComment("Alainao sa Zakanao ?")
   }
 
   const fetchVotesComments = async () => {
-    const newtVotesComments = await getParticipantVotesCommentsList({
-      page: pageAlainay,
-      perPage: 5,
-      idParticipant: participantsDetails.id,
-      collection: 'votes',
-    })
-    if(participantVotesComments) {
-      setParticipantVotesComments([...participantVotesComments, ...newtVotesComments.items])
-    } else {
-      setParticipantVotesComments(newtVotesComments.items)
-    }
-    setPageAlainay(pageAlainay + 1);
+      const newtVotesComments = await getParticipantVotesCommentsList({
+        page: pageAlainay,
+        perPage: fetchPerPage,
+        idParticipant: participantsDetails.id,
+        collection: 'votes',
+      })
+      setTotalPageAlainay(newtVotesComments.totalPages);
+      if(participantVotesComments) {
+        setParticipantVotesComments([...participantVotesComments, ...newtVotesComments.items])
+      } else {
+        setParticipantVotesComments(newtVotesComments.items)
+      }
+      setPageAlainay(pageAlainay + 1);
+      setFetchLoading(false);
   }
 
   const fetchContreVotesComments = async () => {
     const newContreVotesComments =
       await getParticipantVotesCommentsList({
         page: pageZakanay,
-        perPage: 5,
+        perPage: fetchPerPage,
         idParticipant: participantsDetails.id,
         collection: 'contre_votes',
       })
+    setTotalPageZakanay(newContreVotesComments.totalPages);
     if(participantContreVotesComments ) {
       setParticipantContreVotesComments([...participantContreVotesComments, ...newContreVotesComments.items])
     } else {
       setParticipantContreVotesComments(newContreVotesComments.items)
     }
     setPageZakanay(prevPage => prevPage + 1);
+    setFetchLoading(false);
   }
 
   const handleScrollAlainay = async(event :any) => {
-    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
-    if(bottom) {
-      fetchVotesComments();
+    if(totalPageAlainay && totalPageAlainay >= pageAlainay) {
+      const scrollLevel = event.target.scrollHeight - event.target.scrollTop;
+      const bottom =  scrollLevel >= event.target.clientHeight - 3 && scrollLevel <= event.target.clientHeight + 3;
+      if(bottom) {
+        setFetchLoading(true);
+        fetchVotesComments();
+      }
     }
   };
   const handleScrollZakanay = async(event :any) => {
-    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
-    if(bottom) {
-      fetchContreVotesComments();
+    if(totalPageZakanay && totalPageZakanay >= pageZakanay) {
+      const scrollLevel = event.target.scrollHeight - event.target.scrollTop;
+      const bottom =  scrollLevel >= event.target.clientHeight - 3 && scrollLevel <= event.target.clientHeight + 3;
+      if(bottom) {
+        setFetchLoading(true);
+        fetchContreVotesComments();
+      }
     }
   };
 
+  const handleCloseDialogInitialise = () => {
+    handleCloseDialog();
+    setParticipantVotesComments(null);
+    setParticipantContreVotesComments(null);
+    setPageAlainay(1);
+    setPageZakanay(1);
+    setTotalPageAlainay(null);
+    setTotalPageZakanay(null);
+    initialiseParticipantDetails();
+  }
+
   useEffect(() => {
+    setFetchLoading(true);  
     fetchVotesComments();
     fetchContreVotesComments();
   }, [participantsDetails])
+
   return (
-    <Dialog open={open} onClose={handleCloseDialog} fullWidth>
+    <Dialog open={open} onClose={handleCloseDialogInitialise} fullWidth>
       <div className={styles.modal}>
         <div className={styles.logo}>
           <CardMedia
@@ -163,7 +199,7 @@ const DialogDetails = ({
         </DialogActions>
         <StyledEngineProvider injectFirst>
             <SwipeableEdgeDrawer
-              title="Alainay"
+              title={titleComment}
               openDrawer={openDrawerAlainay}
               toggleDrawer={toggleDrawerAlainay}
               handleScroll={handleScrollAlainay}
@@ -177,11 +213,13 @@ const DialogDetails = ({
                       commentaire={voteComment.comment}
                     />
                 ))}
+              { fetchLoading && <CircularProgress />
+              }
             </SwipeableEdgeDrawer>
             
           <div>
             <SwipeableEdgeDrawer
-              title="Zakanay"
+              title={titleComment}
               openDrawer={openDrawerZakanay}
               toggleDrawer={toggleDrawerZakanay}
               handleScroll={handleScrollZakanay}
