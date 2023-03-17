@@ -15,6 +15,7 @@ import styles from './detailsParticipant.module.css'
 import { getParticipantVotesCommentsList } from '../query/participantVotesComments'
 import { StyledEngineProvider } from '@mui/material/styles'
 import SwipeableEdgeDrawer from '../drawer/drawer'
+import { getParticipantDescription } from '../query/participant-description'
 
 type Props = {
   handleCloseDialog: () => void
@@ -48,6 +49,7 @@ const DialogDetails = ({
   const [titleComment, setTitleComment] = useState<string>(
     'Alainao sa Zakanao ?',
   )
+  const [description, setDescription] = useState<string | null>(null)
 
   const [participantVotesComments, setParticipantVotesComments] = useState<
     ParticipantVotesComments[] | null
@@ -114,6 +116,11 @@ const DialogDetails = ({
     setFetchLoading(false)
   }
 
+  const fetchDescription = async () => {
+    const description = await getParticipantDescription(participantsDetails.id)
+    if (description) setDescription(description)
+  }
+
   const handleScrollAlainay = async (event: any) => {
     if (totalPageAlainay && totalPageAlainay >= pageAlainay) {
       const scrollLevel = event.target.scrollHeight - event.target.scrollTop
@@ -147,6 +154,7 @@ const DialogDetails = ({
     setPageZakanay(1)
     setTotalPageAlainay(null)
     setTotalPageZakanay(null)
+    setDescription(null)
     initialiseParticipantDetails()
   }
 
@@ -154,6 +162,7 @@ const DialogDetails = ({
     setFetchLoading(true)
     fetchVotesComments()
     fetchContreVotesComments()
+    fetchDescription()
   }, [participantsDetails])
 
   return (
@@ -181,7 +190,9 @@ const DialogDetails = ({
           {participantsDetails.full_univ_name}
         </h2>
         <p className={styles.city}>{participantsDetails.city}</p>
-        <p className={styles.description}>{participantsDetails.description}</p>
+        <p className={styles.description}>
+          {description ? description : <CircularProgress />}
+        </p>
         <div className={styles.alainay}>
           <span>
             <AiFillHeart size={50} /> &nbsp; Alainay
@@ -225,7 +236,7 @@ const DialogDetails = ({
           >
             {participantVotesComments &&
               participantVotesComments.map((voteComment, index) => (
-                <div className={styles.comments}>
+                <div className={styles.comments} key={index}>
                   <Comment
                     key={index}
                     avatarSrc={voteComment.expand.voter.profil_pic}
@@ -253,15 +264,15 @@ const DialogDetails = ({
             >
               {participantContreVotesComments &&
                 participantContreVotesComments.map((voteComment, index) => (
-                  <div className={styles.comments}>
+                  <div className={styles.comments} key={index}>
                     <Comment
-                      key={index}
                       avatarSrc={voteComment.expand.voter.profil_pic}
                       nom={voteComment.expand.voter.name}
                       commentaire={voteComment.comment}
                     />
                   </div>
                 ))}
+              {fetchLoading && <CircularProgress />}
             </SwipeableEdgeDrawer>
           </div>
         </StyledEngineProvider>
