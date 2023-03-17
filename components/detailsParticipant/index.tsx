@@ -238,7 +238,6 @@ const DialogDetails = ({
               participantVotesComments.map((voteComment, index) => (
                 <div className={styles.comments} key={index}>
                   <Comment
-                    key={index}
                     avatarSrc={voteComment.expand.voter.profil_pic}
                     nom={voteComment.expand.voter.name}
                     commentaire={voteComment.comment}

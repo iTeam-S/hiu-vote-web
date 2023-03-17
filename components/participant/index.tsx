@@ -80,10 +80,9 @@ export default function Participant({ nbrVoters }: Props) {
 
       {participantsList ? (
         participantsList.map((card, index) => (
-          <div className="card-show">
+          <div className="card-show" key={index}>
             <ParticipantCard
               id={card.id}
-              key={index}
               name={card.univ_name}
               logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
               votesPourcentage={card.expand.participant_pourcent.replace(
@@ -99,7 +98,7 @@ export default function Participant({ nbrVoters }: Props) {
           </div>
         ))
       ) : (
-        <CircularProgress style={{ marginTop: '40%', color: '#eee' }} />
+        <CircularProgress style={{ marginTop: 130, color: '#eee' }} />
       )}
     </div>
   )
