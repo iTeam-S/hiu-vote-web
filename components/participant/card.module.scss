@@ -71,13 +71,35 @@
       text-align: center;
     }
 
-    @mixin vote_style(
-      $bg_color: rgba(0, 128, 128, 0.678),
-      $stat_color: #eee,
-      $span_color: #333
-    ) {
+    @mixin vote_style($bg_status, $stat_color, $span_color) {
       margin-top: 1.2rem;
-      background-color: $bg_color;
+
+      @if ($bg_status) {
+        background: rgb(27, 27, 27);
+        background: linear-gradient(
+          266deg,
+          rgba(27, 27, 27, 1) 0%,
+          rgba(52, 52, 52, 1) 0%,
+          rgba(93, 93, 93, 1) 0%,
+          rgba(136, 136, 136, 1) 0%,
+          rgba(148, 148, 148, 1) 0%,
+          rgba(193, 193, 193, 1) 50%
+        );
+      } @else {
+        background: rgb(65, 65, 65);
+        background: linear-gradient(
+          94deg,
+          rgba(65, 65, 65, 1) 0%,
+          rgba(72, 156, 158, 1) 0%,
+          rgba(61, 149, 153, 1) 12%,
+          rgba(38, 135, 144, 1) 36%,
+          rgba(20, 124, 136, 1) 61%,
+          rgba(33, 118, 127, 1) 72%,
+          rgba(43, 113, 120, 1) 100%,
+          rgba(89, 89, 89, 1) 100%
+        );
+      }
+
       border-radius: 10px;
       padding: 1rem;
       padding-right: 2rem;
@@ -104,7 +126,7 @@
     }
 
     .alainay {
-      @include vote_style();
+      @include vote_style(false, #eee, #333);
       @include breakpoint(max, 576px) {
         @include avatar_adjust();
       }
@@ -115,7 +137,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      @include vote_style(#f8f8f8fa, #0c0c0c, #333);
+      @include vote_style(true, #0c0c0c, #333);
       @include breakpoint(max, 576px) {
         @include avatar_adjust();
       }
