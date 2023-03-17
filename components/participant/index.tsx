@@ -30,7 +30,7 @@ export default function Participant({ nbrVoters }: Props) {
   }
 
   const initialiseParticipantDetails = () => {
-    setParticipant(null);
+    setParticipant(null)
   }
 
   const handleClickDetails = async (idParticipant: string) => {
@@ -99,7 +99,7 @@ export default function Participant({ nbrVoters }: Props) {
           </div>
         ))
       ) : (
-        <CircularProgress style={{ marginTop: 100 }} color="success" />
+        <CircularProgress style={{ marginTop: '40%', color: '#eee' }} />
       )}
     </div>
   )

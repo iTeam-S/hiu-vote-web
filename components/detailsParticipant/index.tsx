@@ -234,7 +234,14 @@ const DialogDetails = ({
                   />
                 </div>
               ))}
-            {fetchLoading && <CircularProgress />}
+            {fetchLoading && (
+              <CircularProgress
+                style={{
+                  color: '#eee',
+                  marginTop: '50%',
+                }}
+              />
+            )}
           </SwipeableEdgeDrawer>
 
           <div>
