@@ -121,6 +121,7 @@ const DialogDetails = ({
     if (description) setDescription(description)
   }
 
+  // eslint-disable-next-line
   const handleScrollAlainay = async (event: any) => {
     if (totalPageAlainay && totalPageAlainay >= pageAlainay) {
       const scrollLevel = event.target.scrollHeight - event.target.scrollTop
@@ -133,6 +134,8 @@ const DialogDetails = ({
       }
     }
   }
+
+  // eslint-disable-next-line
   const handleScrollZakanay = async (event: any) => {
     if (totalPageZakanay && totalPageZakanay >= pageZakanay) {
       const scrollLevel = event.target.scrollHeight - event.target.scrollTop

@@ -5,11 +5,7 @@ import { getParticipants } from '../query/participants'
 import { ParticipantType, pb } from '../type'
 import ParticipantCard from './card'
 
-interface Props {
-  nbrVoters: number
-}
-
-export default function Participant({ nbrVoters }: Props) {
+export default function Participant() {
   const [participantsList, setParticipantsList] = useState<
     ParticipantType[] | null
   >(null)
