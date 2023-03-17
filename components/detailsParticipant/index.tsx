@@ -225,12 +225,14 @@ const DialogDetails = ({
           >
             {participantVotesComments &&
               participantVotesComments.map((voteComment, index) => (
-                <Comment
-                  key={index}
-                  avatarSrc={voteComment.expand.voter.profil_pic}
-                  nom={voteComment.expand.voter.name}
-                  commentaire={voteComment.comment}
-                />
+                <div className={styles.comments}>
+                  <Comment
+                    key={index}
+                    avatarSrc={voteComment.expand.voter.profil_pic}
+                    nom={voteComment.expand.voter.name}
+                    commentaire={voteComment.comment}
+                  />
+                </div>
               ))}
             {fetchLoading && <CircularProgress />}
           </SwipeableEdgeDrawer>
@@ -244,12 +246,14 @@ const DialogDetails = ({
             >
               {participantContreVotesComments &&
                 participantContreVotesComments.map((voteComment, index) => (
-                  <Comment
-                    key={index}
-                    avatarSrc={voteComment.expand.voter.profil_pic}
-                    nom={voteComment.expand.voter.name}
-                    commentaire={voteComment.comment}
-                  />
+                  <div className={styles.comments}>
+                    <Comment
+                      key={index}
+                      avatarSrc={voteComment.expand.voter.profil_pic}
+                      nom={voteComment.expand.voter.name}
+                      commentaire={voteComment.comment}
+                    />
+                  </div>
                 ))}
             </SwipeableEdgeDrawer>
           </div>
