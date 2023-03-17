@@ -8,6 +8,7 @@
   padding: 2rem;
   overflow-x: hidden;
   max-width: __convertToRem($value: 800px);
+  min-width: __convertToRem($value: 306px);
 
   .logo {
     @include animation-zoom($in-out: in);

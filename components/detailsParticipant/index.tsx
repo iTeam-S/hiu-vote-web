@@ -191,7 +191,7 @@ const DialogDetails = ({
           <div className={styles.avatar}>
             <div>
               <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
-                Voir plus (Alainay) ...
+                Voir plus
               </button>
             </div>
           </div>
@@ -206,7 +206,7 @@ const DialogDetails = ({
           <div className={styles.avatar}>
             <div>
               <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
-                Voir plus (Zakanay) ...
+                Voir plus
               </button>
             </div>
           </div>
