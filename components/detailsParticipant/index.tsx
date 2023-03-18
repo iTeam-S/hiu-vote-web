@@ -28,6 +28,7 @@ type PropsComment = {
   avatarSrc: string
   nom: string
   commentaire: string
+  alainy?: string
 }
 
 const fetchPerPage = 15
@@ -56,15 +57,14 @@ const DialogDetails = ({
   >(null)
   const [participantContreVotesComments, setParticipantContreVotesComments] =
     useState<ParticipantVotesComments[] | null>(null)
-
   const logoSrc =
     participantsDetails.collectionId +
     '/' +
     participantsDetails.id +
     '/' +
     participantsDetails.logo
-  const votesAlainay = participantsDetails.expand.participant_pourcent
-
+  const votesAlainayCount = participantsDetails.expand.participant_pourcent
+  const votesZakanayCount = participantsDetails.expand.contre_votes_count
   const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
     setTitleComment('Alainay')
     setOpenDrawerAlainay(newOpenDrawer)
@@ -209,7 +209,7 @@ const DialogDetails = ({
           <span>
             <AiFillHeart size={50} /> &nbsp; Alainay
           </span>
-          <h2>{votesAlainay}</h2>
+          <h2>{votesAlainayCount}</h2>
           <hr />
           <div className={styles.avatar}>
             <div>
@@ -224,8 +224,8 @@ const DialogDetails = ({
           <span>
             <GiStrong size={50} /> &nbsp; Zakanay
           </span>
-          <hr style={{ marginTop: 10 }} />
-
+          <h2>{votesZakanayCount}</h2>
+          <hr />
           <div className={styles.avatar}>
             <div>
               <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
@@ -282,6 +282,10 @@ const DialogDetails = ({
                       avatarSrc={voteComment.expand.voter.profil_pic}
                       nom={voteComment.expand.voter.name}
                       commentaire={voteComment.comment}
+                      alainy={
+                        voteComment.expand.voter.expand?.['votes(voter)'][0]
+                          .expand.participant.univ_name
+                      }
                     />
                   </div>
                 ))}
@@ -301,12 +305,15 @@ const DialogDetails = ({
   )
 }
 
-const Comment = ({ avatarSrc, nom, commentaire }: PropsComment) => {
+const Comment = ({ avatarSrc, nom, commentaire, alainy }: PropsComment) => {
+  const alainyUniv = alainy ? "(mpanohana an'i " + alainy + ')' : null
   return (
     <Box display="flex" alignItems="center">
       <Avatar src={avatarSrc} />
       <Box ml={2}>
-        <Typography variant="subtitle1">{nom}</Typography>
+        <Typography variant="subtitle1">
+          {nom} {alainyUniv ?? null}
+        </Typography>
         <Typography variant="body1">{commentaire}</Typography>
       </Box>
     </Box>

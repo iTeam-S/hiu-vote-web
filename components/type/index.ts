@@ -96,6 +96,7 @@ export interface Voter {
   collectionId: string
   collectionName: string
   created: Date
+  expand?: VoterExpand
   fb_id: string
   id: string
   name: string
@@ -126,4 +127,24 @@ export interface ParticipantVotesComments {
 
 export interface ExpandParticipantVotesComments {
   voter: Voter
+}
+
+export interface VoterExpand {
+  'votes(voter)': VotesVoter[]
+}
+
+export interface VotesVoter {
+  collectionId: string
+  collectionName: string
+  comment: string
+  created: Date
+  expand: VotesVoterExpand
+  id: string
+  participant: string
+  updated: Date
+  voter: string
+}
+
+export interface VotesVoterExpand {
+  participant: ParticipantType
 }
