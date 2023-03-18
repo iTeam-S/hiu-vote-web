@@ -255,7 +255,7 @@ const DialogDetails = ({
 }
 
 const Comment = ({ avatarSrc, nom, commentaire, alainy }: PropsComment) => {
-  const alainyUniv = alainy ? '(mpanohana ' + alainy + ')' : null;
+  const alainyUniv = alainy ? '(mpanohana an\'i ' + alainy + ')' : null;
   return (
     <Box display="flex" alignItems="center">
       <Avatar src={avatarSrc} />
