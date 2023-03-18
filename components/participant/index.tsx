@@ -5,11 +5,7 @@ import { getParticipants } from '../query/participants'
 import { ParticipantType, pb } from '../type'
 import ParticipantCard from './card'
 
-interface Props {
-  nbrVoters: number
-}
-
-export default function Participant({ nbrVoters }: Props) {
+export default function Participant() {
   const [participantsList, setParticipantsList] = useState<
     ParticipantType[] | null
   >(null)
@@ -27,6 +23,10 @@ export default function Participant({ nbrVoters }: Props) {
   async function getListParticipants() {
     const participants = await getParticipants()
     setParticipantsList(participants)
+  }
+
+  const initialiseParticipantDetails = () => {
+    setParticipant(null)
   }
 
   const handleClickDetails = async (idParticipant: string) => {
@@ -70,16 +70,15 @@ export default function Participant({ nbrVoters }: Props) {
           handleCloseDialog={handleCloseDialog}
           open={openDialog}
           participantsDetails={participant}
-          nbrVoters={nbrVoters}
+          initialiseParticipantDetails={initialiseParticipantDetails}
         />
       )}
 
       {participantsList ? (
         participantsList.map((card, index) => (
-          <div className="card-show">
+          <div className="card-show" key={index}>
             <ParticipantCard
               id={card.id}
-              key={index}
               name={card.univ_name}
               logoSrc={card.collectionId + '/' + card.id + '/' + card.logo}
               votesPourcentage={card.expand.participant_pourcent.replace(
@@ -95,7 +94,7 @@ export default function Participant({ nbrVoters }: Props) {
           </div>
         ))
       ) : (
-        <CircularProgress style={{ marginTop: 100 }} color="success" />
+        <CircularProgress style={{ marginTop: 130, color: '#eee' }} />
       )}
     </div>
   )

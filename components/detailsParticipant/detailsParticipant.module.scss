@@ -8,6 +8,7 @@
   padding: 2rem;
   overflow-x: hidden;
   max-width: __convertToRem($value: 800px);
+  min-width: __convertToRem($value: 306px);
 
   .logo {
     @include animation-zoom($in-out: in);
@@ -66,6 +67,7 @@
     @include animation-scale($scaleValue: 0.8);
     @include effect-box-shadow($opacity: solid);
     transition: all 0.3s ease-in-out;
+    max-height: 200px;
 
     &:hover {
       border-radius: 25px;
@@ -106,18 +108,57 @@
       margin-left: 2rem;
       margin-right: 2rem;
       overflow: auto;
+
+      button {
+        padding: 0.5rem;
+        border-radius: 5px;
+        margin: 0.5rem;
+
+        &:hover {
+          background-color: #777777;
+        }
+      }
     }
   }
 
   button {
     margin: auto;
     margin-top: 1rem;
+    margin-bottom: 3rem;
     background-color: #eee;
 
     &:hover {
       color: #eee !important;
       border: solid 1px #eee;
       background-color: teal;
+    }
+  }
+
+  .comments {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin: auto;
+    background-color: #e0e0e0e1;
+    max-width: 90%;
+    min-width: __convertToRem($value: 320px);
+    padding: 0.5rem;
+    border-radius: 7px;
+    margin-top: 0.3rem;
+    color: #444;
+    @include effect-box-shadow-inset($opacity: small);
+    @include animation-fade($in-out: in);
+
+    p {
+      font-size: small;
+      text-align: start;
+      color: #555;
+    }
+
+    h6 {
+      color: #302f2f;
+      font-weight: 600;
     }
   }
 }
