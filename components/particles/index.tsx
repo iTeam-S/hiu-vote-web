@@ -36,7 +36,7 @@ export default function Particle() {
           },
         },
         particles: {
-          reduceDuplicates: false,
+          reduceDuplicates: true,
           color: {
             value: '#dadada',
           },

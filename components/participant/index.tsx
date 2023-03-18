@@ -75,8 +75,8 @@ export default function Participant() {
       )}
 
       {participantsList ? (
-        participantsList.map((card, index) => (
-          <div className="card-show" key={index}>
+        participantsList.map((card) => (
+          <div className="card-show" key={card.id}>
             <ParticipantCard
               id={card.id}
               name={card.univ_name}
