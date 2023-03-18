@@ -47,15 +47,14 @@ const DialogDetails = ({
     useState<ParticipantVotesComments[] | null>(null)
   const [participantContreVotesComments, setParticipantContreVotesComments] =
     useState<ParticipantVotesComments[] | null>(null)
-  console.log('participantContreVotesComments tohanany : ' ,participantContreVotesComments? participantContreVotesComments[0].expand.voter.expand?.['votes(voter)'][0].expand.participant.univ_name : null);
   const logoSrc =
     participantsDetails.collectionId +
     '/' +
     participantsDetails.id +
     '/' +
     participantsDetails.logo;
-  const votesAlainay = participantsDetails.expand.participant_pourcent;
-
+  const votesAlainayCount = participantsDetails.expand.participant_pourcent;
+  const votesZakanayCount = participantsDetails.expand.contre_votes_count;
   const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
     setTitleComment("Alainay");
     setOpenDrawerAlainay(newOpenDrawer);
@@ -179,7 +178,7 @@ const DialogDetails = ({
           <span>
             <AiFillHeart size={50} /> &nbsp; Alainay
           </span>
-          <h2>{votesAlainay}</h2>
+          <h2>{votesAlainayCount}</h2>
           <hr />
           <div className={styles.avatar}>
             <div>
@@ -194,8 +193,8 @@ const DialogDetails = ({
           <span>
             <GiStrong size={50} /> &nbsp; Zakanay
           </span>
-          <hr style={{ marginTop: 10 }} />
-
+          <h2>{votesZakanayCount}</h2>
+          <hr />
           <div className={styles.avatar}>
             <div>
               <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
