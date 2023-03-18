@@ -12,6 +12,8 @@ module.exports = function (grunt) {
       './components/layouts/sidebar/SidebarLayout.module.scss',
     './components/participant/card.module.css':
       './components/participant/card.module.scss',
+    './components/contrib/contrib.module.css':
+      './components/contrib/contrib.module.scss',
     './components/detailsParticipant/detailsParticipant.module.css':
       './components/detailsParticipant/detailsParticipant.module.scss',
   }
