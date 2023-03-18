@@ -21,6 +21,7 @@ type PropsComment = {
   avatarSrc: string, 
   nom: string,
   commentaire: string,
+  alainy?: string,
 }
 
 const fetchPerPage = 15;
@@ -46,7 +47,7 @@ const DialogDetails = ({
     useState<ParticipantVotesComments[] | null>(null)
   const [participantContreVotesComments, setParticipantContreVotesComments] =
     useState<ParticipantVotesComments[] | null>(null)
-  
+  console.log('participantContreVotesComments tohanany : ' ,participantContreVotesComments? participantContreVotesComments[0].expand.voter.expand?.['votes(voter)'][0].expand.participant.univ_name : null);
   const logoSrc =
     participantsDetails.collectionId +
     '/' +
@@ -241,6 +242,8 @@ const DialogDetails = ({
                   avatarSrc={voteComment.expand.voter.profil_pic}
                   nom={voteComment.expand.voter.name}
                   commentaire={voteComment.comment}
+                  
+                  alainy={voteComment.expand.voter.expand?.['votes(voter)'][0].expand.participant.univ_name}
                 />
               ))}
               { fetchLoading && <CircularProgress />}
@@ -252,12 +255,13 @@ const DialogDetails = ({
   )
 }
 
-const Comment = ({ avatarSrc, nom, commentaire }: PropsComment) => {
+const Comment = ({ avatarSrc, nom, commentaire, alainy }: PropsComment) => {
+  const alainyUniv = alainy ? '(mpanohana ' + alainy + ')' : null;
   return (
     <Box display="flex" alignItems="center">
       <Avatar src={avatarSrc} />
       <Box ml={2}>
-        <Typography variant="subtitle1">{nom}</Typography>
+        <Typography variant="subtitle1">{nom} {alainyUniv ?? null}</Typography>
         <Typography variant="body1">{commentaire}</Typography>
       </Box>
     </Box>

@@ -14,11 +14,13 @@ export const getParticipantVotesCommentsList = async ({
   idParticipant,
   collection,
 }: Params): Promise<ParticipantVotesCommentsList> => {
+  const expand =
+    collection === 'votes' ? 'voter' : 'voter.votes(voter).participant'
   const config: AxiosRequestConfig = {
     method: 'get',
     url:
       process.env.API_URL +
-      `collections/${collection}/records?filter=(participant='${idParticipant}')&expand=voter&page=${page}&perPage=${perPage}`,
+      `collections/${collection}/records?filter=(participant='${idParticipant}')&expand=${expand}&page=${page}&perPage=${perPage}`,
     headers: {
       'Content-Type': 'application/json',
     },
