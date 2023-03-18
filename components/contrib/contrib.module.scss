@@ -10,16 +10,16 @@
   flex-wrap: wrap;
   gap: 2rem;
   min-width: __convertToRem($value: 250px);
-  background-color: #eeeeeeaf;
   margin: auto;
+  margin-top: 2rem;
   padding: 1rem;
   padding-left: 6rem;
   padding-right: 6rem;
-  border-radius: 15px;
 
   .profil {
     @include position-flex-center();
     flex-direction: column;
+    z-index: 3 !important;
 
     img {
       width: 152px;
@@ -36,7 +36,7 @@
     }
 
     h3 {
-      background-color: #a1a1a1;
+      background-color: #3f5755d8;
       color: #eee;
       padding: 0.2rem;
       border-radius: 5px;

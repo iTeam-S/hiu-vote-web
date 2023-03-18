@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styles from './contrib.module.css'
 
 interface IUser {
   login: string
@@ -7,13 +8,14 @@ interface IUser {
 
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
+  const realNames: string[] = ['Gaetan', 'Manambintsoa', 'Raja', 'Damia']
 
   useEffect(() => {
     const usernames: string[] = [
+      'Gaetan1903',
+      'Ntsoa2112',
       'RajaRakoto',
-      'RajaRakoto',
-      'RajaRakoto',
-      'RajaRakoto',
+      'Damichou',
     ]
     const promises: Promise<IUser>[] = usernames.map((username) =>
       fetch(`https://api.github.com/users/${username}`).then((response) =>
@@ -29,10 +31,30 @@ export default function Contrib() {
   }, [])
 
   return (
-    <div>
-      {githubProfilePics.map((profilePic, index) => (
-        <img src={profilePic} alt={`GitHub Profile ${index}`} key={index} />
-      ))}
+    <div
+      style={{
+        marginTop: 100,
+      }}
+    >
+      <hr />
+      <h2
+        style={{
+          textAlign: 'center',
+          fontSize: 32,
+          color: '#eee',
+        }}
+      >
+        Contributeurs
+      </h2>
+      <div id="contrib-link" className={styles.contrib}>
+        {githubProfilePics.map((profilePic, index) => (
+          <div className={styles.profil}>
+            <img src={profilePic} alt={`GitHub Profile ${index}`} key={index} />
+            <h3>{realNames[index]}</h3>
+          </div>
+        ))}
+      </div>
+      <hr />
     </div>
   )
 }
