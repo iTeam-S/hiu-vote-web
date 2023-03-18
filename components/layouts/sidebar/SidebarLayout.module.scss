@@ -37,9 +37,11 @@
       background: teal;
       transition: ease-in-out 0.3s;
       margin-right: 1rem;
+      color: #eee;
 
       &:hover {
         background: #ebebeb;
+        color: #444;
 
         & > a {
           transition: ease-in-out 0.3s;

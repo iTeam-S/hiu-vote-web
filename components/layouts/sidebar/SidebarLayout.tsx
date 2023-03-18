@@ -5,7 +5,7 @@ import styles from './SidebarLayout.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 
 function scrollToComponent() {
-  const element = document.querySelector('#voters-link') as HTMLElement
+  const element = document.querySelector('#contrib-link') as HTMLElement
   if (element !== null) {
     scroll.scrollTo(element.offsetTop, {
       duration: 1000,
@@ -16,7 +16,7 @@ function scrollToComponent() {
   }
 }
 
-export interface ISidebarLayout { }
+export interface ISidebarLayout {}
 
 const SidebarLayout: React.FC<ISidebarLayout> = () => {
   return (
@@ -41,7 +41,7 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
         <Stack spacing={2} direction="row">
           <nav className={styles.nav}>
             <button className={styles.primary_btn} onClick={scrollToComponent}>
-              Voters
+              Contributeurs
             </button>
           </nav>
         </Stack>
