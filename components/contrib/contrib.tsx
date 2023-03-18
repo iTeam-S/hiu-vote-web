@@ -48,7 +48,7 @@ export default function Contrib() {
       </h2>
       <div id="contrib-link" className={styles.contrib}>
         {githubProfilePics.map((profilePic, index) => (
-          <div className={styles.profil} key={index} >
+          <div className={styles.profil} key={index}>
             <img src={profilePic} alt={`GitHub Profile ${index}`} />
             <h3>{realNames[index]}</h3>
           </div>
