@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+
+.contrib {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  min-width: __convertToRem($value: 250px);
+  background-color: #eeeeeeaf;
+  margin: auto;
+  padding: 1rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  border-radius: 15px;
+
+  .profil {
+    @include position-flex-center();
+    flex-direction: column;
+
+    img {
+      width: 152px;
+      border-radius: 50%;
+      border: solid #fff 5px;
+
+      @include breakpoint(max, 626px) {
+        width: 148px;
+      }
+
+      @include breakpoint(max, 526px) {
+        width: 100px;
+      }
+    }
+
+    h3 {
+      background-color: #a1a1a1;
+      color: #eee;
+      padding: 0.2rem;
+      border-radius: 5px;
+    }
+  }
+}
