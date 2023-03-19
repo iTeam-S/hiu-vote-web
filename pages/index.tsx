@@ -1,9 +1,8 @@
-import { useEffect } from 'react'
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout'
+import FooterLayout from '../components/layouts/footer/FooterLayout'
 import Participant from '../components/participant'
 import Particle from '../components/particles'
-import { pb } from '../components/type'
 import styles from '../styles/Home.module.css'
 import { NextPageWithLayout } from './page'
 import Contrib from '../components/contrib/contrib'
@@ -15,19 +14,6 @@ import Analytics from 'analytics'
 import googleAnalytics from '@analytics/google-analytics'
 
 const Home: NextPageWithLayout = () => {
-  if (typeof window !== 'undefined') {
-    console.log('You are on the browser')
-  } else {
-    console.log('You are on the server')
-  }
-
-  // clean
-  useEffect(() => {
-    pb.collection('voters').subscribe('*', function () {
-      console.log('')
-    })
-  })
-
   return (
     <section className={styles.main}>
       <div className={styles.styledtext}>
@@ -63,6 +49,7 @@ Home.getLayout = (page) => {
     <PrimaryLayout>
       <SidebarLayout />
       {page}
+      <FooterLayout />
     </PrimaryLayout>
   )
 }

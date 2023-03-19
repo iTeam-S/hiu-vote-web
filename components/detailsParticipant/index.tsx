@@ -76,7 +76,7 @@ const DialogDetails = ({
     if (!newOpenDrawer) setTitleComment('Alainao sa Zakanao ?')
   }
 
-  const fetchVotesComments = async () => {
+  const fetchFirstVotesComments = async () => {
     const newtVotesComments = await getParticipantVotesCommentsList({
       page: pageAlainay,
       perPage: fetchPerPage,
@@ -84,13 +84,36 @@ const DialogDetails = ({
       collection: 'votes',
     })
     setTotalPageAlainay(newtVotesComments.totalPages)
+    setParticipantVotesComments(newtVotesComments.items)
+    setPageAlainay(pageAlainay + 1)
+    setFetchLoading(false)
+  }
+
+  const fetchFirstContreVotesComments = async () => {
+    const newContreVotesComments = await getParticipantVotesCommentsList({
+      page: pageZakanay,
+      perPage: fetchPerPage,
+      idParticipant: participantsDetails.id,
+      collection: 'contre_votes',
+    })
+    setTotalPageZakanay(newContreVotesComments.totalPages)
+    setParticipantContreVotesComments(newContreVotesComments.items)
+    setPageZakanay((prevPage) => prevPage + 1)
+    setFetchLoading(false)
+  }
+
+  const fetchVotesComments = async () => {
+    const newtVotesComments = await getParticipantVotesCommentsList({
+      page: pageAlainay,
+      perPage: fetchPerPage,
+      idParticipant: participantsDetails.id,
+      collection: 'votes',
+    })
     if (participantVotesComments) {
       setParticipantVotesComments([
         ...participantVotesComments,
         ...newtVotesComments.items,
       ])
-    } else {
-      setParticipantVotesComments(newtVotesComments.items)
     }
     setPageAlainay(pageAlainay + 1)
     setFetchLoading(false)
@@ -103,14 +126,11 @@ const DialogDetails = ({
       idParticipant: participantsDetails.id,
       collection: 'contre_votes',
     })
-    setTotalPageZakanay(newContreVotesComments.totalPages)
     if (participantContreVotesComments) {
       setParticipantContreVotesComments([
         ...participantContreVotesComments,
         ...newContreVotesComments.items,
       ])
-    } else {
-      setParticipantContreVotesComments(newContreVotesComments.items)
     }
     setPageZakanay((prevPage) => prevPage + 1)
     setFetchLoading(false)
@@ -149,8 +169,7 @@ const DialogDetails = ({
     }
   }
 
-  const handleCloseDialogInitialise = () => {
-    handleCloseDialog()
+  const initializeState = () => {
     setParticipantVotesComments(null)
     setParticipantContreVotesComments(null)
     setPageAlainay(1)
@@ -161,10 +180,15 @@ const DialogDetails = ({
     initialiseParticipantDetails()
   }
 
+  const handleCloseDialogInitialise = () => {
+    initializeState()
+    handleCloseDialog()
+  }
+
   useEffect(() => {
     setFetchLoading(true)
-    fetchVotesComments()
-    fetchContreVotesComments()
+    fetchFirstVotesComments()
+    fetchFirstContreVotesComments()
     fetchDescription()
   }, [participantsDetails])
 
@@ -198,6 +222,7 @@ const DialogDetails = ({
             description
           ) : (
             <CircularProgress
+              size={30}
               style={{
                 color: '#eee',
                 marginLeft: '45%',
@@ -259,6 +284,7 @@ const DialogDetails = ({
               ))}
             {fetchLoading && (
               <CircularProgress
+                size={30}
                 style={{
                   color: '#eee',
                   marginTop: '50%',
@@ -291,9 +317,9 @@ const DialogDetails = ({
                 ))}
               {fetchLoading && (
                 <CircularProgress
+                  size={30}
                   style={{
                     color: '#eee',
-                    marginLeft: '45%',
                   }}
                 />
               )}

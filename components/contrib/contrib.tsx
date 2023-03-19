@@ -8,14 +8,21 @@ interface IUser {
 
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
-  const realNames: string[] = ['Gaetan', 'Manambintsoa', 'Raja', 'Damia']
+  const realNames: string[] = [
+    'Manambintsoa',
+    'Gaetan',
+    'Damia',
+    'Raja',
+    'Rivo',
+  ]
 
   useEffect(() => {
     const usernames: string[] = [
-      'Gaetan1903',
       'Ntsoa2112',
-      'RajaRakoto',
+      'Gaetan1903',
       'Damichou',
+      'RajaRakoto',
+      'rivo2302',
     ]
     const promises: Promise<IUser>[] = usernames.map((username) =>
       fetch(`https://api.github.com/users/${username}`).then((response) =>
