@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import styles from './contrib.module.css'
 
@@ -14,6 +15,14 @@ export default function Contrib() {
     'Damia',
     'Raja',
     'Rivo',
+  ]
+
+  const linkLinkedin: string[] = [
+    'https://www.linkedin.com/in/ntsoa/',
+    'https://www.linkedin.com/in/gaetanj/',
+    'https://www.linkedin.com/mwlite/in/vololoniaina-damia-tsiafaratiana-b0394318a',
+    'https://portfolio-raja.netlify.app/',
+    'https://www.linkedin.com/in/rajaonarivony/',
   ]
 
   useEffect(() => {
@@ -55,10 +64,15 @@ export default function Contrib() {
       </h2>
       <div id="contrib-link" className={styles.contrib}>
         {githubProfilePics.map((profilePic, index) => (
-          <div className={styles.profil} key={index}>
+          <Link
+            href={linkLinkedin[index]}
+            target="_blank"
+            className={styles.profil}
+            key={index}
+          >
             <img src={profilePic} alt={`GitHub Profile ${index}`} />
             <h3>{realNames[index]}</h3>
-          </div>
+          </Link>
         ))}
       </div>
       <hr />

@@ -10,6 +10,7 @@ import React from 'react'
 import styles from './SidebarLayout.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import { FaUsers } from 'react-icons/fa'
+import Link from 'next/link'
 
 export interface ISidebarLayout {}
 
@@ -31,7 +32,7 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
   return (
     <AppBar position="fixed" color="secondary" className={styles.navbar}>
       <Toolbar>
-        <a href="https://iteam-s.mg/" target="_blank" rel="noreferrer">
+        <Link href="https://iteam-s.mg" target="_blank" rel="noreferrer">
           <Image
             className={styles.logo}
             src="https://iteam-s.mg/assets/img/LOGO.png"
@@ -40,7 +41,8 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
             height={50}
             style={{ marginRight: '1.5rem', width: '100', height: '100' }}
           />
-        </a>
+        </Link>
+
         <Typography
           className={styles.title}
           variant="h5"
