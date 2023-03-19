@@ -12,23 +12,41 @@ build-job:
   script:
     - yarn install
     - yarn build || exit 1
-
-deploy-job:
-  stage: deploy
-  environment:
-    name: production
+  
+.deploy-job: &deploy-job
   script:
     - apt-get update -y -qq
     - apt-get install -y -qq sshpass
     - export SSHPASS=$PASSWORD_SERVER
     - |
       sshpass -e ssh -t -oStrictHostKeyChecking=no "$USER_SERVER@$HOST_SERVER" <<EOF
-        cd /opt/web-ranking
+        cd $PROJECT_DIR
         git pull
-        echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
         yarn install
         yarn build
         pm2 restart web-ranking --update-env
       EOF
+
+deploy-to-staging:
+  <<: *deploy-job
+  variables:
+    PROJECT_DIR: web-ranking
+    HOST_SERVER: ${HOST_PREPROD}
+  stage: deploy
+  environment:
+    name: staging
+  only:
+    - main
+
+
+deploy-to-production:
+  <<: *deploy-job
+  variables:
+    PROJECT_DIR: /opt/web-ranking
+    HOST_SERVER: ${HOST_PROD}
+  stage: deploy
+  when: manual
+  environment:
+    name: production
   only:
     - main
