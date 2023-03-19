@@ -1,10 +1,15 @@
-import { AppBar, Stack, Toolbar, Typography } from '@mui/material'
+import {
+  AppBar,
+  Stack,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+} from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import styles from './SidebarLayout.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import { FaUsers } from 'react-icons/fa'
-import { useMediaQuery } from '@mui/material'
 
 export interface ISidebarLayout {}
 
