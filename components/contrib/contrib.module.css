@@ -39,4 +39,7 @@
   color: #eee;
   padding: 0.2rem;
   border-radius: 5px;
+}
+.contrib a {
+  text-decoration: none;
 } /*# sourceMappingURL=contrib.module.css.map */

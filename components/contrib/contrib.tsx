@@ -69,6 +69,7 @@ export default function Contrib() {
             target="_blank"
             className={styles.profil}
             key={index}
+            rel="noreferrer"
           >
             <img src={profilePic} alt={`GitHub Profile ${index}`} />
             <h3>{realNames[index]}</h3>
