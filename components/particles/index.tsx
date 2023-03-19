@@ -30,7 +30,7 @@ export default function Particle() {
             },
             repulse: {
               distance: 200,
-              duration: 0.6,
+              duration: 0,
             },
           },
         },
