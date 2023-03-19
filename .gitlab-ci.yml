@@ -23,7 +23,7 @@ deploy-job:
     - export SSHPASS=$PASSWORD_SERVER
     - |
       sshpass -e ssh -t -oStrictHostKeyChecking=no "$USER_SERVER@$HOST_SERVER" <<EOF
-        cd web-ranking
+        cd /opt/web-ranking
         git pull
         echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
         yarn install
