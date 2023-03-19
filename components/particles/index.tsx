@@ -17,7 +17,6 @@ export default function Particle() {
           events: {
             onClick: {
               enable: false,
-              mode: 'push',
             },
             onHover: {
               enable: true,
