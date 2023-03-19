@@ -31,7 +31,7 @@ type PropsComment = {
   alainy?: string
 }
 
-const fetchPerPage = 15
+const fetchPerPage = 25
 
 const DialogDetails = ({
   handleCloseDialog,
