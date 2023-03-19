@@ -11144,14 +11144,6 @@ react-messenger-customer-chat@^0.8.0:
   dependencies:
     prop-types "^15.6.0"
 
-react-preloaders2@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-preloaders2/-/react-preloaders2-3.0.5.tgz#b5d92a87d22a7de379da6c0c7c7c7bbe5940c70b"
-  integrity sha512-k/TY5IvzwfxSmzopLTA8DyAJ3f1Dn60TDTmZZbjNjXqfx5KArWMnFJRXVqjMLG3cX8JbODrNGpLafleWtIZNwQ==
-  dependencies:
-    prop-types "^15.7.2"
-    styled-components "^5.0.0-beta.0"
-
 react-query@^3.32.1:
   version "3.39.2"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.2.tgz#9224140f0296f01e9664b78ed6e4f69a0cc9216f"
@@ -12443,22 +12435,6 @@ style-to-object@0.3.0, style-to-object@^0.3.0:
   integrity sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==
   dependencies:
     inline-style-parser "0.1.1"
-
-styled-components@^5.0.0-beta.0:
-  version "5.3.9"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-5.3.9.tgz#641af2a8bb89904de708c71b439caa9633e8f0ba"
-  integrity sha512-Aj3kb13B75DQBo2oRwRa/APdB5rSmwUfN5exyarpX+x/tlM/rwZA2vVk2vQgVSP6WKaZJHWwiFrzgHt+CLtB4A==
-  dependencies:
-    "@babel/helper-module-imports" "^7.0.0"
-    "@babel/traverse" "^7.4.5"
-    "@emotion/is-prop-valid" "^1.1.0"
-    "@emotion/stylis" "^0.8.4"
-    "@emotion/unitless" "^0.7.4"
-    babel-plugin-styled-components ">= 1.12.0"
-    css-to-react-native "^3.0.0"
-    hoist-non-react-statics "^3.0.0"
-    shallowequal "^1.1.0"
-    supports-color "^5.5.0"
 
 styled-components@^5.3.8:
   version "5.3.8"
