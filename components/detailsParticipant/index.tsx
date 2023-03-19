@@ -222,6 +222,7 @@ const DialogDetails = ({
             description
           ) : (
             <CircularProgress
+              size={30}
               style={{
                 color: '#eee',
                 marginLeft: '45%',
@@ -283,6 +284,7 @@ const DialogDetails = ({
               ))}
             {fetchLoading && (
               <CircularProgress
+                size={30}
                 style={{
                   color: '#eee',
                   marginTop: '50%',
@@ -315,9 +317,9 @@ const DialogDetails = ({
                 ))}
               {fetchLoading && (
                 <CircularProgress
+                  size={30}
                   style={{
                     color: '#eee',
-                    marginLeft: '45%',
                   }}
                 />
               )}

@@ -1,5 +1,6 @@
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout'
+import FooterLayout from '../components/layouts/footer/FooterLayout'
 import Participant from '../components/participant'
 import Particle from '../components/particles'
 import styles from '../styles/Home.module.css'
@@ -48,6 +49,7 @@ Home.getLayout = (page) => {
     <PrimaryLayout>
       <SidebarLayout />
       {page}
+      <FooterLayout />
     </PrimaryLayout>
   )
 }

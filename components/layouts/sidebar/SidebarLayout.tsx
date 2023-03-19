@@ -1,8 +1,9 @@
 import { AppBar, Stack, Toolbar, Typography } from '@mui/material'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './SidebarLayout.module.css'
 import { animateScroll as scroll } from 'react-scroll'
+import { FaUsers } from 'react-icons/fa'
 
 function scrollToComponent() {
   const element = document.querySelector('#contrib-link') as HTMLElement
@@ -19,6 +20,15 @@ function scrollToComponent() {
 export interface ISidebarLayout {}
 
 const SidebarLayout: React.FC<ISidebarLayout> = () => {
+  const [widthScreen, setwidthScreen] = useState(window.innerWidth)
+  const isMobileScreen = widthScreen <= 656
+
+  useEffect(() => {
+    const handleResize = () => setwidthScreen(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <AppBar position="fixed" color="secondary" className={styles.navbar}>
       <Toolbar>
@@ -41,7 +51,14 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
         <Stack spacing={2} direction="row">
           <nav className={styles.nav}>
             <button className={styles.primary_btn} onClick={scrollToComponent}>
-              Contributeurs
+              {isMobileScreen ? (
+                <FaUsers size={25} />
+              ) : (
+                <>
+                  <FaUsers size={25} /> <span style={{ width: 10 }}></span>
+                  Contributeurs
+                </>
+              )}
             </button>
           </nav>
         </Stack>
