@@ -105,14 +105,14 @@ export default function ParticipantCard({
                   <Badge badgeContent={voteCountCalculate} sx={badgeStyle}>
                     <AvatarGroup max={3}>
                       {voters &&
-                        voters.map((element, index) => (
+                        voters.map((element) => (
                           <Tooltip
                             title={element.expand.voter.name}
                             placement="top"
                             arrow
+                            key={element.id}
                           >
                             <Avatar
-                              key={index}
                               src={element.expand.voter.profil_pic}
                               alt={element.expand.voter.name}
                             />
@@ -167,14 +167,14 @@ export default function ParticipantCard({
                     sx={badgeStyle}
                   >
                     <AvatarGroup max={3}>
-                      {againstVoters.map((element, index) => (
+                      {againstVoters.map((element) => (
                         <Tooltip
                           title={element.expand.voter.name}
                           placement="top"
                           arrow
+                          key={element.id}
                         >
                           <Avatar
-                            key={index}
                             src={element.expand.voter.profil_pic}
                             alt={element.expand.voter.name}
                           />

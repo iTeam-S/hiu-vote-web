@@ -3,9 +3,8 @@ import { Global } from '@emotion/react'
 import { styled } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { grey } from '@mui/material/colors'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import SwipeableDrawer from '@mui/material/SwipeableDrawer'
+import { IconButton, SwipeableDrawer, Typography, Box } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 
 const drawerBleeding = 56
 
@@ -101,8 +100,18 @@ export default function SwipeableEdgeDrawer({
             <Typography sx={{ p: 2, color: 'text.secondary' }}>
               {title}
             </Typography>
+            {openDrawer && (
+              <IconButton
+                size="small"
+                sx={{ position: 'absolute', right: 6, top: 0 }}
+                onClick={toggleDrawer(false)}
+              >
+                <CloseIcon />
+              </IconButton>
+            )}
           </div>
         </StyledBox>
+
         <StyledBox
           sx={{
             px: 2,
