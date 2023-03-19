@@ -64,6 +64,7 @@
     padding: 1rem;
     background-color: #dadada;
     border-radius: 6px;
+    min-height: __convertToRem($value: 370px);
     @include effect-box-shadow($opacity: smooth);
 
     .title {
@@ -154,9 +155,10 @@
       background-color: #3333332d;
       border-radius: 3px;
       padding: 0.5rem;
+      padding-bottom: 1rem;
       margin-top: 0.7rem;
       margin-left: 0.46rem;
-      overflow: auto;
+      max-height: __convertToRem($value: 80px);
 
       @include breakpoint(max, 576px) {
         margin-left: 0.52rem !important;
@@ -164,7 +166,6 @@
       }
 
       .core {
-        margin-top: 0.2rem;
         color: #eee;
         text-align: center;
         max-height: __convertToRem($value: 50px);

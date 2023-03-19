@@ -131,18 +131,9 @@ export default function ParticipantCard({
               </div>
               {listComments && listComments[currentIndex] && (
                 <div className={styles.comments}>
-                  <div>
-                    <Tooltip
-                      title={listComments[currentIndex].expand.voter.name}
-                      placement="top"
-                      arrow
-                    >
-                      <Avatar
-                        src={listComments[currentIndex].expand.voter.profil_pic}
-                        alt={listComments[currentIndex].expand.voter.name}
-                      />
-                    </Tooltip>
-                  </div>
+                  <p style={{ color: '#444242', fontWeight: 'bolder' }}>
+                    {listComments[currentIndex].expand.voter.name}
+                  </p>
                   <div className={styles.core}>
                     <FaQuoteLeft color="#444" />
                     &nbsp;
