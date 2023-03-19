@@ -48,6 +48,7 @@
     "react-tsparticles": "^2.9.3",
     "styled-components": "^5.3.8",
     "tsparticles": "^2.9.3",
+    "typed.js": "^2.0.132",
     "util": "^0.12.5"
   },
   "devDependencies": {
