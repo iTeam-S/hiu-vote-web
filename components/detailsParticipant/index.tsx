@@ -114,7 +114,7 @@ const DialogDetails = ({
         ...participantVotesComments,
         ...newtVotesComments.items,
       ])
-    } 
+    }
     setPageAlainay(pageAlainay + 1)
     setFetchLoading(false)
   }

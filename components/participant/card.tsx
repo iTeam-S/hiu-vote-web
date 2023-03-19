@@ -155,7 +155,7 @@ export default function ParticipantCard({
             <div className="row">
               <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-center">
                 <div>
-                <h2 style={{ textAlign: 'center' }}>{contreVotesCount}</h2>
+                  <h2 style={{ textAlign: 'center' }}>{contreVotesCount}</h2>
                   <span>
                     <GiStrong size={25} /> &nbsp; Zakanay
                   </span>
