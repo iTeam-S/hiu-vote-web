@@ -32,7 +32,7 @@ const SidebarLayout: React.FC<ISidebarLayout> = () => {
   return (
     <AppBar position="fixed" color="secondary" className={styles.navbar}>
       <Toolbar>
-        <Link href="https://iteam-s.mg" target="_blank">
+        <Link href="https://iteam-s.mg" target="_blank" rel="noreferrer">
           <Image
             className={styles.logo}
             src="https://iteam-s.mg/assets/img/LOGO.png"

@@ -25,6 +25,12 @@
       width: 152px;
       border-radius: 50%;
       border: solid #fff 5px;
+      transition: all 0.5s;
+
+      &:hover {
+        border: solid rgb(31, 160, 160) 7px;
+        @include animation-scale($scaleValue: 1.1);
+      }
 
       @include breakpoint(max, 626px) {
         width: 148px;
@@ -41,5 +47,9 @@
       padding: 0.2rem;
       border-radius: 5px;
     }
+  }
+
+  a {
+    text-decoration: none;
   }
 }

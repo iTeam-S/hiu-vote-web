@@ -306,15 +306,11 @@
   margin-right: 2rem;
   overflow: auto;
 }
-.modal .alainay .avatar button,
-.modal .zakanay .avatar button {
+.modal .alainay .avatar .more button,
+.modal .zakanay .avatar .more button {
   padding: 0.5rem;
   border-radius: 5px;
   margin: 0.5rem;
-}
-.modal .alainay .avatar button:hover,
-.modal .zakanay .avatar button:hover {
-  background-color: #777;
 }
 .modal button {
   margin: auto;
@@ -340,6 +336,8 @@
   border-radius: 7px;
   margin-top: 0.3rem;
   color: #444;
+  max-height: 7.5rem;
+  overflow: auto;
   box-shadow: 1px 1px 2px #111 inset;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -372,4 +370,5 @@
 .modal .comments h6 {
   color: #302f2f;
   font-weight: 600;
+  text-align: start;
 } /*# sourceMappingURL=detailsParticipant.module.css.map */

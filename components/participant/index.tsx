@@ -50,8 +50,8 @@ export default function Participant() {
       getListParticipants()
     })
     return () => {
-      pb.collection('votes').unsubscribe()
-      pb.collection('contre_votes').unsubscribe()
+      // pb.collection('votes').unsubscribe()
+      // pb.collection('contre_votes').unsubscribe()
     }
   })
 

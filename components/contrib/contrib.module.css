@@ -23,6 +23,11 @@
   width: 152px;
   border-radius: 50%;
   border: solid #fff 5px;
+  transition: all 0.5s;
+}
+.contrib .profil img:hover {
+  border: solid #1fa0a0 7px;
+  transform: scale(1.1);
 }
 @media (max-width: 626px) {
   .contrib .profil img {
@@ -39,4 +44,7 @@
   color: #eee;
   padding: 0.2rem;
   border-radius: 5px;
+}
+.contrib a {
+  text-decoration: none;
 } /*# sourceMappingURL=contrib.module.css.map */

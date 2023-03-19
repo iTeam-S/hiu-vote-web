@@ -237,7 +237,7 @@ const DialogDetails = ({
           <h2>{votesAlainayCount}</h2>
           <hr />
           <div className={styles.avatar}>
-            <div>
+            <div className={styles.more}>
               <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
                 Voir plus
               </button>
@@ -252,7 +252,7 @@ const DialogDetails = ({
           <h2>{votesZakanayCount}</h2>
           <hr />
           <div className={styles.avatar}>
-            <div>
+            <div className={styles.more}>
               <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
                 Voir plus
               </button>
