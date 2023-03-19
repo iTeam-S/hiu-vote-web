@@ -1,0 +1,8 @@
+.text {
+  font-size: 24px;
+}
+@media (max-width: 576px) {
+  .text {
+    font-size: 20px;
+  }
+} /*# sourceMappingURL=typing.module.css.map */

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+
+.text {
+  font-size: 24px;
+
+  @include breakpoint(max, small) {
+    font-size: 20px;
+  }
+}

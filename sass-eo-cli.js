@@ -18,6 +18,8 @@ module.exports = function (grunt) {
       './components/detailsParticipant/detailsParticipant.module.scss',
     './components/layouts/footer/FooterLayout.module.css':
       './components/layouts/footer/FooterLayout.module.scss',
+    './components/typing/typing.module.css':
+      './components/typing/typing.module.scss',
   }
 
   grunt.initConfig({

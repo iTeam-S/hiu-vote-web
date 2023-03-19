@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
+import TypingEffect from '../typing/typing'
 import styles from './contrib.module.css'
 
 interface IUser {
@@ -53,15 +54,14 @@ export default function Contrib() {
       }}
     >
       <hr />
-      <h2
-        style={{
-          textAlign: 'center',
-          fontSize: 32,
-          color: '#eee',
-        }}
-      >
-        Contributeurs
-      </h2>
+      <div className={styles.styledtext}>
+        <TypingEffect
+          user="root"
+          host="hiu"
+          lists={["echo 'Contributeurs'"]}
+          root={true}
+        />
+      </div>
       <div id="contrib-link" className={styles.contrib}>
         {githubProfilePics.map((profilePic, index) => (
           <Link

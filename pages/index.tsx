@@ -1,3 +1,4 @@
+import React from 'react'
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout'
 import FooterLayout from '../components/layouts/footer/FooterLayout'
@@ -6,12 +7,11 @@ import Particle from '../components/particles'
 import styles from '../styles/Home.module.css'
 import { NextPageWithLayout } from './page'
 import Contrib from '../components/contrib/contrib'
-
 import MessengerComponent from 'react-messenger-customer-chat'
 import { VerticleButton as ScrollUpButton } from 'react-scroll-up-button'
-
 import Analytics from 'analytics'
 import googleAnalytics from '@analytics/google-analytics'
+import TypingEffect from '../components/typing/typing'
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -27,10 +27,12 @@ const Home: NextPageWithLayout = () => {
             language="fr_FR"
           />
         </div>
-        <h1 className={styles.text}>
-          Alainao <span style={{ color: '#555' }}>sa</span>
-          <span>Zakanao ?</span>
-        </h1>
+        <TypingEffect
+          user="voters"
+          host="hiu"
+          lists={["echo 'Alainao ?'", "echo 'Zakanao ?'"]}
+          root={false}
+        />
       </div>
       <Participant />
       <Contrib />
