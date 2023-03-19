@@ -22,7 +22,6 @@ build-job:
       sshpass -e ssh -t -oStrictHostKeyChecking=no "$USER_SERVER@$HOST_SERVER" <<EOF
         cd $PROJECT_DIR
         git pull
-        # echo -n "$NEXT_CONFIG_FILE" | base64 --decode > next.config.js
         yarn install
         yarn build
         pm2 restart web-ranking --update-env
