@@ -109,13 +109,11 @@
       margin-right: 2rem;
       overflow: auto;
 
-      button {
-        padding: 0.5rem;
-        border-radius: 5px;
-        margin: 0.5rem;
-
-        &:hover {
-          background-color: #777777;
+      .more {
+        button {
+          padding: 0.5rem;
+          border-radius: 5px;
+          margin: 0.5rem;
         }
       }
     }
