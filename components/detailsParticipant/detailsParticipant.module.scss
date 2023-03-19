@@ -145,6 +145,8 @@
     border-radius: 7px;
     margin-top: 0.3rem;
     color: #444;
+    max-height: __convertToRem($value: 120px);
+    overflow: auto;
     @include effect-box-shadow-inset($opacity: small);
     @include animation-fade($in-out: in);
 

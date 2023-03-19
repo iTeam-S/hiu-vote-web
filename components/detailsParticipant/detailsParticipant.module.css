@@ -336,6 +336,8 @@
   border-radius: 7px;
   margin-top: 0.3rem;
   color: #444;
+  max-height: 7.5rem;
+  overflow: auto;
   box-shadow: 1px 1px 2px #111 inset;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
