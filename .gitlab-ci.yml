@@ -12,7 +12,7 @@ build-job:
   script:
     - yarn install
     - yarn build || exit 1
-  
+
 .deploy-job: &deploy-job
   script:
     - apt-get update -y -qq
@@ -37,7 +37,6 @@ deploy-to-staging:
     name: staging
   only:
     - main
-
 
 deploy-to-production:
   <<: *deploy-job
