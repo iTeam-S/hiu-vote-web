@@ -16,6 +16,8 @@ module.exports = function (grunt) {
       './components/contrib/contrib.module.scss',
     './components/detailsParticipant/detailsParticipant.module.css':
       './components/detailsParticipant/detailsParticipant.module.scss',
+    './components/layouts/footer/FooterLayout.module.css':
+      './components/layouts/footer/FooterLayout.module.scss',
   }
 
   grunt.initConfig({

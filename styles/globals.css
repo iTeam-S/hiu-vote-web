@@ -4344,12 +4344,12 @@ body {
   z-index: 2 !important;
 }
 .scrollup {
-  z-index: 0 !important;
+  z-index: 10 !important;
   border-radius: 5px;
-  background-color: #1e464698 !important;
+  background-color: #1e4646ce !important;
 }
 .scrollup:hover {
-  background-color: #1d4242d0 !important;
+  background-color: #193838ec !important;
 }
 #tsparticles {
   z-index: 0;
