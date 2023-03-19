@@ -1,22 +1,15 @@
 import { AppBar, Stack, Toolbar, Typography } from '@mui/material'
 import Image from 'next/image'
-import React, { useState, useLayoutEffect } from 'react'
+import React from 'react'
 import styles from './SidebarLayout.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import { FaUsers } from 'react-icons/fa'
+import { useMediaQuery } from '@mui/material'
 
 export interface ISidebarLayout {}
 
 const SidebarLayout: React.FC<ISidebarLayout> = () => {
-  const [widthScreen, setWidthScreen] = useState<number>(0)
-  const isMobileScreen = widthScreen <= 656
-
-  useLayoutEffect(() => {
-    const handleResize = () => setWidthScreen(window.innerWidth)
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  const isMobileScreen = useMediaQuery('(max-width: 656px)')
 
   function scrollToComponent() {
     const element = document.querySelector('#contrib-link') as HTMLElement
