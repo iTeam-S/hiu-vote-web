@@ -92,7 +92,7 @@ export default function ParticipantCard({
           <hr />
           <div className={styles.alainay}>
             <div className="row">
-              <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-center">
+              <div className="col-6 d-flex align-items-center justify-content-center">
                 <div>
                   <h2 style={{ textAlign: 'center' }}>{votesPourcentage}%</h2>
                   <span>
@@ -100,7 +100,10 @@ export default function ParticipantCard({
                   </span>
                 </div>
               </div>
-              <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
+              <div
+                className="col-6 d-flex align-items-center justify-content-end"
+                style={{ margin: 'auto' }}
+              >
                 {voters ? (
                   <Badge badgeContent={voteCountCalculate} sx={badgeStyle}>
                     <AvatarGroup max={3}>
@@ -153,7 +156,7 @@ export default function ParticipantCard({
           </div>
           <div className={styles.zakanay}>
             <div className="row">
-              <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-center">
+              <div className="col-6 d-flex align-items-center justify-content-center">
                 <div>
                   <h2 style={{ textAlign: 'center' }}>{contreVotesCount}</h2>
                   <span>
@@ -161,7 +164,7 @@ export default function ParticipantCard({
                   </span>
                 </div>
               </div>
-              <div className="col-md-6 col-sm-6 col-xs-6 d-flex align-items-center justify-content-end">
+              <div className="col-6 d-flex align-items-center justify-content-end">
                 {againstVoters ? (
                   <Badge
                     badgeContent={contreVoteCountCalculate}

@@ -234,9 +234,15 @@
   background-color: #3333332d;
   border-radius: 3px;
   padding: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   margin-left: 0.46rem;
   overflow: auto;
+}
+@media (max-width: 576px) {
+  .card .content .comments {
+    margin-left: 0.52rem !important;
+    margin-top: 0.8rem;
+  }
 }
 .card .content .comments .core {
   margin-top: 0.2rem;
