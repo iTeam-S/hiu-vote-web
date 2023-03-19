@@ -76,7 +76,7 @@ export default function ParticipantCard({
         const nextIndex = (currentIndex + 1) % listComments.length
         setCurrentIndex(nextIndex)
       }
-    }, 2000)
+    }, 3300)
 
     return () => clearInterval(intervalId)
   }, [currentIndex, voters])
