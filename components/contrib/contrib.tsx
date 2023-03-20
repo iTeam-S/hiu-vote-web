@@ -10,28 +10,22 @@ interface IUser {
 
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
-  const realNames: string[] = [
-    'Manambintsoa',
-    'Gaetan',
-    'Damia',
-    'Raja',
-    'Rivo',
-  ]
+  const realNames: string[] = ['Ntsoa', 'Raja', 'Damia', 'Gaetan', 'Rivo']
 
   const linkLinkedin: string[] = [
     'https://www.linkedin.com/in/ntsoa/',
-    'https://www.linkedin.com/in/gaetanj/',
-    'https://www.linkedin.com/mwlite/in/vololoniaina-damia-tsiafaratiana-b0394318a',
     'https://portfolio-raja.netlify.app/',
+    'https://www.linkedin.com/mwlite/in/vololoniaina-damia-tsiafaratiana-b0394318a',
+    'https://www.linkedin.com/in/gaetanj/',
     'https://www.linkedin.com/in/rajaonarivony/',
   ]
 
   useEffect(() => {
     const usernames: string[] = [
       'Ntsoa2112',
-      'Gaetan1903',
-      'Damichou',
       'RajaRakoto',
+      'Damichou',
+      'Gaetan1903',
       'rivo2302',
     ]
     const promises: Promise<IUser>[] = usernames.map((username) =>
@@ -58,7 +52,7 @@ export default function Contrib() {
         <TypingEffect
           user="root"
           host="hiu"
-          lists={["echo 'Contributeurs'"]}
+          lists={['echo $Contributeurs']}
           root={true}
         />
       </div>
