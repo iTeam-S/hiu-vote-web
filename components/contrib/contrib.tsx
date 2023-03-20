@@ -10,13 +10,7 @@ interface IUser {
 
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
-  const realNames: string[] = [
-    'Ntsoa',
-    'Raja',
-    'Damia',
-    'Gaetan',
-    'Rivo',
-  ]
+  const realNames: string[] = ['Ntsoa', 'Raja', 'Damia', 'Gaetan', 'Rivo']
 
   const linkLinkedin: string[] = [
     'https://www.linkedin.com/in/ntsoa/',
