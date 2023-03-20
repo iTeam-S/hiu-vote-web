@@ -250,6 +250,7 @@
   color: #eee;
   text-align: center;
   max-height: 3.125rem;
+  margin-top: -1rem;
 }
 .card .footer {
   display: flex;
