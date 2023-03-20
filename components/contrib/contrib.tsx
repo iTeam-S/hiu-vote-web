@@ -58,7 +58,7 @@ export default function Contrib() {
         <TypingEffect
           user="root"
           host="hiu"
-          lists={['echo "$Contributeurs"']}
+          lists={['echo $Contributeurs']}
           root={true}
         />
       </div>
