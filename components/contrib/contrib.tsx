@@ -11,10 +11,10 @@ interface IUser {
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
   const realNames: string[] = [
-    'Manambintsoa',
-    'Gaetan',
-    'Damia',
+    'Ntsoa',
     'Raja',
+    'Damia',
+    'Gaetan',
     'Rivo',
   ]
 
