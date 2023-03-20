@@ -33,6 +33,7 @@ deploy-to-staging:
     PROJECT_DIR: web-ranking
     HOST_SERVER: ${HOST_PREPROD}
   stage: deploy
+  when: manual
   environment:
     name: staging
   only:
