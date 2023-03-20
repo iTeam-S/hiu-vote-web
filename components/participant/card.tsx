@@ -80,6 +80,17 @@ export default function ParticipantCard({
 
     return () => clearInterval(intervalId)
   }, [currentIndex, voters])
+
+  function commentLimiter(max: number, comment: string): string {
+    const words = comment.split(' ')
+    if (words.length <= max) {
+      return comment
+    } else {
+      const result = words.slice(0, max).join(' ')
+      return `${result} ...`
+    }
+  }
+
   return (
     <div className={styles.card}>
       <div className="row">
@@ -131,13 +142,13 @@ export default function ParticipantCard({
               </div>
               {listComments && listComments[currentIndex] && (
                 <div className={styles.comments}>
-                  <p style={{ color: '#444242', fontWeight: 'bolder' }}>
+                  <p style={{ color: '#2c2b2b', fontWeight: 'bolder' }}>
                     {listComments[currentIndex].expand.voter.name}
                   </p>
                   <div className={styles.core}>
                     <FaQuoteLeft color="#444" />
                     &nbsp;
-                    {listComments[currentIndex].comment}
+                    {commentLimiter(10, listComments[currentIndex].comment)}
                     &nbsp;
                     <FaQuoteRight color="#444" />
                   </div>
