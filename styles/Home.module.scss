@@ -31,23 +31,19 @@
 }
 
 .styledtext {
+  margin: auto;
   text-align: center;
-  @include animation-bounce();
+  margin-top: 4rem;
+  background-color: #16191ae0;
+  width: __convertToRem($value: 400px);
+  padding: 1rem;
+  border-radius: 10px;
+  color: #eee;
+  z-index: 5 !important;
+  backdrop-filter: blur(8px);
 
-  .text {
-    font-family: Satisfy, cursive;
-    font-size: 32px;
-    margin: 1em 0;
-    margin-top: 3.6rem;
-    color: teal;
-    text-shadow: 0.02em 0.02em 0 rgb(48, 111, 148), 0 0 0.5em rgb(247, 247, 247);
-  }
-
-  .text span {
-    color: #ffffff;
-    display: block;
-    padding-top: 0.4em;
-    padding-left: 0.5em;
+  @include breakpoint(max, small) {
+    width: __convertToRem($value: 300px);
   }
 }
 

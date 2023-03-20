@@ -76,7 +76,7 @@ export default function ParticipantCard({
         const nextIndex = (currentIndex + 1) % listComments.length
         setCurrentIndex(nextIndex)
       }
-    }, 2000)
+    }, 3300)
 
     return () => clearInterval(intervalId)
   }, [currentIndex, voters])
@@ -131,18 +131,9 @@ export default function ParticipantCard({
               </div>
               {listComments && listComments[currentIndex] && (
                 <div className={styles.comments}>
-                  <div>
-                    <Tooltip
-                      title={listComments[currentIndex].expand.voter.name}
-                      placement="top"
-                      arrow
-                    >
-                      <Avatar
-                        src={listComments[currentIndex].expand.voter.profil_pic}
-                        alt={listComments[currentIndex].expand.voter.name}
-                      />
-                    </Tooltip>
-                  </div>
+                  <p style={{ color: '#444242', fontWeight: 'bolder' }}>
+                    {listComments[currentIndex].expand.voter.name}
+                  </p>
                   <div className={styles.core}>
                     <FaQuoteLeft color="#444" />
                     &nbsp;

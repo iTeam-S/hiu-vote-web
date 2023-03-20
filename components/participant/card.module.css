@@ -94,7 +94,7 @@
   padding-top: 1rem;
   padding-bottom: 1.2rem;
   width: 25rem;
-  height: 43.125rem;
+  height: 45.625rem;
   border-radius: 12px;
   transition: all 0.1s;
   z-index: 2;
@@ -144,6 +144,7 @@
   padding: 1rem;
   background-color: #dadada;
   border-radius: 6px;
+  min-height: 23.125rem;
   box-shadow: 4px 4px 15px rgba(61, 61, 61, 0.15);
 }
 .card .content .title {
@@ -234,9 +235,10 @@
   background-color: #3333332d;
   border-radius: 3px;
   padding: 0.5rem;
+  padding-bottom: 1rem;
   margin-top: 0.7rem;
   margin-left: 0.46rem;
-  overflow: auto;
+  max-height: 5rem;
 }
 @media (max-width: 576px) {
   .card .content .comments {
@@ -245,7 +247,6 @@
   }
 }
 .card .content .comments .core {
-  margin-top: 0.2rem;
   color: #eee;
   text-align: center;
   max-height: 3.125rem;
