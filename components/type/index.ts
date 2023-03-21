@@ -130,7 +130,7 @@ export interface ExpandParticipantVotesComments {
 }
 
 export interface VoterExpand {
-  'votes(voter)': VotesVoter[]
+  'votes(voter)': VotesVoter
 }
 
 export interface VotesVoter {

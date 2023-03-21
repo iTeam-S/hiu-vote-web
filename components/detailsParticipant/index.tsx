@@ -309,8 +309,7 @@ const DialogDetails = ({
                       nom={voteComment.expand.voter.name}
                       commentaire={voteComment.comment}
                       alainy={
-                        voteComment.expand.voter.expand?.['votes(voter)'][0]
-                          .expand.participant.univ_name
+                        voteComment.expand.voter.expand?.['votes(voter)'].expand.participant.univ_name
                       }
                     />
                   </div>
