@@ -25,6 +25,13 @@ export default function Participant() {
     setParticipantsList(participants)
   }
 
+  async function addListParticipants() {
+    const participants = await getParticipants()
+    if (participantsList) {
+      setParticipantsList([...participantsList, ...participants])
+    }
+  }
+
   const initialiseParticipantDetails = () => {
     setParticipant(null)
   }
@@ -44,10 +51,10 @@ export default function Participant() {
 
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      getListParticipants()
+      addListParticipants()
     })
     pb.collection('contre_votes').subscribe('*', function () {
-      getListParticipants()
+      addListParticipants()
     })
     return () => {
       // pb.collection('votes').unsubscribe()
