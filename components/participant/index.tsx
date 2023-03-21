@@ -28,13 +28,6 @@ export default function Participant() {
     setParticipantsList(participants)
   }
 
-  async function addListParticipants() {
-    const participants = await getParticipants()
-    if (participantsList) {
-      setParticipantsList([...participantsList, ...participants])
-    }
-  }
-
   const initialiseParticipantDetails = () => {
     setParticipant(null)
   }
@@ -56,7 +49,7 @@ export default function Participant() {
   function verifBeforeUpdate() {
     if (new Date().getTime() - latestUpdate > delayUpdate) {
       latestUpdate = new Date().getTime()
-      addListParticipants()
+      getListParticipants()
     } else {
       setTimeout(() => {
         verifBeforeUpdate()
