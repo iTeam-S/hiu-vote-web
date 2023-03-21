@@ -12,7 +12,7 @@ export default function Participant() {
   const [participant, setParticipant] = useState<ParticipantType | null>(null)
   const [openDialog, setOpenDialog] = useState(false)
   // delcare variable and get current timestamp
-  var latestUpdate = new Date().getTime()
+  let latestUpdate = new Date().getTime()
   const delayUpdate = 3000
 
   const handleOpenDialog = () => {
@@ -57,8 +57,7 @@ export default function Participant() {
     if (new Date().getTime() - latestUpdate > delayUpdate) {
       latestUpdate = new Date().getTime()
       addListParticipants()
-    }
-    else {
+    } else {
       setTimeout(() => {
         verifBeforeUpdate()
       }, delayUpdate)
