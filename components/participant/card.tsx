@@ -1,10 +1,9 @@
-import { Avatar, AvatarGroup, Tooltip, Badge } from '@mui/material'
 import { VotesParticipant } from '../type'
 import styles from './card.module.css'
-import { AiFillHeart } from 'react-icons/ai'
-import { FaRegEye, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa'
-import { GiStrong } from 'react-icons/gi'
+import { FaRegEye } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
+import AlainayCard from '../card/alainay.card'
+import ZakanayCard from '../card/zakanay.card'
 
 type params = {
   id: string
@@ -53,18 +52,10 @@ export default function ParticipantCard({
   againstVoters,
   handleClickDetails,
 }: params) {
-  const voteCountCalculate = votesCount > 3 ? `+${votesCount - 3}` : votesCount
-  const contreVoteCountCalculate =
-    contreVotesCount > 3 ? `+${contreVotesCount - 3}` : contreVotesCount
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [listComments, setListComments] = useState<VotesParticipant[] | null>(
     null,
   )
-  const badgeStyle = {
-    '& .MuiBadge-badge': {
-      backgroundColor: '#fafafa',
-    },
-  }
 
   useEffect(() => {
     const comments = voters
@@ -81,16 +72,6 @@ export default function ParticipantCard({
     return () => clearInterval(intervalId)
   }, [currentIndex, voters])
 
-  function commentLimiter(max: number, comment: string): string {
-    const words = comment.split(' ')
-    if (words.length <= max) {
-      return comment
-    } else {
-      const result = words.slice(0, max).join(' ')
-      return `${result} ...`
-    }
-  }
-
   return (
     <div className={styles.card}>
       <div className="row">
@@ -101,101 +82,15 @@ export default function ParticipantCard({
           <hr />
           <h3 className={styles.title}>{name}</h3>
           <hr />
-          <div className={styles.alainay}>
-            <div className="row">
-              <div className="col-6 d-flex align-items-center justify-content-center">
-                <div>
-                  <h2 style={{ textAlign: 'center' }}>{votesPourcentage}%</h2>
-                  <span>
-                    <AiFillHeart size={25} /> &nbsp; Alainay
-                  </span>
-                </div>
-              </div>
-              <div
-                className="col-6 d-flex align-items-center justify-content-end"
-                style={{ margin: 'auto' }}
-              >
-                {voters ? (
-                  <Badge badgeContent={voteCountCalculate} sx={badgeStyle}>
-                    <AvatarGroup max={3}>
-                      {voters &&
-                        voters.map((element) => (
-                          <Tooltip
-                            title={element.expand.voter.name}
-                            placement="top"
-                            arrow
-                            key={element.id}
-                          >
-                            <Avatar
-                              src={element.expand.voter.profil_pic}
-                              alt={element.expand.voter.name}
-                            />
-                          </Tooltip>
-                        ))}
-                    </AvatarGroup>
-                  </Badge>
-                ) : (
-                  <Badge badgeContent={voteCountCalculate} color="primary">
-                    <Avatar></Avatar>
-                  </Badge>
-                )}
-              </div>
-              {listComments && listComments[currentIndex] && (
-                <div className={styles.comments}>
-                  <p style={{ color: '#2c2b2b', fontWeight: 'bolder' }}>
-                    {listComments[currentIndex].expand.voter.name}
-                  </p>
-                  <div className={styles.core}>
-                    <FaQuoteLeft color="#444" />
-                    &nbsp;
-                    {commentLimiter(10, listComments[currentIndex].comment)}
-                    &nbsp;
-                    <FaQuoteRight color="#444" />
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className={styles.zakanay}>
-            <div className="row">
-              <div className="col-6 d-flex align-items-center justify-content-center">
-                <div>
-                  <h2 style={{ textAlign: 'center' }}>{contreVotesCount}</h2>
-                  <span>
-                    <GiStrong size={25} /> &nbsp; Zakanay
-                  </span>
-                </div>
-              </div>
-              <div className="col-6 d-flex align-items-center justify-content-end">
-                {againstVoters ? (
-                  <Badge
-                    badgeContent={contreVoteCountCalculate}
-                    sx={badgeStyle}
-                  >
-                    <AvatarGroup max={3}>
-                      {againstVoters.map((element) => (
-                        <Tooltip
-                          title={element.expand.voter.name}
-                          placement="top"
-                          arrow
-                          key={element.id}
-                        >
-                          <Avatar
-                            src={element.expand.voter.profil_pic}
-                            alt={element.expand.voter.name}
-                          />
-                        </Tooltip>
-                      ))}
-                    </AvatarGroup>
-                  </Badge>
-                ) : (
-                  <Badge badgeContent={contreVotesCount} color="primary">
-                    <Avatar></Avatar>
-                  </Badge>
-                )}
-              </div>
-            </div>
-          </div>
+          <AlainayCard
+            votesPourcentage={votesPourcentage}
+            votesCount={votesCount}
+            voters={voters}
+          />
+          <ZakanayCard
+            contreVotesCount={contreVotesCount}
+            againstVoters={againstVoters}
+          />
         </div>
       </div>
       <div className={styles.footer}>
