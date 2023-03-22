@@ -43,7 +43,8 @@
   backdrop-filter: blur(8px);
 
   @include breakpoint(max, small) {
-    width: __convertToRem($value: 300px);
+    width: __convertToRem($value: 350px);
+    margin-left: -0.3rem;
   }
 }
 
