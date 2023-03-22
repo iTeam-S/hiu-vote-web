@@ -36,10 +36,8 @@ const Home: NextPageWithLayout = () => {
       </div>
       <Participant />
       <Contrib />
-      <div>
-        <ScrollUpButton ContainerClassName="scrollup" />
-      </div>
-      {<Particle />}
+      <ScrollUpButton ContainerClassName="scrollup" />
+      <Particle />
     </section>
   )
 }

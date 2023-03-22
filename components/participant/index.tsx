@@ -11,6 +11,9 @@ export default function Participant() {
   >(null)
   const [participant, setParticipant] = useState<ParticipantType | null>(null)
   const [openDialog, setOpenDialog] = useState(false)
+  // delcare variable and get current timestamp
+  let latestUpdate = new Date().getTime()
+  const delayUpdate = 3000
 
   const handleOpenDialog = () => {
     setOpenDialog(true)
@@ -38,16 +41,28 @@ export default function Participant() {
       handleOpenDialog()
     }
   }
+
   useEffect(() => {
     getListParticipants()
   }, [])
 
+  function verifBeforeUpdate() {
+    if (new Date().getTime() - latestUpdate > delayUpdate) {
+      latestUpdate = new Date().getTime()
+      getListParticipants()
+    } else {
+      setTimeout(() => {
+        verifBeforeUpdate()
+      }, delayUpdate)
+    }
+  }
+
   useEffect(() => {
     pb.collection('votes').subscribe('*', async function () {
-      getListParticipants()
+      verifBeforeUpdate()
     })
     pb.collection('contre_votes').subscribe('*', function () {
-      getListParticipants()
+      verifBeforeUpdate()
     })
     return () => {
       // pb.collection('votes').unsubscribe()
