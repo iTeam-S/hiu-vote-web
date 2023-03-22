@@ -1,8 +1,25 @@
+# dependencies
 node_modules
+.pnp.js
+
+# next.js
+.next
+
+# production
+build
 dist
 out
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+next.config.js
+
+# main
 .eslintrc.js
-.prettierrc.js
 commitlint.config.js
 sass-eo-cli.js
 next.config.js
+
+# file temp
+tmp
