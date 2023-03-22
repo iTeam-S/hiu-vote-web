@@ -1,14 +1,21 @@
+/* mui */
 import { ThemeProvider } from '@mui/material/styles'
+
+/* next */
 import type { AppProps } from 'next/app'
-import '../styles/globals.css'
-import theme from '../theme'
+import theme from './theme'
 import { NextPageWithLayout } from './page'
+
+/* styles */
+import '../styles/globals.css'
+
+// ===========================================================
 
 interface AppPropsWithLayout extends AppProps {
   Component: NextPageWithLayout
 }
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
@@ -17,5 +24,3 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     </ThemeProvider>
   )
 }
-
-export default MyApp

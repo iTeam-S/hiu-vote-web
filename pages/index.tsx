@@ -1,17 +1,27 @@
 import React from 'react'
+
+/* next */
+import { NextPageWithLayout } from './page'
+
+/* components */
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout'
 import FooterLayout from '../components/layouts/footer/FooterLayout'
 import Participant from '../components/participant'
 import Particle from '../components/particles'
-import styles from '../styles/Home.module.css'
-import { NextPageWithLayout } from './page'
 import Contrib from '../components/contrib/contrib'
+import TypingEffect from '../components/typing/typing'
+
+/* libs */
 import MessengerComponent from 'react-messenger-customer-chat'
 import { VerticleButton as ScrollUpButton } from 'react-scroll-up-button'
 import Analytics from 'analytics'
 import googleAnalytics from '@analytics/google-analytics'
-import TypingEffect from '../components/typing/typing'
+
+/* styles */
+import styles from '../styles/home.module.css'
+
+// ===========================================================
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -63,5 +73,4 @@ const analytics = Analytics({
   ],
 })
 
-/* Track a page view */
 analytics.page()

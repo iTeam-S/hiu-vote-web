@@ -7,7 +7,7 @@ module.exports = function (grunt) {
   // sass files path (destination: source)
   const sassPath = {
     './styles/globals.css': './styles/globals.scss',
-    './styles/Home.module.css': './styles/Home.module.scss',
+    './styles/home.module.css': './styles/home.module.scss',
     './components/layouts/sidebar/SidebarLayout.module.css':
       './components/layouts/sidebar/SidebarLayout.module.scss',
     './components/participant/card.module.css':
