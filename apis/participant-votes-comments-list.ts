@@ -1,19 +1,19 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ParticipantVotesCommentsList } from '../../types'
 
-interface Params {
-  page: number
-  perPage: number
-  idParticipant: string
-  collection: string
-}
+/* types */
+import {
+  I_ParticipantVotesCommentsList,
+  T_ParticipantVotesCommentsList,
+} from '../types'
+
+// ===========================================================
 
 export const getParticipantVotesCommentsList = async ({
   page,
   perPage,
   idParticipant,
   collection,
-}: Params): Promise<ParticipantVotesCommentsList> => {
+}: T_ParticipantVotesCommentsList): Promise<I_ParticipantVotesCommentsList> => {
   const expand =
     collection === 'votes' ? 'voter' : 'voter.votes(voter).participant'
   const config: AxiosRequestConfig = {
@@ -31,7 +31,7 @@ export const getParticipantVotesCommentsList = async ({
     return response.data
   } catch (error) {
     throw new Error(
-      'Erreur lors de la récupération des ParticipantVotesCommentsList',
+      '[API]: Erreur lors de la récupération des ParticipantVotesCommentsList',
     )
   }
 }

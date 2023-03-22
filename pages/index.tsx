@@ -4,13 +4,13 @@ import React from 'react'
 import { NextPageWithLayout } from './page'
 
 /* components */
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
-import SidebarLayout from '../components/layouts/sidebar/SidebarLayout'
-import FooterLayout from '../components/layouts/footer/FooterLayout'
-import Participant from '../components/participant'
-import Particle from '../components/particles'
+import PrimaryLayout from '../layouts/primary/PrimaryLayout'
+import SidebarLayout from '../layouts/sidebar/SidebarLayout'
+import FooterLayout from '../layouts/footer/FooterLayout'
+import Participant from '../components/participant/participant'
 import Contrib from '../components/contrib/contrib'
-import TypingEffect from '../components/typing/typing'
+import Particle from '../components/particles/particles'
+import Typing from '../components/typing/typing'
 
 /* libs */
 import MessengerComponent from 'react-messenger-customer-chat'
@@ -37,7 +37,7 @@ const Home: NextPageWithLayout = () => {
             language="fr_FR"
           />
         </div>
-        <TypingEffect
+        <Typing
           user="voters"
           host="hiu"
           lists={["echo 'Alainao ?'", "echo 'Zakanao ?'"]}

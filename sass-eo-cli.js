@@ -10,12 +10,12 @@ module.exports = function (grunt) {
     './styles/home.module.css': './styles/home.module.scss',
     './components/layouts/sidebar/SidebarLayout.module.css':
       './components/layouts/sidebar/SidebarLayout.module.scss',
-    './components/participant/card.module.css':
-      './components/participant/card.module.scss',
+    './components/participant/participant.module.css':
+      './components/participant/participant.module.scss',
     './components/contrib/contrib.module.css':
       './components/contrib/contrib.module.scss',
-    './components/detailsParticipant/detailsParticipant.module.css':
-      './components/detailsParticipant/detailsParticipant.module.scss',
+    './components/details/details.module.css':
+      './components/details/details.module.scss',
     './components/layouts/footer/FooterLayout.module.css':
       './components/layouts/footer/FooterLayout.module.scss',
     './components/typing/typing.module.css':

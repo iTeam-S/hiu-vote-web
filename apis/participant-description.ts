@@ -17,7 +17,7 @@ export const getParticipantDescription = async (
     return response.data.description
   } catch (error) {
     throw new Error(
-      'Erreur lors de la récupération des getParticipantDescription',
+      '[API]: Erreur lors de la récupération des ParticipantDescription',
     )
   }
 }

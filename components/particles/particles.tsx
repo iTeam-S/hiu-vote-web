@@ -2,6 +2,8 @@ import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import { Engine } from 'tsparticles-engine'
 
+// ===========================================================
+
 export default function Particle() {
   const particlesInit = async (main: Engine) => {
     await loadFull(main)

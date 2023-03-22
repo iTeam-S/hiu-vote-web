@@ -1,7 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { VotersList } from '../../types'
 
-export const getVoters = async (): Promise<VotersList> => {
+/* types */
+import { I_VotersList } from '../types'
+
+// ===========================================================
+
+export const getVoters = async (): Promise<I_VotersList> => {
   const config: AxiosRequestConfig = {
     method: 'get',
     url: process.env.API_URL + 'collections/voters/records',
@@ -14,6 +18,6 @@ export const getVoters = async (): Promise<VotersList> => {
     const response = await axios(config)
     return response.data
   } catch (error) {
-    throw new Error('Erreur lors de la récupération des VotersList')
+    throw new Error('[API]: Erreur lors de la récupération des Voters')
   }
 }

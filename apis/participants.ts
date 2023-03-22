@@ -1,7 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ParticipantType } from '../../types'
 
-export const getParticipants = async (): Promise<ParticipantType[]> => {
+/* types */
+import { I_ParticipantType } from '../types'
+
+// ===========================================================
+
+export const getParticipants = async (): Promise<I_ParticipantType[]> => {
   const config: AxiosRequestConfig = {
     method: 'get',
     url:
@@ -16,6 +20,6 @@ export const getParticipants = async (): Promise<ParticipantType[]> => {
     const response = await axios(config)
     return response.data
   } catch (error) {
-    throw new Error('Erreur lors de la récupération des Participants')
+    throw new Error('[API]: Erreur lors de la récupération des Participants')
   }
 }

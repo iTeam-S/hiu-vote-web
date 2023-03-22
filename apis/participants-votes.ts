@@ -1,7 +1,13 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ParticipantsVotes } from '../../types'
 
-export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
+/* types */
+import { I_ParticipantsVotes } from '../types'
+
+// ===========================================================
+
+export const getParticipantsVotes = async (): Promise<
+  I_ParticipantsVotes[]
+> => {
   const config: AxiosRequestConfig = {
     method: 'get',
     url:
@@ -16,6 +22,8 @@ export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
     const response = await axios(config)
     return response.data.items
   } catch (error) {
-    throw new Error('Erreur lors de la récupération des ParticipantsVotes')
+    throw new Error(
+      '[API]: Erreur lors de la récupération des ParticipantsVotes',
+    )
   }
 }

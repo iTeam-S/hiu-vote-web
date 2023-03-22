@@ -11,12 +11,7 @@ import { I_TypingEffect } from '../../types'
 
 // ===========================================================
 
-export default function TypingEffect({
-  user,
-  host,
-  lists,
-  root,
-}: I_TypingEffect) {
+export default function Typing({ user, host, lists, root }: I_TypingEffect) {
   const el = useRef(null)
 
   useEffect(() => {
