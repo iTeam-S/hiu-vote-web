@@ -1,10 +1,10 @@
 {
-  "name": "nextjs_app_structure",
-  "author": "MIHAINGOHERILANTO Manambintsoa",
-  "description": "A tutorial and template for creating a production-ready fullstack Next.js application",
+  "name": "hiu-cote",
+  "author": "i-teams",
+  "description": "Online ranking of universities that will participate in an inter-university hackathon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Ntsoa2112/nextjs_app_structure",
+  "homepage": "https://gitlab.com/hiu-cote/",
   "engines": {
     "node": ">=14.0.0",
     "yarn": ">=1.22.0",
@@ -15,7 +15,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier --write .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "sseo-watch": "grunt --gruntfile sass-eo-cli.js watch-sass",
