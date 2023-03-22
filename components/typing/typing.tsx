@@ -1,15 +1,22 @@
 import React, { useEffect, useRef } from 'react'
+
+/* libs */
 import Typed from 'typed.js'
+
+/* styles */
 import styles from './typing.module.css'
 
-type params = {
-  user: string
-  host: string
-  lists: string[]
-  root: boolean
-}
+/* types */
+import { I_TypingEffect } from '../../types'
 
-export default function TypingEffect({ user, host, lists, root }: params) {
+// ===========================================================
+
+export default function TypingEffect({
+  user,
+  host,
+  lists,
+  root,
+}: I_TypingEffect) {
   const el = useRef(null)
 
   useEffect(() => {
@@ -29,7 +36,7 @@ export default function TypingEffect({ user, host, lists, root }: params) {
   }, [])
 
   return (
-    <>
+    <React.Fragment>
       <div className={styles.text}>
         <span>
           {user}
@@ -52,6 +59,6 @@ export default function TypingEffect({ user, host, lists, root }: params) {
         &nbsp;
         <span ref={el}></span>
       </div>
-    </>
+    </React.Fragment>
   )
 }

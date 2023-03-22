@@ -7,7 +7,7 @@ import {
   Typography,
   CircularProgress,
 } from '@mui/material'
-import { ParticipantType, ParticipantVotesComments } from '../type'
+import { ParticipantType, ParticipantVotesComments } from '../../types'
 import { Avatar, CardMedia } from '@mui/material'
 import { AiFillHeart } from 'react-icons/ai'
 import { GiStrong } from 'react-icons/gi'

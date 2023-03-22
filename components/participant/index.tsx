@@ -2,7 +2,7 @@ import { CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
 import DialogDetails from '../detailsParticipant'
 import { getParticipants } from '../query/participants'
-import { ParticipantType, pb } from '../type'
+import { ParticipantType, pb } from '../../types'
 import ParticipantCard from './card'
 
 export default function Participant() {

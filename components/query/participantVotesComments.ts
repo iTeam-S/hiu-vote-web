@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ParticipantVotesCommentsList } from '../type'
+import { ParticipantVotesCommentsList } from '../../types'
 
 interface Params {
   page: number

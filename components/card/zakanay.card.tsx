@@ -1,5 +1,5 @@
 import { Avatar, AvatarGroup, Tooltip, Badge } from '@mui/material'
-import { VotesParticipant } from '../type'
+import { VotesParticipant } from '../../types'
 import styles from '../participant/card.module.css'
 import { GiStrong } from 'react-icons/gi'
 

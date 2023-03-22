@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ParticipantType } from '../type'
+import { ParticipantType } from '../../types'
 
 export const getParticipants = async (): Promise<ParticipantType[]> => {
   const config: AxiosRequestConfig = {

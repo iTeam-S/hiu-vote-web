@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ParticipantsVotes } from '../type'
+import { ParticipantsVotes } from '../../types'
 
 export const getParticipantsVotes = async (): Promise<ParticipantsVotes[]> => {
   const config: AxiosRequestConfig = {

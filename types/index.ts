@@ -1,4 +1,5 @@
 import PocketBase from 'pocketbase'
+
 export interface ParticipantsVotes {
   city: string
   collectionId: string
@@ -33,6 +34,7 @@ export interface VotesParticipant {
 export interface Voters {
   voter: Voter
 }
+
 export interface VotersList {
   page: number
   perPage: number
@@ -104,7 +106,6 @@ export interface Voter {
   updated: Date
 }
 
-//****************** */
 export interface ParticipantVotesCommentsList {
   page: number
   perPage: number
@@ -147,4 +148,11 @@ export interface VotesVoter {
 
 export interface VotesVoterExpand {
   participant: ParticipantType
+}
+
+export interface I_TypingEffect {
+  user: string
+  host: string
+  lists: string[]
+  root: boolean
 }

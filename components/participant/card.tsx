@@ -1,4 +1,4 @@
-import { VotesParticipant } from '../type'
+import { VotesParticipant } from '../../types'
 import styles from './card.module.css'
 import { FaRegEye } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
