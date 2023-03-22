@@ -3,10 +3,12 @@ import React from 'react'
 /* next */
 import { NextPageWithLayout } from './page'
 
-/* components */
+/* layouts */
 import PrimaryLayout from '../layouts/primary/PrimaryLayout'
 import SidebarLayout from '../layouts/sidebar/SidebarLayout'
 import FooterLayout from '../layouts/footer/FooterLayout'
+
+/* components */
 import Participant from '../components/participant/participant'
 import Contrib from '../components/contrib/contrib'
 import Particle from '../components/particles/particles'
