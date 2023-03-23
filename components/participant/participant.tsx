@@ -32,11 +32,12 @@ export default function Participant() {
     setOpenDialog(false)
   }
 
+  /*
   async function getListParticipants() {
     const participants = await getParticipants()
     setParticipantsList(participants)
   }
-
+*/
   const initialiseParticipantDetails = () => {
     setParticipant(null)
   }
