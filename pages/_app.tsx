@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material/styles'
 
 /* next */
 import type { AppProps } from 'next/app'
-import theme from './theme'
+import theme from '../theme'
 import { NextPageWithLayout } from './page'
 
 /* styles */
