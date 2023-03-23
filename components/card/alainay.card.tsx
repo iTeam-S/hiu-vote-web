@@ -77,7 +77,7 @@ export default function AlainayCard({
               <Badge
                 badgeContent={voteCountCalculate}
                 sx={badgeStyle}
-                max={999}
+                max={9999}
               >
                 <AvatarGroup max={3}>
                   {voters &&
