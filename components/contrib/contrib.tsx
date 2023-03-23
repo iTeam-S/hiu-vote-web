@@ -77,7 +77,6 @@ export default function Contrib() {
             </Link>
           ))}
         </div>
-        <hr />
       </div>
     </React.Fragment>
   )
