@@ -14,9 +14,10 @@
   z-index: 5 !important;
   backdrop-filter: blur(8px);
 
-  @include breakpoint(max, small) {
-    width: __convertToRem($value: 350px);
-    margin-left: -0.3rem;
+  @include breakpoint(max, 414px) {
+    // width: __convertToRem($value: 350px);
+    // margin-left: -0.3rem;
+    display: none;
   }
 }
 
