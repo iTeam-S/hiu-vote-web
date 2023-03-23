@@ -28,17 +28,17 @@ import styles from '../styles/home.module.css'
 const Home: NextPageWithLayout = () => {
   return (
     <section className={styles.main}>
-      <div className={styles.styledtext}>
-        <div className="messenger">
-          <MessengerComponent
-            pageId="113804974982080"
-            appId="1015807782342852"
-            htmlRef="window.location.pathname"
-            themeColor="#008080"
-            loggedInGreeting="Pejy Facebook: HIU Cote 2023"
-            language="fr_FR"
-          />
-        </div>
+      <div className="messenger">
+        <MessengerComponent
+          pageId="113804974982080"
+          appId="1015807782342852"
+          htmlRef="window.location.pathname"
+          themeColor="#008080"
+          loggedInGreeting="Pejy Facebook: HIU Cote 2023"
+          language="fr_FR"
+        />
+      </div>
+      <div className={styles.typingFixOnMobile}>
         <Typing
           user="voters"
           host="hiu"

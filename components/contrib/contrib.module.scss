@@ -21,6 +21,10 @@
     flex-direction: column;
     z-index: 3 !important;
 
+    @include breakpoint(beetween, 375px 393px) {
+      display: none;
+    }
+
     img {
       width: 152px;
       border-radius: 50%;
@@ -51,5 +55,11 @@
 
   a {
     text-decoration: none;
+  }
+}
+
+@include breakpoint(max, 412px) {
+  .typingFixOnMobile {
+    margin: auto;
   }
 }

@@ -55,7 +55,7 @@ export default function Contrib() {
         }}
       >
         <hr />
-        <div className={styles.styledtext}>
+        <div className={styles.typingFixOnMobile}>
           <Typing
             user="root"
             host="hiu"
