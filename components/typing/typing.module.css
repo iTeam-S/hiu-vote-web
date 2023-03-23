@@ -1,1 +1,1 @@
-.text{font-size:24px}@media(max-width: 576px){.text{font-size:20px}}/*# sourceMappingURL=typing.module.css.map */
+.typing{margin:auto;margin-top:3rem;color:#eee;border-radius:10px;background-color:#16191ae0;font-size:24px;padding:.5rem;padding-left:1rem;width:25rem}@media(max-width: 576px){.typing{font-size:18px}}/*# sourceMappingURL=typing.module.css.map */

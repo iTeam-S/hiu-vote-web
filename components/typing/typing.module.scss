@@ -2,10 +2,18 @@
 
 @import 'sass-eo-basics';
 
-.text {
+.typing {
+  margin: auto;
+  margin-top: 3rem;
+  color: #eee;
+  border-radius: 10px;
+  background-color: #16191ae0;
   font-size: 24px;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  width: __convertToRem($value: 400px);
 
   @include breakpoint(max, small) {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

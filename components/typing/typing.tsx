@@ -32,7 +32,7 @@ export default function Typing({ user, host, lists, root }: I_TypingEffect) {
 
   return (
     <React.Fragment>
-      <div className={styles.text}>
+      <div className={styles.typing}>
         <span>
           {user}
           <span

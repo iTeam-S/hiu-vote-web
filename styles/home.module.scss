@@ -10,21 +10,3 @@
   margin-top: 1%;
 }
 
-// typing styles
-.styledtext {
-  margin: auto;
-  text-align: center;
-  margin-top: 4rem;
-  background-color: #16191ae0;
-  width: __convertToRem($value: 400px);
-  padding: 1rem;
-  border-radius: 10px;
-  color: #eee;
-  z-index: 5 !important;
-  backdrop-filter: blur(8px);
-
-  @include breakpoint(max, small) {
-    width: __convertToRem($value: 350px);
-    margin-left: -0.3rem;
-  }
-}
