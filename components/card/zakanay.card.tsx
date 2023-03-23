@@ -41,7 +41,11 @@ export default function ZakanayCard({
           </div>
           <div className="col-6 d-flex align-items-center justify-content-end">
             {againstVoters ? (
-              <Badge badgeContent={contreVoteCountCalculate} sx={badgeStyle}>
+              <Badge
+                badgeContent={contreVoteCountCalculate}
+                sx={badgeStyle}
+                max={999}
+              >
                 <AvatarGroup max={3}>
                   {againstVoters.map((element) => (
                     <Tooltip

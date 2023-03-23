@@ -74,7 +74,11 @@ export default function AlainayCard({
             style={{ margin: 'auto' }}
           >
             {voters ? (
-              <Badge badgeContent={voteCountCalculate} sx={badgeStyle}>
+              <Badge
+                badgeContent={voteCountCalculate}
+                sx={badgeStyle}
+                max={9999}
+              >
                 <AvatarGroup max={3}>
                   {voters &&
                     voters.map((element) => (
