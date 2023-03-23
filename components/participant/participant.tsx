@@ -55,14 +55,16 @@ export default function Participant() {
     getListParticipants()
   }, [])
 
-  function verifBeforeUpdate() {
+  function verifBeforeUpdate(otherAttempt = false) {
     if (new Date().getTime() - latestUpdate > delayUpdate) {
       latestUpdate = new Date().getTime()
       getListParticipants()
     } else {
-      setTimeout(() => {
-        verifBeforeUpdate()
-      }, delayUpdate)
+      if (!otherAttempt) {
+        setTimeout(() => {
+          verifBeforeUpdate(true)
+        }, delayUpdate)
+      }
     }
   }
 
