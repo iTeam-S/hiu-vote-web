@@ -20,10 +20,7 @@
     @include position-flex-center();
     flex-direction: column;
     z-index: 3 !important;
-
-    @include breakpoint(beetween, 375px 393px) {
-      display: none;
-    }
+    margin-right: 1rem;
 
     img {
       width: 152px;
