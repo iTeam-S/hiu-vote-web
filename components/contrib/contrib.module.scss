@@ -2,24 +2,6 @@
 
 @import 'sass-eo-basics';
 
-.styledtext {
-  margin: auto;
-  text-align: center;
-  margin-top: 4rem;
-  background-color: #16191ae0;
-  width: __convertToRem($value: 400px);
-  padding: 1rem;
-  border-radius: 10px;
-  color: #eee;
-  z-index: 5 !important;
-  backdrop-filter: blur(8px);
-
-  @include breakpoint(max, small) {
-    width: __convertToRem($value: 350px);
-    margin-left: -0.3rem;
-  }
-}
-
 .contrib {
   display: flex;
   justify-content: center;
@@ -38,6 +20,7 @@
     @include position-flex-center();
     flex-direction: column;
     z-index: 3 !important;
+    margin-right: 1rem;
 
     img {
       width: 152px;
@@ -69,5 +52,11 @@
 
   a {
     text-decoration: none;
+  }
+}
+
+@include breakpoint(max, 412px) {
+  .typingFixOnMobile {
+    margin-left: -1.6rem !important;
   }
 }

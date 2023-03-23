@@ -19,7 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/layouts/primary/PrimaryLayout.mocks.ts"
+    "layouts/primary/PrimaryLayout.mocks.ts"
   ],
   "exclude": ["node_modules"]
 }

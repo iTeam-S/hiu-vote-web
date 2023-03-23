@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+@import '../../../styles/sass/buttons';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(223, 223, 223, 0.74);
+  padding: 0.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
+  width: __convertToRem($value: 400px);
+  height: __convertToRem($value: 800px);
+  border-radius: 12px;
+  transition: all 0.1s;
+  z-index: 2;
+  @include animation-scale($scaleValue: 0.9);
+  @include effect-box-shadow($opacity: smooth);
+
+  @include breakpoint(max, 576px) {
+    height: auto;
+  }
+
+  img {
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: rgb(226, 226, 226);
+    border-bottom: solid rgb(87, 85, 85) 8px;
+
+    img {
+      @include animation-scale($scaleValue: 1.08);
+    }
+
+    .alainay,
+    .zakanay {
+      border: solid 2px #6666667c;
+    }
+
+    .content {
+      @include effect-box-shadow($opacity: small);
+    }
+  }
+
+  .logo {
+    @include position-flex-center();
+    width: 100%;
+    height: __convertToRem($value: 180px);
+    padding-bottom: 1rem;
+
+    img {
+      border-radius: 10px;
+      width: __convertToRem($value: 150px);
+      max-height: __convertToRem($value: 150px);
+    }
+  }
+
+  .content {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    background-color: #dadada;
+    border-radius: 6px;
+    min-height: __convertToRem($value: 370px);
+    @include effect-box-shadow($opacity: smooth);
+
+    .title {
+      margin: auto;
+      text-align: center;
+    }
+
+    @mixin vote_style($bg_status, $stat_color, $span_color) {
+      margin-top: 1.2rem;
+
+      @if ($bg_status) {
+        background: rgb(27, 27, 27);
+        background: linear-gradient(
+          266deg,
+          rgba(27, 27, 27, 1) 0%,
+          rgba(52, 52, 52, 1) 0%,
+          rgba(93, 93, 93, 1) 0%,
+          rgba(136, 136, 136, 1) 0%,
+          rgba(148, 148, 148, 1) 0%,
+          rgba(193, 193, 193, 1) 50%
+        );
+      } @else {
+        background: rgb(65, 65, 65);
+        background: linear-gradient(
+          94deg,
+          rgba(65, 65, 65, 1) 0%,
+          rgba(72, 156, 158, 1) 0%,
+          rgba(61, 149, 153, 1) 12%,
+          rgba(38, 135, 144, 1) 36%,
+          rgba(20, 124, 136, 1) 61%,
+          rgba(33, 118, 127, 1) 72%,
+          rgba(43, 113, 120, 1) 100%,
+          rgba(89, 89, 89, 1) 100%
+        );
+      }
+
+      border-radius: 10px;
+      padding: 1rem;
+      padding-right: 2rem;
+      min-height: __convertToRem($value: 100px);
+
+      h2 {
+        color: $stat_color;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: conter;
+        color: $span_color;
+        opacity: 70%;
+      }
+    }
+
+    @mixin avatar_adjust() {
+      div > div {
+        margin: auto;
+        margin-top: 0.2rem;
+      }
+    }
+
+    .alainay {
+      @include vote_style(false, #eee, #333);
+      @include breakpoint(max, 576px) {
+        @include avatar_adjust();
+      }
+    }
+
+    .zakanay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include vote_style(true, #0c0c0c, #333);
+      @include breakpoint(max, 576px) {
+        @include avatar_adjust();
+      }
+
+      > * {
+        width: 107%;
+      }
+    }
+
+    .comments {
+      @include position-flex-center();
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: #3333332d;
+      border-radius: 3px;
+      padding: 0.5rem;
+      padding-bottom: 1rem;
+      margin-top: 0.7rem;
+      margin-left: 0.46rem;
+      max-height: __convertToRem($value: 80px);
+
+      @include breakpoint(max, 576px) {
+        margin-left: 0.52rem !important;
+        margin-top: 0.8rem;
+      }
+
+      .core {
+        color: #eee;
+        text-align: center;
+        max-height: __convertToRem($value: 50px);
+        margin-top: -1rem;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin-top: __convertToRem($value: 5px);
+      width: 33%;
+      @include effect-box-shadow($opacity: small);
+
+      &:hover {
+        @include animation-scale($scaleValue: 1.1);
+      }
+    }
+  }
+}

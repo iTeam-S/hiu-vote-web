@@ -2,10 +2,20 @@
 
 @import 'sass-eo-basics';
 
-.text {
+.typing {
+  margin: auto;
+  margin-top: 3rem;
+  color: #eee;
+  border-radius: 10px;
+  background-color: #2a2c2ce0;
   font-size: 24px;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  text-align: center;
+  width: max-content;
+  @include effect-box-shadow-inset($opacity: small);
 
-  @include breakpoint(max, small) {
-    font-size: 20px;
+  @include breakpoint(max, 500px) {
+    font-size: 18px;
   }
 }

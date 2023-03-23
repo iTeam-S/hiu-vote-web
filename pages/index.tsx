@@ -1,33 +1,45 @@
 import React from 'react'
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout'
-import SidebarLayout from '../components/layouts/sidebar/SidebarLayout'
-import FooterLayout from '../components/layouts/footer/FooterLayout'
-import Participant from '../components/participant'
-import Particle from '../components/particles'
-import styles from '../styles/Home.module.css'
+
+/* next */
 import { NextPageWithLayout } from './page'
+
+/* layouts */
+import PrimaryLayout from '../layouts/primary/PrimaryLayout'
+import SidebarLayout from '../layouts/sidebar/SidebarLayout'
+import FooterLayout from '../layouts/footer/FooterLayout'
+
+/* components */
+import Participant from '../components/participant/participant'
 import Contrib from '../components/contrib/contrib'
+import Particle from '../components/particles/particles'
+import Typing from '../components/typing/typing'
+
+/* libs */
 import MessengerComponent from 'react-messenger-customer-chat'
 import { VerticleButton as ScrollUpButton } from 'react-scroll-up-button'
 import Analytics from 'analytics'
 import googleAnalytics from '@analytics/google-analytics'
-import TypingEffect from '../components/typing/typing'
+
+/* styles */
+import styles from '../styles/home.module.css'
+
+// ===========================================================
 
 const Home: NextPageWithLayout = () => {
   return (
     <section className={styles.main}>
-      <div className={styles.styledtext}>
-        <div className="messenger">
-          <MessengerComponent
-            pageId="113804974982080"
-            appId="1015807782342852"
-            htmlRef="window.location.pathname"
-            themeColor="#008080"
-            loggedInGreeting="Pejy Facebook: HIU Cote 2023"
-            language="fr_FR"
-          />
-        </div>
-        <TypingEffect
+      <div className="messenger">
+        <MessengerComponent
+          pageId="113804974982080"
+          appId="1015807782342852"
+          htmlRef="window.location.pathname"
+          themeColor="#008080"
+          loggedInGreeting="Pejy Facebook: HIU Cote 2023"
+          language="fr_FR"
+        />
+      </div>
+      <div className={styles.typingFixOnMobile}>
+        <Typing
           user="voters"
           host="hiu"
           lists={["echo 'Alainao ?'", "echo 'Zakanao ?'"]}
@@ -63,5 +75,4 @@ const analytics = Analytics({
   ],
 })
 
-/* Track a page view */
 analytics.page()

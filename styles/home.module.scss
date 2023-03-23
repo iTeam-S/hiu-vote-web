@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@import 'sass-eo-basics';
+
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  margin-top: 2%;
+
+  @include breakpoint(max, small) {
+    margin-top: 4%;
+
+    .typingFixOnMobile {
+      margin-left: -1.6rem !important;
+    }
+  }
+}
