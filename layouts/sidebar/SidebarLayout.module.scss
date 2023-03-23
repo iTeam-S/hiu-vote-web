@@ -26,12 +26,24 @@
 
   .title {
     @include animation-fade($in-out: in);
+
+    @include breakpoint(max, 600px) {
+      font-size: 22px;
+    }
+
+    @include breakpoint(max, 500px) {
+      font-size: 18px;
+    }
   }
 
   .nav {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
+
+    @include breakpoint(max, 500px) {
+      padding: 2rem;
+    }
 
     & > button {
       background: teal;

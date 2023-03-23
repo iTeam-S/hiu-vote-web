@@ -10,6 +10,8 @@
   margin-top: 2%;
 
   @include breakpoint(max, small) {
+    margin-top: 4%;
+
     .typingFixOnMobile {
       margin-left: -1.6rem !important;
     }
