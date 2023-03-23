@@ -9,6 +9,7 @@ build-job:
   stage: build
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+    - when: manual
   script:
     - yarn install
     - yarn build || exit 1
