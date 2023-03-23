@@ -60,6 +60,6 @@
 
 @include breakpoint(max, 412px) {
   .typingFixOnMobile {
-    margin: auto;
+    margin-left: -1.6rem !important;
   }
 }

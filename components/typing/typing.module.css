@@ -1,1 +1,1 @@
-.typing{margin:auto;margin-top:3rem;color:#eee;border-radius:10px;background-color:#16191ae0;font-size:24px;padding:.5rem;padding-left:1rem;width:25rem}@media(max-width: 576px){.typing{font-size:18px}}/*# sourceMappingURL=typing.module.css.map */
+.typing{margin:auto;margin-top:3rem;color:#eee;border-radius:10px;background-color:#2a2c2ce0;font-size:24px;padding:.5rem;padding-left:1rem;text-align:center;width:max-content;box-shadow:1px 1px 2px #111 inset}@media(max-width: 500px){.typing{font-size:18px}}/*# sourceMappingURL=typing.module.css.map */

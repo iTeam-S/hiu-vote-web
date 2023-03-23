@@ -7,13 +7,15 @@
   margin-top: 3rem;
   color: #eee;
   border-radius: 10px;
-  background-color: #16191ae0;
+  background-color: #2a2c2ce0;
   font-size: 24px;
   padding: 0.5rem;
   padding-left: 1rem;
-  width: __convertToRem($value: 400px);
+  text-align: center;
+  width: max-content;
+  @include effect-box-shadow-inset($opacity: small);
 
-  @include breakpoint(max, small) {
+  @include breakpoint(max, 500px) {
     font-size: 18px;
   }
 }
