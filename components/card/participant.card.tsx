@@ -58,7 +58,9 @@ export default function ParticipantCard({
 
   useEffect(() => {
     const comments = voters
-      ? voters.filter((element) => element.comment.length > 2)
+      ? voters.filter(
+          (element) => element.comment.length > 2 && element.comment !== '...',
+        )
       : null
     setListComments(comments)
     const intervalId = setInterval(() => {

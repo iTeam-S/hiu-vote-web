@@ -23,7 +23,8 @@
     "sseo-buttons": "grunt --gruntfile sass-eo-cli.js buttons-maker",
     "format-check": "prettier --check --ignore-path .prettierignore .",
     "format-fix": "prettier --write --ignore-path .prettierignore .",
-    "eslint": "eslint ."
+    "eslint": "eslint .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@analytics/google-analytics": "^1.0.5",
@@ -52,8 +53,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
     "@raja_rakoto/sass-eo": "^1.8.2",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
@@ -79,7 +80,7 @@
     "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-shell": "^4.0.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "load-grunt-tasks": "^5.1.0",
     "prettier": "^2.8.4",
     "sassdoc": "^2.7.4",
