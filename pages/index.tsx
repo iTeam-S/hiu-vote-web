@@ -88,11 +88,11 @@ const Home: NextPageWithLayout = () => {
               root={false}
             />
           </div>
-          <Participant />
-          <Contrib />
-          <ScrollUpButton ContainerClassName="scrollup" />
-          <Particle /> */}
+          <Participant /> */}
           <Sponsor data={sponsorData} />
+          <Contrib />
+          {/* <ScrollUpButton ContainerClassName="scrollup" /> */}
+          {/* <Particle /> */}
         </>
       ) : (
         <>

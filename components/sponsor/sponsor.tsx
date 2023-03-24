@@ -4,6 +4,9 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay } from 'swiper'
 
+/* components */
+import Typing from '../typing/typing'
+
 /* styles */
 import 'swiper/swiper-bundle.css'
 import 'swiper/css'
@@ -21,6 +24,15 @@ SwiperCore.use([Autoplay])
 export default function Sponsor({ data }: I_SponsorList) {
   return (
     <React.Fragment>
+      <hr />
+      <div className={styles.typingFixOnMobile}>
+        <Typing
+          user="guests"
+          host="hiu"
+          lists={['echo $Sponsors']}
+          root={true}
+        />
+      </div>
       <div
         style={{
           padding: '1rem',

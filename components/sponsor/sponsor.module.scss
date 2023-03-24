@@ -39,3 +39,9 @@
     }
   }
 }
+
+@include breakpoint(max, 412px) {
+  .typingFixOnMobile {
+    margin-left: -1.6rem !important;
+  }
+}
