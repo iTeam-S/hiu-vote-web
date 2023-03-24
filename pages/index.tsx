@@ -88,9 +88,15 @@ const Home: NextPageWithLayout = () => {
               root={false}
             />
           </div>
-          <Participant />
-          <Sponsor data={sponsorData} />
-          <Contrib />
+          <div id="voters-link">
+            <Participant />
+          </div>
+          <div id="sponsor-link">
+            <Sponsor data={sponsorData} />
+          </div>
+          <div id="contrib-link">
+            <Contrib />
+          </div>
           <ScrollUpButton ContainerClassName="scrollup" />
           <Particle />
         </>

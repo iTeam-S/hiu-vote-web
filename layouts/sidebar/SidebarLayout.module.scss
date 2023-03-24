@@ -38,7 +38,7 @@
 
   .nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1.5rem;
 
     @include breakpoint(max, 500px) {
