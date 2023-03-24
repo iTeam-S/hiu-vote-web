@@ -3,9 +3,6 @@ import React from 'react'
 /* libs */
 import UnderConstruction from 'react-under-construction'
 
-/* styles */
-import 'react-under-construction/build/css/index.css'
-
 // ===========================================================
 
 export default function Maintain() {
@@ -13,7 +10,7 @@ export default function Maintain() {
     <>
       <div
         style={{
-          marginTop: '10rem',
+          marginTop: '20rem',
         }}
       ></div>
       <UnderConstruction
