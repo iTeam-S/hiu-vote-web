@@ -11,6 +11,7 @@ import FooterLayout from '../layouts/footer/FooterLayout'
 /* components */
 import Participant from '../components/participant/participant'
 import Contrib from '../components/contrib/contrib'
+import Sponsor from '../components/sponsor/sponsor'
 import Particle from '../components/particles/particles'
 import Typing from '../components/typing/typing'
 import Maintain from '../components/maintain/maintain'
@@ -27,6 +28,40 @@ import styles from '../styles/home.module.css'
 /* maintain */
 // import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
 export const maintainStatus = false
+
+/* fake data for sponsor carousel */
+const sponsorData = [
+  {
+    id: '1',
+    title: 'title 1',
+    url: 'https://source.unsplash.com/random/250x250',
+  },
+  {
+    id: '2',
+    title: 'title 2',
+    url: 'https://source.unsplash.com/random/250x250',
+  },
+  {
+    id: '3',
+    title: 'title 3',
+    url: 'https://source.unsplash.com/random/250x250',
+  },
+  {
+    id: '4',
+    title: 'title 4',
+    url: 'https://source.unsplash.com/random/250x250',
+  },
+  {
+    id: '5',
+    title: 'title 5',
+    url: 'https://source.unsplash.com/random/250x250',
+  },
+  {
+    id: '6',
+    title: 'title 6',
+    url: 'https://source.unsplash.com/random/250x250',
+  },
+]
 
 // ===========================================================
 
@@ -57,6 +92,7 @@ const Home: NextPageWithLayout = () => {
           <Contrib />
           <ScrollUpButton ContainerClassName="scrollup" />
           <Particle /> */}
+          <Sponsor data={sponsorData} />
         </>
       ) : (
         <>
