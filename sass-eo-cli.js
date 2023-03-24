@@ -24,6 +24,8 @@ module.exports = function (grunt) {
       './layouts/sidebar/SidebarLayout.module.scss',
     './layouts/footer/FooterLayout.module.css':
       './layouts/footer/FooterLayout.module.scss',
+    './components/sponsor/sponsor.module.css':
+      './components/sponsor/sponsor.module.scss',
   }
 
   grunt.initConfig({
