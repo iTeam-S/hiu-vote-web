@@ -70,7 +70,7 @@ const Home: NextPageWithLayout = () => {
     <section className={styles.main}>
       {!maintainStatus ? (
         <>
-          {/* <div className="messenger">
+          <div className="messenger">
             <MessengerComponent
               pageId="113804974982080"
               appId="1015807782342852"
@@ -88,11 +88,11 @@ const Home: NextPageWithLayout = () => {
               root={false}
             />
           </div>
-          <Participant /> */}
+          <Participant />
           <Sponsor data={sponsorData} />
           <Contrib />
-          {/* <ScrollUpButton ContainerClassName="scrollup" /> */}
-          {/* <Particle /> */}
+          <ScrollUpButton ContainerClassName="scrollup" />
+          <Particle />
         </>
       ) : (
         <>
