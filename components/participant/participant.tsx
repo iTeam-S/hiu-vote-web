@@ -22,7 +22,7 @@ export default function Participant() {
   const [participant, setParticipant] = useState<I_ParticipantType | null>(null)
   const [openDialog, setOpenDialog] = useState(false)
   let latestUpdate = new Date().getTime()
-  const delayUpdate = 3000
+  const delayUpdate = 7000
 
   const handleOpenDialog = () => {
     setOpenDialog(true)
