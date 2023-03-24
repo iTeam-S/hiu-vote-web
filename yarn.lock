@@ -11222,6 +11222,11 @@ react-tsparticles@^2.9.3:
     fast-deep-equal "^3.1.3"
     tsparticles-engine "^2.9.3"
 
+react-under-construction@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-under-construction/-/react-under-construction-0.3.0.tgz#d0b9158a02a0bb9a43fe5c80e9cf71152d124ae1"
+  integrity sha512-OJZPAI2UXFZTRcDwDo0YONZd3mD78cwxC46ti/XYreVN83Z10ZTWCyrGlrQ8Ft1SdwG7BeF60CpEUg1RT7BQwQ==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
