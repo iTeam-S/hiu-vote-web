@@ -16,7 +16,7 @@ export default function Maintain() {
         alt: 'iteam-s logo',
       }}
       title={{
-        text: 'I-Team$',
+        text: 'ITeam-$',
       }}
       description={{
         text: 'Notre site internet est en construction. Nous serons bientôt là, abonnez-vous pour être informé',
