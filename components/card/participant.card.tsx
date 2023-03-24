@@ -12,10 +12,12 @@ import {
   I_VotesParticipant,
   T_ParticipantCard,
   T_DetailsButton,
+  T_CommentOpt,
 } from '../../types'
 
 /* styles */
 import styles from '../participant/participant.module.css'
+import { getThreeVotes } from '../../apis/comments-three-voters'
 
 // ===========================================================
 
@@ -47,31 +49,35 @@ export default function ParticipantCard({
   votesPourcentage,
   votesCount,
   contreVotesCount,
-  voters,
-  againstVoters,
   handleClickDetails,
 }: T_ParticipantCard) {
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
-  const [listComments, setListComments] = useState<I_VotesParticipant[] | null>(
+  const [voters, setVoters] = useState<null | T_CommentOpt[]>(null)
+  const [againstVoters, setAgainstVoters] = useState<null | T_CommentOpt[]>(
     null,
   )
 
-  useEffect(() => {
-    const comments = voters
-      ? voters.filter(
-          (element) => element.comment.length > 2 && element.comment !== '...',
-        )
-      : null
-    setListComments(comments)
-    const intervalId = setInterval(() => {
-      if (listComments?.length) {
-        const nextIndex = (currentIndex + 1) % listComments.length
-        setCurrentIndex(nextIndex)
-      }
-    }, 3300)
+  const handleVotes = async () => {
+    const votes = await getThreeVotes({
+      idParticipant: id,
+      collection: 'votes',
+    })
+    setVoters(votes)
+  }
+  const handleContreVotes = async () => {
+    const votes = await getThreeVotes({
+      idParticipant: id,
+      collection: 'contre_votes',
+    })
+    setAgainstVoters(votes)
+  }
 
-    return () => clearInterval(intervalId)
-  }, [currentIndex, voters])
+  useEffect(() => {
+    handleVotes()
+  }, [votesCount])
+
+  useEffect(() => {
+    handleContreVotes()
+  }, [contreVotesCount])
 
   return (
     <React.Fragment>

@@ -35,7 +35,7 @@ import {
 import styles from './details.module.css'
 
 /* global */
-const fetchPerPage = 25
+const fetchPerPage = 20
 
 // ===========================================================
 
