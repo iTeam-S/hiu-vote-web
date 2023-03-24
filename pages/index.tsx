@@ -91,9 +91,9 @@ const Home: NextPageWithLayout = () => {
           <div id="voters-link">
             <Participant />
           </div>
-          <div id="sponsor-link">
+          {/* <div id="sponsor-link">
             <Sponsor data={sponsorData} />
-          </div>
+          </div> */}
           <div id="contrib-link">
             <Contrib />
           </div>
