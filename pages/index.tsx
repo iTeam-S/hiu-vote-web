@@ -25,8 +25,8 @@ import googleAnalytics from '@analytics/google-analytics'
 import styles from '../styles/home.module.css'
 
 /* maintain */
-import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
-export const maintainStatus = true
+// import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
+export const maintainStatus = false
 
 // ===========================================================
 
@@ -35,7 +35,7 @@ const Home: NextPageWithLayout = () => {
     <section className={styles.main}>
       {!maintainStatus ? (
         <>
-          <div className="messenger">
+          {/* <div className="messenger">
             <MessengerComponent
               pageId="113804974982080"
               appId="1015807782342852"
@@ -56,7 +56,7 @@ const Home: NextPageWithLayout = () => {
           <Participant />
           <Contrib />
           <ScrollUpButton ContainerClassName="scrollup" />
-          <Particle />
+          <Particle /> */}
         </>
       ) : (
         <>
