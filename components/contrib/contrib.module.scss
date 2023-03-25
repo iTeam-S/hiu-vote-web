@@ -12,7 +12,7 @@
   min-width: __convertToRem($value: 250px);
   margin: auto;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   padding-left: 6rem;
   padding-right: 6rem;
 
@@ -21,6 +21,44 @@
     flex-direction: column;
     z-index: 3 !important;
     margin-right: 1rem;
+    background-color: rgba(173, 179, 179, 0.836);
+    padding: 1rem;
+    padding-right: 1rem;
+    border-radius: 10px;
+    @include effect-box-shadow-inset($opacity: small);
+    transition: all 0.1s;
+    min-width: __convertToRem($value: 200px);
+
+    &:hover {
+      background-color: rgb(218, 215, 215);
+      border-bottom: solid rgb(87, 85, 85) 4px;
+      @include effect-box-shadow($opacity: smooth);
+
+      ul {
+        li {
+          color: #444;
+        }
+      }
+    }
+
+    ul {
+      margin: auto;
+      list-style-type: square;
+      padding-right: 1rem;
+
+      li {
+        color: #eee;
+      }
+
+      @include breakpoint(max, 524px) {
+        font-size: 14px;
+      }
+
+      .percentage {
+        color: #757474;
+        font-size: small;
+      }
+    }
 
     img {
       width: 152px;
