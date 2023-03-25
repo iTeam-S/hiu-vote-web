@@ -40,11 +40,10 @@ body {
   margin: 0;
   font-size: 16px;
   overflow-x: hidden;
-  height: 100vh;
 }
 
 // main background styles
-.background--custom {
+.background--custom--maintainON {
   background: linear-gradient(90deg, #68747c, #85a1a3, #2e6e6e);
   background-size: 300% 300%;
   animation: gradient 8s alternate infinite;
@@ -53,6 +52,16 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
+}
+
+.background--custom--maintainOFF {
+  background: linear-gradient(90deg, #68747c, #85a1a3, #2e6e6e);
+  background-size: 300% 300%;
+  animation: gradient 8s alternate infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 @keyframes gradient {

@@ -1,4 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import { maintainStatus } from './index'
+
+// ===========================================================
 
 export default class MyDocument extends Document {
   render() {
@@ -13,7 +16,13 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <div className="background--custom">
+          <div
+            className={
+              maintainStatus
+                ? 'background--custom--maintainON'
+                : 'background--custom--maintainOFF'
+            }
+          >
             <Main />
             <NextScript />
           </div>

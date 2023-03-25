@@ -24,8 +24,9 @@ import googleAnalytics from '@analytics/google-analytics'
 /* styles */
 import styles from '../styles/home.module.css'
 
-/* global */
-const maintainStatus = true
+/* maintain */
+//import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
+export const maintainStatus = false
 
 // ===========================================================
 
@@ -71,17 +72,17 @@ export default Home
 
 Home.getLayout = (page) => {
   return (
-    <PrimaryLayout>
+    <>
       {!maintainStatus ? (
-        <>
+        <PrimaryLayout>
           <SidebarLayout />
           {page}
           <FooterLayout />
-        </>
+        </PrimaryLayout>
       ) : (
         <>{page}</>
       )}
-    </PrimaryLayout>
+    </>
   )
 }
 
