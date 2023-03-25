@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 /* libs */
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,21 +7,34 @@ import SwiperCore, { Autoplay } from 'swiper'
 /* components */
 import Typing from '../typing/typing'
 
+/* apis */
+import { getSponsors } from '../../apis/sponsors'
+
+/* types */
+import { I_SponsorsList } from '../../types/index'
+
 /* styles */
 import 'swiper/swiper-bundle.css'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import styles from './sponsor.module.css'
 
-/* types */
-import { I_SponsorList } from '../../types'
-
 /* global */
 SwiperCore.use([Autoplay])
 
 // ===========================================================
 
-export default function Sponsor({ data }: I_SponsorList) {
+export default function Sponsor() {
+  const [sponsors, setSponsors] = useState<I_SponsorsList | null>(null)
+  const fetchSponsors = async () => {
+    const sponsorsData = await getSponsors()
+    if (sponsorsData) setSponsors(sponsorsData)
+  }
+
+  useEffect(() => {
+    fetchSponsors()
+  }, [])
+
   return (
     <React.Fragment>
       <hr />
@@ -30,7 +43,7 @@ export default function Sponsor({ data }: I_SponsorList) {
           user="guests"
           host="hiu"
           lists={['echo $Sponsors']}
-          root={true}
+          root={false}
         />
       </div>
       <div
@@ -67,17 +80,30 @@ export default function Sponsor({ data }: I_SponsorList) {
             },
           }}
         >
-          {data.map((d) => (
-            <SwiperSlide
-              key={d.id}
-              className="d-flex justify-content-center align-content-center align-items-center"
-            >
-              <div className={styles.mySwiper}>
-                <img src={d.url} alt={d.title + ' logo'} width={200} />
-                <h6>{d.title}</h6>
-              </div>
-            </SwiperSlide>
-          ))}
+          {sponsors &&
+            sponsors.items.map((sponsor) => (
+              <SwiperSlide
+                key={sponsor.id}
+                className="d-flex justify-content-center align-content-center align-items-center"
+              >
+                <div className={styles.mySwiper}>
+                  <img
+                    src={
+                      process.env.API_URL +
+                      'files/' +
+                      sponsor.collectionId +
+                      '/' +
+                      sponsor.id +
+                      '/' +
+                      sponsor.logo
+                    }
+                    alt={sponsor.name + ' logo'}
+                    width={200}
+                  />
+                  <h6>{sponsor.name}</h6>
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </React.Fragment>

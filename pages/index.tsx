@@ -29,40 +29,6 @@ import styles from '../styles/home.module.css'
 //import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
 export const maintainStatus = false
 
-/* fake data for sponsor carousel */
-const sponsorData = [
-  {
-    id: '1',
-    title: 'title 1',
-    url: 'https://source.unsplash.com/random/250x250',
-  },
-  {
-    id: '2',
-    title: 'title 2',
-    url: 'https://source.unsplash.com/random/250x250',
-  },
-  {
-    id: '3',
-    title: 'title 3',
-    url: 'https://source.unsplash.com/random/250x250',
-  },
-  {
-    id: '4',
-    title: 'title 4',
-    url: 'https://source.unsplash.com/random/250x250',
-  },
-  {
-    id: '5',
-    title: 'title 5',
-    url: 'https://source.unsplash.com/random/250x250',
-  },
-  {
-    id: '6',
-    title: 'title 6',
-    url: 'https://source.unsplash.com/random/250x250',
-  },
-]
-
 // ===========================================================
 
 const Home: NextPageWithLayout = () => {
@@ -91,9 +57,9 @@ const Home: NextPageWithLayout = () => {
           <div id="voters-link">
             <Participant />
           </div>
-          {/* <div id="sponsor-link">
-            <Sponsor data={sponsorData} />
-          </div> */}
+          <div id="sponsor-link">
+            <Sponsor />
+          </div>
           <div id="contrib-link">
             <Contrib />
           </div>
