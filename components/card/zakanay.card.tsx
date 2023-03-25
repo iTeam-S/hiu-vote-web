@@ -63,7 +63,11 @@ export default function ZakanayCard({
                 </AvatarGroup>
               </Badge>
             ) : (
-              <Badge badgeContent={contreVotesCount} color="primary">
+              <Badge
+                badgeContent={contreVoteCountCalculate}
+                color="primary"
+                max={9999}
+              >
                 <Avatar></Avatar>
               </Badge>
             )}

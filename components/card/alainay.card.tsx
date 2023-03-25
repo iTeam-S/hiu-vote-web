@@ -33,7 +33,9 @@ export default function AlainayCard({
 
   useEffect(() => {
     const comments = voters
-      ? voters.filter((element) => element.comment.length > 2)
+      ? voters.filter(
+          (element) => element.comment.length > 2 && element.comment !== '...',
+        )
       : null
     setListComments(comments)
     const intervalId = setInterval(() => {
@@ -97,7 +99,11 @@ export default function AlainayCard({
                 </AvatarGroup>
               </Badge>
             ) : (
-              <Badge badgeContent={voteCountCalculate} color="primary">
+              <Badge
+                badgeContent={voteCountCalculate}
+                color="primary"
+                max={9999}
+              >
                 <Avatar></Avatar>
               </Badge>
             )}

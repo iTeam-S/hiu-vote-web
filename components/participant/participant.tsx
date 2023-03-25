@@ -8,21 +8,20 @@ import DialogDetails from '../details/details'
 import ParticipantCard from '../card/participant.card'
 
 /* apis */
-import { getParticipants } from '../../apis/participants'
+import { getParticipantsList } from '../../apis/participants-list'
 
 /* types */
-import { I_ParticipantType, pb } from '../../types'
+import { ParticipantType, pb } from '../../types'
 
 // ===========================================================
-
+const delayUpdate = 7000
 export default function Participant() {
   const [participantsList, setParticipantsList] = useState<
-    I_ParticipantType[] | null
+    ParticipantType[] | null
   >(null)
-  const [participant, setParticipant] = useState<I_ParticipantType | null>(null)
+  const [participant, setParticipant] = useState<ParticipantType | null>(null)
   const [openDialog, setOpenDialog] = useState(false)
   let latestUpdate = new Date().getTime()
-  const delayUpdate = 7000
 
   const handleOpenDialog = () => {
     setOpenDialog(true)
@@ -33,7 +32,7 @@ export default function Participant() {
   }
 
   async function getListParticipants() {
-    const participants = await getParticipants()
+    const participants = await getParticipantsList()
     setParticipantsList(participants)
   }
 
@@ -113,8 +112,6 @@ export default function Participant() {
                   '',
                 )}
                 votesCount={card.expand.voters_count}
-                voters={card.expand.votes_preview}
-                againstVoters={card.expand.contre_votes_preview}
                 contreVotesCount={card.expand.contre_votes_count}
                 handleClickDetails={handleClickDetails}
               />

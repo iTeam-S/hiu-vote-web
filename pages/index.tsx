@@ -26,7 +26,7 @@ import googleAnalytics from '@analytics/google-analytics'
 import styles from '../styles/home.module.css'
 
 /* maintain */
-// import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
+//import 'react-under-construction/build/css/index.css' // note: comment/uncomment this line when maintenance mode is inactive/active
 export const maintainStatus = false
 
 /* fake data for sponsor carousel */

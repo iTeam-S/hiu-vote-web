@@ -186,7 +186,7 @@ export interface I_User {
 export type T_DialogDetails = {
   handleCloseDialog: () => void
   open: boolean
-  participantsDetails: I_ParticipantType
+  participantsDetails: ParticipantType
   initialiseParticipantDetails: () => void
 }
 
@@ -213,8 +213,6 @@ export type T_ParticipantCard = {
   votesPourcentage: string
   votesCount: number
   contreVotesCount: number
-  voters?: I_VotesParticipant[] | null
-  againstVoters?: I_VotesParticipant[] | null
   handleClickDetails: (id: string) => void
 }
 
@@ -237,4 +235,56 @@ interface I_Sponsor {
 
 export interface I_SponsorList {
   data: I_Sponsor[]
+}
+
+export interface ParticipantType {
+  city: string
+  collectionId: string
+  collectionName: string
+  created: Date
+  description: string
+  expand: ExpandParticipantType
+  full_univ_name: string
+  id: string
+  logo: string
+  univ_name: string
+  updated: Date
+}
+
+export interface ExpandParticipantType {
+  contre_votes_count: number
+  participant_pourcent: string
+  voters_count: number
+}
+
+export interface T_CommentOpt {
+  collectionId: string
+  collectionName: string
+  comment: string
+  created: Date
+  expand: ExpandVoter
+  id: string
+  participant: string
+  updated: Date
+  voter: string
+}
+
+export interface ExpandVoter {
+  voter: Voter
+}
+
+export interface Voter {
+  collectionId: string
+  collectionName: string
+  created: Date
+  fb_id: string
+  id: string
+  name: string
+  profil_pic: string
+  updated: Date
+}
+
+export type T_ThreeVotesProps = {
+  idParticipant: string
+  collection: string
 }
