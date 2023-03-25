@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "layouts/primary/PrimaryLayout.mocks.ts"
+    "layouts/primary/PrimaryLayout.mocks.ts",
+    "jest.config.js"
   ],
   "exclude": ["node_modules"]
 }
