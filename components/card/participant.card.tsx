@@ -8,12 +8,7 @@ import AlainayCard from './alainay.card'
 import ZakanayCard from './zakanay.card'
 
 /* types */
-import {
-  I_VotesParticipant,
-  T_ParticipantCard,
-  T_DetailsButton,
-  T_CommentOpt,
-} from '../../types'
+import { T_ParticipantCard, T_DetailsButton, T_CommentOpt } from '../../types'
 
 /* styles */
 import styles from '../participant/participant.module.css'

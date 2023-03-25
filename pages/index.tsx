@@ -11,6 +11,7 @@ import FooterLayout from '../layouts/footer/FooterLayout'
 /* components */
 import Participant from '../components/participant/participant'
 import Contrib from '../components/contrib/contrib'
+import Sponsor from '../components/sponsor/sponsor'
 import Particle from '../components/particles/particles'
 import Typing from '../components/typing/typing'
 import Maintain from '../components/maintain/maintain'
@@ -53,8 +54,15 @@ const Home: NextPageWithLayout = () => {
               root={false}
             />
           </div>
-          <Participant />
-          <Contrib />
+          <div id="voters-link">
+            <Participant />
+          </div>
+          <div id="sponsor-link">
+            <Sponsor />
+          </div>
+          <div id="contrib-link">
+            <Contrib />
+          </div>
           <ScrollUpButton ContainerClassName="scrollup" />
           <Particle />
         </>

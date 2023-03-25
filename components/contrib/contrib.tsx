@@ -63,7 +63,7 @@ export default function Contrib() {
             root={true}
           />
         </div>
-        <div id="contrib-link" className={styles.contrib}>
+        <div className={styles.contrib}>
           {githubProfilePics.map((profilePic, index) => (
             <Link
               href={linkLinkedin[index]}

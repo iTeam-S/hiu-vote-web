@@ -227,7 +227,24 @@ export interface I_PrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {
 
 export interface I_SidebarLayout {}
 
-/* ///////////////// */
+export interface I_SponsorsList {
+  page: number
+  perPage: number
+  totalItems: number
+  totalPages: number
+  items: I_ItemSponsor[]
+}
+
+export interface I_ItemSponsor {
+  collectionId: string
+  collectionName: string
+  created: Date
+  id: string
+  logo: string
+  name: string
+  updated: Date
+}
+
 export interface ParticipantType {
   city: string
   collectionId: string
