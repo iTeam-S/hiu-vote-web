@@ -183,6 +183,22 @@ export interface I_User {
   avatar_url: string
 }
 
+export interface I_Stats {
+  id: string
+  frontend: number
+  backend: number
+  bot: number
+  fonctionnel: number
+  cm: number
+  devops: number
+  integrationAPI: number
+}
+
+export type T_StatRender = {
+  title: string
+  value: number
+}
+
 export type T_DialogDetails = {
   handleCloseDialog: () => void
   open: boolean

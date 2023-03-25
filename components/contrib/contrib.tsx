@@ -6,17 +6,125 @@ import Link from 'next/link'
 /* components */
 import Typing from '../typing/typing'
 
+/* libs */
+import { Line } from 'rc-progress'
+
 /* types */
-import { I_User } from '../../types'
+import { I_User, I_Stats, T_StatRender } from '../../types'
 
 /* styles */
 import styles from './contrib.module.css'
 
 // ===========================================================
 
+function Stats({
+  id,
+  frontend,
+  backend,
+  bot,
+  fonctionnel,
+  cm,
+  devops,
+  integrationAPI,
+}: I_Stats) {
+  const StatRender = ({ title, value }: T_StatRender) => {
+    return (
+      <>
+        <span>{title}</span>{' '}
+        <span className={styles.percentage}>({value}%)</span>
+        <Line
+          percent={value}
+          strokeWidth={2}
+          strokeColor="#41e0cb"
+          trailColor="#444"
+        />
+      </>
+    )
+  }
+  return (
+    <React.Fragment>
+      <ul key={id}>
+        <li>
+          <StatRender title="Frontend" value={frontend} />
+        </li>
+        <li>
+          <StatRender title="Backend" value={backend} />
+        </li>
+        <li>
+          <StatRender title="Bot" value={bot} />
+        </li>
+        <li>
+          <StatRender title="Fonctionnel" value={fonctionnel} />
+        </li>
+        <li>
+          <StatRender title="CM" value={cm} />
+        </li>
+        <li>
+          <StatRender title="DevOps" value={devops} />
+        </li>
+        <li>
+          <StatRender title="Integration API" value={integrationAPI} />
+        </li>
+      </ul>
+    </React.Fragment>
+  )
+}
+
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
   const realNames: string[] = ['Ntsoa', 'Raja', 'Damia', 'Gaetan', 'Rivo']
+  const contribStats: I_Stats[] = [
+    {
+      id: 'Ntsoa',
+      frontend: 30,
+      backend: 20,
+      bot: 0,
+      fonctionnel: 5,
+      cm: 0,
+      devops: 0,
+      integrationAPI: 70,
+    },
+    {
+      id: 'Raja',
+      frontend: 70,
+      backend: 5,
+      bot: 0,
+      fonctionnel: 5,
+      cm: 0,
+      devops: 0,
+      integrationAPI: 20,
+    },
+    {
+      id: 'Damia',
+      frontend: 0,
+      backend: 0,
+      bot: 0,
+      fonctionnel: 70,
+      cm: 100,
+      devops: 0,
+      integrationAPI: 0,
+    },
+    {
+      id: 'Gaetan',
+      frontend: 0,
+      backend: 70,
+      bot: 25,
+      fonctionnel: 10,
+      cm: 0,
+      devops: 100,
+      integrationAPI: 10,
+    },
+    {
+      id: 'Rivo',
+      frontend: 0,
+      backend: 5,
+      bot: 75,
+      fonctionnel: 10,
+      cm: 0,
+      devops: 0,
+      integrationAPI: 5,
+    },
+  ]
 
   const linkLinkedin: string[] = [
     'https://www.linkedin.com/in/ntsoa/',
@@ -74,6 +182,18 @@ export default function Contrib() {
             >
               <img src={profilePic} alt={`GitHub Profile ${index}`} />
               <h3>{realNames[index]}</h3>
+              <div className={styles.states}>
+                <Stats
+                  id={contribStats[index].id}
+                  frontend={contribStats[index].frontend}
+                  backend={contribStats[index].backend}
+                  bot={contribStats[index].bot}
+                  fonctionnel={contribStats[index].fonctionnel}
+                  cm={contribStats[index].cm}
+                  devops={contribStats[index].devops}
+                  integrationAPI={contribStats[index].integrationAPI}
+                />
+              </div>
             </Link>
           ))}
         </div>
