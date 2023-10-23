@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { FaRegEye } from 'react-icons/fa'
 
 /* components */
-import AlainayCard from './alainay.card'
-import ZakanayCard from './zakanay.card'
+import TakeCard from './take.card'
+import AffordCard from './afford.card'
 
 /* types */
 import { T_ParticipantCard, T_DetailsButton, T_CommentOpt } from '../../types'
@@ -13,8 +13,6 @@ import { T_ParticipantCard, T_DetailsButton, T_CommentOpt } from '../../types'
 /* styles */
 import styles from '../participant/participant.module.css'
 import { getThreeVotes } from '../../apis/comments-three-voters'
-
-// ===========================================================
 
 function DetailsButton({ id, handleClickDetails }: T_DetailsButton) {
   const [onHover, setOnHover] = useState(false)
@@ -85,12 +83,12 @@ export default function ParticipantCard({
             <hr />
             <h3 className={styles.title}>{name}</h3>
             <hr />
-            <AlainayCard
+            <TakeCard
               votesPourcentage={votesPourcentage}
               votesCount={votesCount}
               voters={voters}
             />
-            <ZakanayCard
+            <AffordCard
               contreVotesCount={contreVotesCount}
               againstVoters={againstVoters}
             />

@@ -6,8 +6,6 @@ import {
   T_ParticipantVotesCommentsList,
 } from '../types'
 
-// ===========================================================
-
 export const getParticipantVotesCommentsList = async ({
   page,
   perPage,

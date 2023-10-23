@@ -3,8 +3,6 @@ import axios, { AxiosRequestConfig } from 'axios'
 /* types */
 import { I_ParticipantType } from '../types'
 
-// ===========================================================
-
 export const getParticipants = async (): Promise<I_ParticipantType[]> => {
   const config: AxiosRequestConfig = {
     method: 'get',

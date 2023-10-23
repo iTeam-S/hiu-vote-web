@@ -3,8 +3,6 @@ import axios, { AxiosRequestConfig } from 'axios'
 /* types */
 import { I_VotersList } from '../types'
 
-// ===========================================================
-
 export const getVoters = async (): Promise<I_VotersList> => {
   const config: AxiosRequestConfig = {
     method: 'get',

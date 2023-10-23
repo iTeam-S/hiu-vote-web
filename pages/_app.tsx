@@ -9,8 +9,6 @@ import { NextPageWithLayout } from './page'
 /* styles */
 import '../styles/globals.css'
 
-// ===========================================================
-
 interface AppPropsWithLayout extends AppProps {
   Component: NextPageWithLayout
 }

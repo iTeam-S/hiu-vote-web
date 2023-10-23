@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Avatar, AvatarGroup, Tooltip, Badge } from '@mui/material'
 
 /* types */
-import { I_VotesParticipant, T_AlainayCard } from '../../types'
+import { I_VotesParticipant, T_TakeCard } from '../../types'
 
 /* icons */
 import { AiFillHeart } from 'react-icons/ai'
@@ -15,11 +15,11 @@ import styles from '../participant/participant.module.css'
 
 // ===========================================================
 
-export default function AlainayCard({
+export default function TakeCard({
   votesPourcentage,
   votesCount,
   voters,
-}: T_AlainayCard) {
+}: T_TakeCard) {
   const voteCountCalculate = votesCount > 3 ? `+${votesCount - 3}` : votesCount
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [listComments, setListComments] = useState<I_VotesParticipant[] | null>(

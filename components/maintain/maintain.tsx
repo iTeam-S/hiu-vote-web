@@ -3,8 +3,6 @@ import React from 'react'
 /* libs */
 import UnderConstruction from 'react-under-construction'
 
-// ===========================================================
-
 export default function Maintain() {
   return (
     <>

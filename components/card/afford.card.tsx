@@ -4,7 +4,7 @@ import React from 'react'
 import { Avatar, AvatarGroup, Tooltip, Badge } from '@mui/material'
 
 /* types */
-import { T_ZakanayCard } from '../../types'
+import { T_AffordCard } from '../../types'
 
 /* icons */
 import { GiStrong } from 'react-icons/gi'
@@ -14,10 +14,10 @@ import styles from '../participant/participant.module.css'
 
 // ===========================================================
 
-export default function ZakanayCard({
+export default function AffordCard({
   contreVotesCount,
   againstVoters,
-}: T_ZakanayCard) {
+}: T_AffordCard) {
   const contreVoteCountCalculate =
     contreVotesCount > 3 ? `+${contreVotesCount - 3}` : contreVotesCount
 

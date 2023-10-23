@@ -38,8 +38,6 @@ const Puller = styled(Box)(({ theme }) => ({
   left: 'calc(50% - 15px)',
 }))
 
-// ===========================================================
-
 export default function SwipeableEdgeDrawer({
   children,
   title,

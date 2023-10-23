@@ -167,13 +167,13 @@ export interface I_TypingEffect {
   root: boolean
 }
 
-export type T_AlainayCard = {
+export type T_TakeCard = {
   votesPourcentage: string
   votesCount: number
   voters?: I_VotesParticipant[] | null
 }
 
-export type T_ZakanayCard = {
+export type T_AffordCard = {
   contreVotesCount: number
   againstVoters?: I_VotesParticipant[] | null
 }
