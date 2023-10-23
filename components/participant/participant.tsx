@@ -13,7 +13,6 @@ import { getParticipantsList } from '../../apis/participants-list'
 /* types */
 import { ParticipantType, pb } from '../../types'
 
-// ===========================================================
 const delayUpdate = 7000
 export default function Participant() {
   const [participantsList, setParticipantsList] = useState<

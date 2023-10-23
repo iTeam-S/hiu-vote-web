@@ -3,8 +3,6 @@ import axios, { AxiosRequestConfig } from 'axios'
 /* types */
 import { T_CommentOpt, T_ThreeVotesProps } from '../types'
 
-// ===========================================================
-
 export const getThreeVotes = async ({
   idParticipant,
   collection,

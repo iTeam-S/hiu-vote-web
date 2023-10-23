@@ -62,12 +62,12 @@ export default function DialogDetails({
   participantsDetails,
   initialiseParticipantDetails,
 }: T_DialogDetails) {
-  const [openDrawerAlainay, setOpenDrawerAlainay] = useState(false)
-  const [openDrawerZakanay, setOpenDrawerZakanay] = useState(false)
-  const [pageAlainay, setPageAlainay] = useState<number>(1)
-  const [pageZakanay, setPageZakanay] = useState<number>(1)
-  const [totalPageAlainay, setTotalPageAlainay] = useState<number | null>(null)
-  const [totalPageZakanay, setTotalPageZakanay] = useState<number | null>(null)
+  const [openDrawerTake, setOpenDrawerTake] = useState(false)
+  const [openDrawerAfford, setOpenDrawerAfford] = useState(false)
+  const [pageTake, setPageTake] = useState<number>(1)
+  const [pageAfford, setPageAfford] = useState<number>(1)
+  const [totalPageTake, setTotalPageTake] = useState<number | null>(null)
+  const [totalPageAfford, setTotalPageAfford] = useState<number | null>(null)
   const [fetchLoading, setFetchLoading] = useState<boolean>(false)
   const [titleComment, setTitleComment] = useState<string>(
     'Alainao sa Zakanao ?',
@@ -84,50 +84,50 @@ export default function DialogDetails({
     participantsDetails.id +
     '/' +
     participantsDetails.logo
-  const votesAlainayCount = participantsDetails.expand.participant_pourcent
-  const votesZakanayCount = participantsDetails.expand.contre_votes_count
+  const votesTakeCount = participantsDetails.expand.participant_pourcent
+  const votesAffordCount = participantsDetails.expand.contre_votes_count
 
-  const toggleDrawerAlainay = (newOpenDrawer: boolean) => () => {
+  const toggleDrawerTake = (newOpenDrawer: boolean) => () => {
     setTitleComment('Alainay')
-    setOpenDrawerAlainay(newOpenDrawer)
+    setOpenDrawerTake(newOpenDrawer)
     if (!newOpenDrawer) setTitleComment('Alainao sa Zakanao ?')
   }
 
-  const toggleDrawerZakanay = (newOpenDrawer: boolean) => () => {
+  const toggleDrawerAfford = (newOpenDrawer: boolean) => () => {
     setTitleComment('Zakanay')
-    setOpenDrawerZakanay(newOpenDrawer)
+    setOpenDrawerAfford(newOpenDrawer)
     if (!newOpenDrawer) setTitleComment('Alainao sa Zakanao ?')
   }
 
   const fetchFirstVotesComments = async () => {
     const newtVotesComments = await getParticipantVotesCommentsList({
-      page: pageAlainay,
+      page: pageTake,
       perPage: fetchPerPage,
       idParticipant: participantsDetails.id,
       collection: 'votes',
     })
-    setTotalPageAlainay(newtVotesComments.totalPages)
+    setTotalPageTake(newtVotesComments.totalPages)
     setParticipantVotesComments(newtVotesComments.items)
-    setPageAlainay(pageAlainay + 1)
+    setPageTake(pageTake + 1)
     setFetchLoading(false)
   }
 
   const fetchFirstContreVotesComments = async () => {
     const newContreVotesComments = await getParticipantVotesCommentsList({
-      page: pageZakanay,
+      page: pageAfford,
       perPage: fetchPerPage,
       idParticipant: participantsDetails.id,
       collection: 'contre_votes',
     })
-    setTotalPageZakanay(newContreVotesComments.totalPages)
+    setTotalPageAfford(newContreVotesComments.totalPages)
     setParticipantContreVotesComments(newContreVotesComments.items)
-    setPageZakanay((prevPage) => prevPage + 1)
+    setPageAfford((prevPage) => prevPage + 1)
     setFetchLoading(false)
   }
 
   const fetchVotesComments = async () => {
     const newtVotesComments = await getParticipantVotesCommentsList({
-      page: pageAlainay,
+      page: pageTake,
       perPage: fetchPerPage,
       idParticipant: participantsDetails.id,
       collection: 'votes',
@@ -138,13 +138,13 @@ export default function DialogDetails({
         ...newtVotesComments.items,
       ])
     }
-    setPageAlainay(pageAlainay + 1)
+    setPageTake(pageTake + 1)
     setFetchLoading(false)
   }
 
   const fetchContreVotesComments = async () => {
     const newContreVotesComments = await getParticipantVotesCommentsList({
-      page: pageZakanay,
+      page: pageAfford,
       perPage: fetchPerPage,
       idParticipant: participantsDetails.id,
       collection: 'contre_votes',
@@ -155,7 +155,7 @@ export default function DialogDetails({
         ...newContreVotesComments.items,
       ])
     }
-    setPageZakanay((prevPage) => prevPage + 1)
+    setPageAfford((prevPage) => prevPage + 1)
     setFetchLoading(false)
   }
 
@@ -165,8 +165,8 @@ export default function DialogDetails({
   }
 
   // eslint-disable-next-line
-  const handleScrollAlainay = async (event: any) => {
-    if (totalPageAlainay && totalPageAlainay >= pageAlainay) {
+  const handleScrollTake = async (event: any) => {
+    if (totalPageTake && totalPageTake >= pageTake) {
       const scrollLevel = event.target.scrollHeight - event.target.scrollTop
       const bottom =
         scrollLevel >= event.target.clientHeight - 3 &&
@@ -179,8 +179,8 @@ export default function DialogDetails({
   }
 
   // eslint-disable-next-line
-  const handleScrollZakanay = async (event: any) => {
-    if (totalPageZakanay && totalPageZakanay >= pageZakanay) {
+  const handleScrollAfford = async (event: any) => {
+    if (totalPageAfford && totalPageAfford >= pageAfford) {
       const scrollLevel = event.target.scrollHeight - event.target.scrollTop
       const bottom =
         scrollLevel >= event.target.clientHeight - 3 &&
@@ -195,10 +195,10 @@ export default function DialogDetails({
   const initializeState = () => {
     setParticipantVotesComments(null)
     setParticipantContreVotesComments(null)
-    setPageAlainay(1)
-    setPageZakanay(1)
-    setTotalPageAlainay(null)
-    setTotalPageZakanay(null)
+    setPageTake(1)
+    setPageAfford(1)
+    setTotalPageTake(null)
+    setTotalPageAfford(null)
     setDescription(null)
     initialiseParticipantDetails()
   }
@@ -258,11 +258,11 @@ export default function DialogDetails({
             <span>
               <AiFillHeart size={50} /> &nbsp; Alainay
             </span>
-            <h2>{votesAlainayCount}</h2>
+            <h2>{votesTakeCount}</h2>
             <hr />
             <div className={styles.avatar}>
               <div className={styles.more}>
-                <button onClick={toggleDrawerAlainay(!openDrawerAlainay)}>
+                <button onClick={toggleDrawerTake(!openDrawerTake)}>
                   Voir plus
                 </button>
               </div>
@@ -273,11 +273,11 @@ export default function DialogDetails({
             <span>
               <GiStrong size={50} /> &nbsp; Zakanay
             </span>
-            <h2>{votesZakanayCount}</h2>
+            <h2>{votesAffordCount}</h2>
             <hr />
             <div className={styles.avatar}>
               <div className={styles.more}>
-                <button onClick={toggleDrawerZakanay(!openDrawerZakanay)}>
+                <button onClick={toggleDrawerAfford(!openDrawerAfford)}>
                   Voir plus
                 </button>
               </div>
@@ -292,9 +292,9 @@ export default function DialogDetails({
             <SwipeableEdgeDrawer
               title={titleComment}
               titleClass="title-alinay"
-              openDrawer={openDrawerAlainay}
-              toggleDrawer={toggleDrawerAlainay}
-              handleScroll={handleScrollAlainay}
+              openDrawer={openDrawerTake}
+              toggleDrawer={toggleDrawerTake}
+              handleScroll={handleScrollTake}
             >
               {participantVotesComments &&
                 participantVotesComments.map((voteComment, index) => (
@@ -320,10 +320,10 @@ export default function DialogDetails({
             <div>
               <SwipeableEdgeDrawer
                 title={titleComment}
-                titleClass={openDrawerZakanay ? '' : 'title-zakanay'}
-                openDrawer={openDrawerZakanay}
-                toggleDrawer={toggleDrawerZakanay}
-                handleScroll={handleScrollZakanay}
+                titleClass={openDrawerAfford ? '' : 'title-zakanay'}
+                openDrawer={openDrawerAfford}
+                toggleDrawer={toggleDrawerAfford}
+                handleScroll={handleScrollAfford}
               >
                 {participantContreVotesComments &&
                   participantContreVotesComments.map((voteComment, index) => (

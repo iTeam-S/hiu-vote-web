@@ -3,8 +3,6 @@ import axios, { AxiosRequestConfig } from 'axios'
 /* types */
 import { I_SponsorsList } from '../types'
 
-// ===========================================================
-
 export const getSponsors = async (): Promise<I_SponsorsList> => {
   const config: AxiosRequestConfig = {
     method: 'get',

@@ -72,17 +72,18 @@ function Stats({
 
 export default function Contrib() {
   const [githubProfilePics, setGithubProfilePics] = useState<string[]>([])
-  const realNames: string[] = ['Ntsoa', 'Raja', 'Damia', 'Gaetan', 'Rivo']
-  const contribStats: I_Stats[] = [
+  //const realNames: string[] = ['Ntsoa', 'Raja', 'Damia', 'Gaetan', 'Rivo']
+  const realNames: string[] = ['Ntsoa', 'Gaetan', 'Damia']
+  /* const contribStats: I_Stats[] = [
     {
       id: 'Ntsoa',
-      frontend: 30,
-      backend: 20,
-      bot: 0,
-      fonctionnel: 5,
-      cm: 0,
-      devops: 0,
-      integrationAPI: 70,
+      frontend: 95,
+      backend: 70,
+      bot: 5,
+      fonctionnel: 50,
+      cm: 50,
+      devops: 5,
+      integrationAPI: 50,
     },
     {
       id: 'Raja',
@@ -106,15 +107,15 @@ export default function Contrib() {
     },
     {
       id: 'Gaetan',
-      frontend: 0,
-      backend: 70,
-      bot: 25,
-      fonctionnel: 10,
-      cm: 0,
-      devops: 100,
-      integrationAPI: 10,
+      frontend: 5,
+      backend: 30,
+      bot: 95,
+      fonctionnel: 50,
+      cm: 50,
+      devops: 95,
+      integrationAPI: 50,
     },
-    {
+    /*   {
       id: 'Rivo',
       frontend: 0,
       backend: 5,
@@ -124,24 +125,62 @@ export default function Contrib() {
       devops: 0,
       integrationAPI: 5,
     },
+  ]*/
+  const contribStats: I_Stats[] = [
+    {
+      id: 'Ntsoa',
+      frontend: 95,
+      backend: 70,
+      bot: 5,
+      fonctionnel: 30,
+      cm: 5,
+      devops: 5,
+      integrationAPI: 50,
+    },
+    {
+      id: 'Gaetan',
+      frontend: 5,
+      backend: 30,
+      bot: 95,
+      fonctionnel: 35,
+      cm: 5,
+      devops: 95,
+      integrationAPI: 50,
+    },
+    {
+      id: 'Damia',
+      frontend: 0,
+      backend: 0,
+      bot: 0,
+      fonctionnel: 35,
+      cm: 90,
+      devops: 0,
+      integrationAPI: 0,
+    },
   ]
 
-  const linkLinkedin: string[] = [
-    'https://www.linkedin.com/in/ntsoa/',
+  /*const linkLinkedin: string[] = [
+    'https://www.linkedin.com/in/manambintsoa/',
     'https://portfolio-raja.netlify.app/',
     'https://www.linkedin.com/mwlite/in/vololoniaina-damia-tsiafaratiana-b0394318a',
     'https://www.linkedin.com/in/gaetanj/',
     'https://www.linkedin.com/in/rajaonarivony/',
+  ]*/
+  const linkLinkedin: string[] = [
+    'https://www.linkedin.com/in/manambintsoa/',
+    'https://www.linkedin.com/in/gaetanj/',
+    'https://www.linkedin.com/mwlite/in/vololoniaina-damia-tsiafaratiana-b0394318a',
   ]
 
   useEffect(() => {
-    const usernames: string[] = [
+    /*const usernames: string[] = [
       'Ntsoa2112',
       'RajaRakoto',
       'Damichou',
       'Gaetan1903',
       'rivo2302',
-    ]
+    ]*/
+    const usernames: string[] = ['Ntsoa2112', 'Gaetan1903', 'Damichou']
     const promises: Promise<I_User>[] = usernames.map((username) =>
       fetch(`https://api.github.com/users/${username}`).then((response) =>
         response.json(),

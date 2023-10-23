@@ -1,8 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import { maintainStatus } from './index'
 
-// ===========================================================
-
 export default class MyDocument extends Document {
   render() {
     return (
